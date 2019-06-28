@@ -33,7 +33,6 @@
     "cssnano": "^4.1.7",
     "eslint": "5.x",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^6.0.0",
     "eslint-config-react-app": "^4.0.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-flowtype": "2.x",

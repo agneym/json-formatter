@@ -1,23 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "whatwg-fetch";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: ""
-    };
-  }
-  handleClick = (event) => {
-    event.preventDefault();
-  }
-  render() {
-    return (
-      <div>
-        <p>App</p>
-        <button onClick={this.handleClick}>Click</button>
-      </div>
-    );
-  }
+function App() {
+  return <p>App</p>
 }
+
 export default App;

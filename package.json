@@ -1,7 +1,7 @@
 {
-  "name": "react-app",
+  "name": "json-formatter",
   "version": "1.0.0",
-  "description": "A React Boilerplate Configuration",
+  "description": "A JSON Formatter",
   "main": "index.js",
   "scripts": {
     "build": "webpack-cli --mode=production --env=prod",
@@ -98,6 +98,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BoyWithSilverWings/react-app.git"
+    "url": ""
   }
 }

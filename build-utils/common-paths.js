@@ -5,5 +5,6 @@ module.exports = {
   root: path.resolve(__dirname, ".."),
   outputPath: path.resolve(__dirname, "../", "dist"),
   appSrc: path.resolve(__dirname, "../", "src"),
-  public: path.resolve(__dirname, "../", "public")
+  public: path.resolve(__dirname, "../", "public"),
+  startPoint: path.resolve(__dirname, "../", "src/index.js")
 };

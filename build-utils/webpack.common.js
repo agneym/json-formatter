@@ -3,8 +3,13 @@ const webpack = require("webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
+  entry: {
+    app: commonPaths.startPoint,
+    "json.worker": 'monaco-editor/esm/vs/language/json/json.worker',
+  },
   output: {
-    filename: "[hash].bundle.js",
+    globalObject: "self",
+    filename: "[name].[hash].bundle.js",
     path: commonPaths.outputPath,
     publicPath: "/"
   },

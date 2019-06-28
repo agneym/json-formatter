@@ -8,7 +8,7 @@
     }
   },
   "extends": [
-    "airbnb",
+    "react-app",
     "prettier"
   ],
   "rules": {

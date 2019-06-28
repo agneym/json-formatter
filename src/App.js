@@ -1,9 +1,12 @@
 import React from "react";
 import "whatwg-fetch";
+import Editor from "./Editor";
 
 function App() {
   return (
-    <p>App</p>
+    <main>
+      <Editor />
+    </main>
   )
 }
 

@@ -6,6 +6,7 @@ test/output/
 build-utils
 webpack.config.js
 postcss.config.js
+babel.config.js
 
 dist
 

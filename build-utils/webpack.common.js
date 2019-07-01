@@ -9,7 +9,7 @@ const config = {
   },
   output: {
     globalObject: "self",
-    filename: "[name].[hash].bundle.js",
+    filename: "[name].bundle.js",
     path: commonPaths.outputPath,
     publicPath: "/"
   },

@@ -1,12 +1,13 @@
-import React from "react";
-import "whatwg-fetch";
+import React, { Fragment } from "react";
 import Editor from "./Editor";
 
 function App() {
   return (
-    <main>
-      <Editor />
-    </main>
+    <Fragment>
+      <main>
+        <Editor />
+      </main>
+    </Fragment>
   )
 }
 

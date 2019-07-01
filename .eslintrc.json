@@ -1,6 +1,35 @@
 {
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react-hooks",
+    "jsx-a11y"
+  ],
   "extends": [
-    "react-app",
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "no-console": 0,
+    "no-unused-vars": 1,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-uses-react": 1
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "navigator": true
+  }
 }

@@ -7,6 +7,9 @@ const theme = {
   },
   fonts: {
     main: `'Fira Sans', sans-serif`,
+  },
+  layout: {
+    navHeight: "5rem"
   }
 }
 

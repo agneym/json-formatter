@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
 import 'monaco-editor/esm/vs/editor/browser/controller/coreCommands.js';
 import 'monaco-editor/esm/vs/editor/contrib/find/findController.js';
 import 'monaco-editor/esm/vs/editor/contrib/folding/folding.js';
@@ -20,16 +20,14 @@ window.MonacoEnvironment = {
 	}
 }
 
-function Editor() {
+function Editor({ editorConfig }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if(editorContainer.current) {
-      monaco.editor.create(editorContainer.current, {
-        value: ``,
-        language: "json",
-        formatOnPaste: true,
-        formatOnType: true,
-      });
+      editorConfig.createEditor(editorContainer.current);
+    }
+    return () => {
+      editorConfig.destroy();
     }
   });
   return (
@@ -38,6 +36,13 @@ function Editor() {
       css={`height: 100%`}
     />
   )
+}
+
+Editor.propTypes = {
+  editorConfig: PropTypes.shape({
+    createEditor: PropTypes.func.isRequired,
+    destroy: PropTypes.func.isRequired,
+  }),
 }
 
 export default Editor;

@@ -5,6 +5,7 @@ import theme from "./utils/theme";
 import GlobalStyles from "./utils/global-styles";
 import Editor from "./Editor";
 import Header from "./Header";
+import getEditor from "./utils/editor-actions";
 
 const Main = styled.main`
   height: calc(100vh - ${props => props.theme.layout.navHeight} - 2rem);
@@ -13,12 +14,13 @@ const Main = styled.main`
 `;
 
 function App() {
+  const editorConfig = getEditor();
   return (
     <ThemeProvider theme={theme}>
       <Fragment>
-        <Header />
+        <Header editorConfig={editorConfig} />
         <Main>
-          <Editor />
+          <Editor editorConfig={editorConfig} />
         </Main>
         <GlobalStyles />
       </Fragment>

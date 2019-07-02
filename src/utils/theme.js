@@ -3,7 +3,7 @@ const theme = {
     primary: "#3B8BEB",
     grey: "#8590AA",
     accent: "#C4DBF6",
-    secondary: "#B23850"
+    secondary: "#EB5160"
   },
   fonts: {
     main: `'Fira Sans', sans-serif`,

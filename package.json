@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "eslint": "5",
+    "formik": "^1.5.7",
     "monaco-editor": "^0.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",

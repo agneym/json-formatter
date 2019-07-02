@@ -27,8 +27,16 @@ function Sidebar() {
     >
       {({ values, errors, handleChange, handleBlur, }) => (
         <Container>
-          <FormattingOptions values={values} handleChange={handleChange} handleBlur={handleBlur} />
-          <JsonOptions values={values} handleChange={handleChange} handleBlur={handleBlur} />
+          <FormattingOptions
+            values={values}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
+          <JsonOptions
+            values={values}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
         </Container>
       )}
     </Formik>

@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: ${props => props.theme.fonts.main};
     font-size: 1.6rem;
+    box-sizing: border-box;
   }
 `;
 

@@ -13,8 +13,6 @@ import 'monaco-editor/esm/vs/editor/contrib/rename/rename.js';
 import 'monaco-editor/esm/vs/editor/contrib/multicursor/multicursor.js';
 import 'monaco-editor/esm/vs/editor/contrib/smartSelect/smartSelect.js';
 import 'monaco-editor/esm/vs/editor/contrib/format/formatActions.js';
-import 'monaco-editor/esm/vs/editor/contrib/contextmenu/contextmenu.js';
-
 
 window.MonacoEnvironment = {
 	getWorkerUrl: function () {
@@ -30,14 +28,14 @@ function Editor() {
         value: ``,
         language: "json",
         formatOnPaste: true,
-
+        formatOnType: true,
       });
     }
   });
   return (
     <div
       ref={editorContainer}
-      css={`height: 100vh`}
+      css={`height: 100%`}
     />
   )
 }

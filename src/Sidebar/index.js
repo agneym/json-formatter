@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
 
-const Container = styled.form`
+const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
   width: 15%;
 `;
@@ -26,7 +26,7 @@ function Sidebar() {
       initialValues={initialConfig}
     >
       {({ values, handleChange, handleBlur, }) => (
-        <Container>
+        <Form>
           <FormattingOptions
             values={values}
             handleChange={handleChange}
@@ -37,7 +37,7 @@ function Sidebar() {
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
-        </Container>
+        </Form>
       )}
     </Formik>
   );

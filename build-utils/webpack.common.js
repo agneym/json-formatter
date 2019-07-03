@@ -21,6 +21,7 @@ const config = {
       {
         test: /\.(jpe?g|png|gif|svg|eot|ttf|woff|woff2)$/i,
         use: [
+          // uses file-loader as default.
           {
             loader: "url-loader",
             options: {

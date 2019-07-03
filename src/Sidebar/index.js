@@ -25,7 +25,7 @@ function Sidebar() {
     <Formik
       initialValues={initialConfig}
     >
-      {({ values, errors, handleChange, handleBlur, }) => (
+      {({ values, handleChange, handleBlur, }) => (
         <Container>
           <FormattingOptions
             values={values}

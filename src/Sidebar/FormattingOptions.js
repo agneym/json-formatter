@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { InputNumber, Label } from "buffetjs";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
   return (
     <fieldset>
       <h2>Formatting</h2>
       <div>
-        <label htmlFor="tab-size">Tab Size</label>
-        <input
-          type="number"
+        <Label htmlFor="tab-size">Tab Size</Label>
+        <InputNumber
           id="tab-size"
           name="tabSize"
           value={values.tabSize}
@@ -17,9 +17,8 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         />
       </div>
       <div>
-        <label htmlFor="intent-size">Intent Size</label>
-        <input
-          type="number"
+        <Label htmlFor="intent-size">Intent Size</Label>
+        <InputNumber
           id="intent-size"
           name="intentSize"
           value={values.intentSize}
@@ -27,7 +26,6 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           handleBlur={handleBlur}
         />
       </div>
-     
     </fieldset>
   );
 }

@@ -22,21 +22,19 @@ const initialConfig = {
 }
 
 function Sidebar({ editorConfig }) {
-  // Move this to onblur
-  const changeFormat = (event, values, handleChange) => {
+  const changeFormat = (values) => {
     editorConfig.updateFormatOptions(values);
-    handleChange(event);
   }
   return (
     <Formik
       initialValues={initialConfig}
     >
-      {({ values, handleChange, handleBlur, }) => (
+      {({ values, handleChange, handleBlur }) => (
         <Form>
           <FormattingOptions
             values={values}
-            handleChange={(event) => changeFormat(event, values, handleChange)}
-            handleBlur={handleBlur}
+            handleChange={handleChange}
+            handleBlur={() => changeFormat(values)}
           />
           <JsonOptions
             values={values}

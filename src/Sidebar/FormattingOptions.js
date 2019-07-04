@@ -14,7 +14,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           id="tab-size"
           name="tabSize"
           value={values.tabSize}
-          handleChange={handleChange}
+          onChange={handleChange}
           handleBlur={handleBlur}
         />
       </Field>
@@ -24,7 +24,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           id="intent-size"
           name="intentSize"
           value={values.intentSize}
-          handleChange={handleChange}
+          onChange={handleChange}
           handleBlur={handleBlur}
         />
       </Field>

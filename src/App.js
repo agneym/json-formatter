@@ -22,7 +22,7 @@ function App() {
       <Fragment>
         <Header editorConfig={editorConfig} />
         <div role="group" css={` display: flex; `}>
-          <Sidebar />
+          <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
           </Main>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
+import PropTypes from "prop-types";
 
 import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
@@ -20,7 +21,12 @@ const initialConfig = {
   validate: true,
 }
 
-function Sidebar() {
+function Sidebar({ editorConfig }) {
+  // Move this to onblur
+  const changeFormat = (event, values, handleChange) => {
+    editorConfig.updateFormatOptions(values);
+    handleChange(event);
+  }
   return (
     <Formik
       initialValues={initialConfig}
@@ -29,7 +35,7 @@ function Sidebar() {
         <Form>
           <FormattingOptions
             values={values}
-            handleChange={handleChange}
+            handleChange={(event) => changeFormat(event, values, handleChange)}
             handleBlur={handleBlur}
           />
           <JsonOptions
@@ -41,6 +47,12 @@ function Sidebar() {
       )}
     </Formik>
   );
+}
+
+Sidebar.propTypes = {
+  editorConfig: PropTypes.shape({
+    updateFormatOptions: PropTypes.func.isRequired,
+  }),
 }
 
 export default Sidebar;

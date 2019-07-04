@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { InputNumber, Label } from "buffetjs";
 
-import FieldSet from "./FieldSet";
+import FieldSet, { Field } from "./FieldSet";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
   return (
     <FieldSet>
       <h2>Formatting</h2>
-      <div>
+      <Field>
         <Label htmlFor="tab-size">Tab Size</Label>
         <InputNumber
           id="tab-size"
@@ -17,8 +17,8 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           handleChange={handleChange}
           handleBlur={handleBlur}
         />
-      </div>
-      <div>
+      </Field>
+      <Field>
         <Label htmlFor="intent-size">Intent Size</Label>
         <InputNumber
           id="intent-size"
@@ -27,7 +27,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           handleChange={handleChange}
           handleBlur={handleBlur}
         />
-      </div>
+      </Field>
     </FieldSet>
   );
 }

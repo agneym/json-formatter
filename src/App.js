@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle as BuffetGlobalStyles } from 'buffetjs';
+import { GlobalStyle as BuffetGlobalStyles, Fonts as BuffetFonts } from 'buffetjs';
 
 import theme from "./utils/theme";
 import GlobalStyles from "./utils/GlobalStyles";
@@ -27,6 +27,7 @@ function App() {
             <Editor editorConfig={editorConfig} />
           </Main>
         </div>
+        <BuffetFonts />
         <BuffetGlobalStyles />
         <GlobalStyles />
       </Fragment>

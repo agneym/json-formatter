@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle as BuffetGlobalStyles } from 'buffetjs';
 
 import theme from "./utils/theme";
-import GlobalStyles from "./utils/global-styles";
+import GlobalStyles from "./utils/GlobalStyles";
 import Editor from "./Editor";
 import Header from "./Header";
 import getEditor from "./utils/editor-actions";

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import FormatBtn from "./format-btn";
+import FormatBtn from "./FormatBtn";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};

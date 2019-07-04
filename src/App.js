@@ -11,7 +11,6 @@ import Sidebar from "./Sidebar";
 
 const Main = styled.main`
   height: calc(100vh - ${props => props.theme.layout.navHeight} - 2rem);
-  padding: 1rem 2rem;
   position: relative;
   flex: 1;
 `;

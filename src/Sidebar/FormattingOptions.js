@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { InputNumber, Label } from "buffetjs";
 
+import FieldSet from "./FieldSet";
+
 function FormattingOptions({ values, handleChange, handleBlur }) {
   return (
-    <fieldset>
+    <FieldSet>
       <h2>Formatting</h2>
       <div>
         <Label htmlFor="tab-size">Tab Size</Label>
@@ -26,7 +28,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           handleBlur={handleBlur}
         />
       </div>
-    </fieldset>
+    </FieldSet>
   );
 }
 

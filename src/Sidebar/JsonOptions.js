@@ -1,10 +1,12 @@
 import React from 'react';
 
+import FieldSet from './FieldSet';
+
 function JsonOptions() {
   return (
-    <fieldset>
+    <FieldSet>
       <h2>JSON Options</h2>
-    </fieldset>
+    </FieldSet>
   );
 }
 

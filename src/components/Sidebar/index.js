@@ -8,7 +8,7 @@ import JsonOptions from "./JsonOptions";
 
 const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
-  width: 15%;
+  width: 20%;
 `;
 
 const initialConfig = {

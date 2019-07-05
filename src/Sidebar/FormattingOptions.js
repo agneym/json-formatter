@@ -5,6 +5,10 @@ import { InputNumber, Label, Toggle } from "buffetjs";
 import FieldSet, { Field, HorizontalField, HorizontalLabel } from "./FieldSet";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
+  const handleToggleChange = (event) => {
+    handleChange(event);
+    handleBlur();
+  }
   return (
     <FieldSet>
       <h2>Formatting</h2>
@@ -35,7 +39,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         <Toggle
           value={values.insertSpaces}
           name="insertSpaces"
-          onChange={handleChange}
+          onChange={handleToggleChange}
         />
       </HorizontalField>
       <HorizontalField>
@@ -43,7 +47,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         <Toggle
           value={values.trimAutoWhitespace}
           name="trimAutoWhitespace"
-          onChange={handleChange}
+          onChange={handleToggleChange}
         />
       </HorizontalField>
     </FieldSet>

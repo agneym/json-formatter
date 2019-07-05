@@ -49,7 +49,7 @@ function getEditor() {
   }
 
   /**
-   * 
+   * Update formatting options for editor
    * @param {Object} options 
    */
   const updateFormatOptions = (options) => {
@@ -58,6 +58,7 @@ function getEditor() {
     } 
     const model = editor.getModel();
     model.updateOptions(options);
+    format();
   }
 
   return {

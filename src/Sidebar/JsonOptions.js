@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import FieldSet, { HorizontalField, HorizontalLabel } from './FieldSet';
-import { Toggle } from 'buffetjs';
+import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
+import { Toggle } from "buffetjs";
 import PropTypes from "prop-types";
 
 function JsonOptions({ values, handleChange, handleBlur }) {
-  const handleToggleChange = (event) => {
+  const handleToggleChange = event => {
     handleChange(event);
-    const { target: { name, value } } = event;
+    const {
+      target: { name, value },
+    } = event;
     handleBlur({ [name]: value });
-  }
+  };
   return (
     <FieldSet>
       <h2>JSON Options</h2>
@@ -23,7 +25,9 @@ function JsonOptions({ values, handleChange, handleBlur }) {
         />
       </HorizontalField>
       <HorizontalField>
-        <HorizontalLabel htmlFor="allow-comments">Allow Comments</HorizontalLabel>
+        <HorizontalLabel htmlFor="allow-comments">
+          Allow Comments
+        </HorizontalLabel>
         <Toggle
           id="allow-comments"
           value={values.allowComments}
@@ -37,12 +41,12 @@ function JsonOptions({ values, handleChange, handleBlur }) {
 
 JsonOptions.defaultProps = {
   handleBlur: () => {},
-}
+};
 
 JsonOptions.propTypes = {
   values: PropTypes.any.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func,
-}
+};
 
 export default JsonOptions;

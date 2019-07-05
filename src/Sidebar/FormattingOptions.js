@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import { InputNumber, Label, Toggle } from "buffetjs";
 
 import FieldSet, { Field, HorizontalField, HorizontalLabel } from "./FieldSet";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
-  const handleToggleChange = (event) => {
+  const handleToggleChange = event => {
     handleChange(event);
     handleBlur();
-  }
+  };
   return (
     <FieldSet>
       <h2>Formatting</h2>
@@ -43,7 +43,9 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         />
       </HorizontalField>
       <HorizontalField>
-        <HorizontalLabel htmlFor="trim-whitespace">Trim Whitespace</HorizontalLabel>
+        <HorizontalLabel htmlFor="trim-whitespace">
+          Trim Whitespace
+        </HorizontalLabel>
         <Toggle
           value={values.trimAutoWhitespace}
           name="trimAutoWhitespace"
@@ -56,13 +58,12 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
 
 FormattingOptions.defaultProps = {
   handleBlur: () => {},
-}
+};
 
 FormattingOptions.propTypes = {
   values: PropTypes.any.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func,
-}
+};
 
 export default FormattingOptions;
-

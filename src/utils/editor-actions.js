@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
+import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
 
 /**
  * Get create function for the editor.
@@ -14,11 +14,11 @@ function getEditor() {
 
   /**
    * Create or return the editor instance
-   * @param {DOMNode} container 
+   * @param {DOMNode} container
    * @returns {Object}
    */
-  const createEditor = (container) => {
-    if(!editor) {
+  const createEditor = container => {
+    if (!editor) {
       editor = monaco.editor.create(container, {
         value: ``,
         language: "json",
@@ -27,47 +27,47 @@ function getEditor() {
       });
     }
     return editor;
-  }
+  };
 
   /**
    * Destory editor instance if already created.
    */
   const destroy = () => {
-    if(editor) {
+    if (editor) {
       editor.dispose();
       editor = null;
     }
-  }
+  };
 
   /**
    * Format the editor document.
    */
   const format = () => {
-    if(!editor) {
+    if (!editor) {
       return;
     }
-    editor.getAction('editor.action.formatDocument').run();
-  }
+    editor.getAction("editor.action.formatDocument").run();
+  };
 
   /**
    * Update formatting options for editor
-   * @param {Object} options 
+   * @param {Object} options
    */
-  const updateFormatOptions = (options) => {
-    if(!editor) {
+  const updateFormatOptions = options => {
+    if (!editor) {
       return;
-    } 
+    }
     const model = editor.getModel();
     model.updateOptions(options);
     format();
-  }
+  };
 
-  const updateJsonOptions = (options) => {
-    if(!editor) {
+  const updateJsonOptions = options => {
+    if (!editor) {
       return;
     }
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions(options);
-  }
+  };
 
   return {
     createEditor,

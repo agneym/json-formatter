@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle as BuffetGlobalStyles, Fonts as BuffetFonts } from 'buffetjs';
+import {
+  GlobalStyle as BuffetGlobalStyles,
+  Fonts as BuffetFonts,
+} from "buffetjs";
 
 import theme from "./utils/theme";
 import GlobalStyles from "./utils/GlobalStyles";
@@ -21,7 +24,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <Fragment>
         <Header editorConfig={editorConfig} />
-        <div role="group" css={` display: flex; `}>
+        <div
+          role="group"
+          css={`
+            display: flex;
+          `}
+        >
           <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
@@ -32,7 +40,7 @@ function App() {
         <GlobalStyles />
       </Fragment>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;

@@ -7,6 +7,7 @@
     "build": "webpack-cli --mode=production --env=prod",
     "start": "webpack-dev-server --mode=development --env=dev",
     "test": "jest",
+    "format": "prettier --write src/**/*.{js,jsx,css,html,json}",
     "test:coverage": "jest --coverage"
   },
   "husky": {

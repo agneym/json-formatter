@@ -17,7 +17,6 @@ const initialConfig = {
   insertSpaces: false,
   trimAutoWhitespace: true,
   allowComments: true,
-  enableSchemaRequest: true,
   validate: true,
 }
 
@@ -25,11 +24,17 @@ function Sidebar({ editorConfig }) {
   const changeFormat = (values) => {
     editorConfig.updateFormatOptions(values);
   }
+  const changeJsonOptions = (values) => {
+    editorConfig.updateJsonOptions({
+      validate: values.validate,
+      allowComments: values.allowComments,
+    });
+  }
   return (
     <Formik
       initialValues={initialConfig}
     >
-      {({ values, handleChange, handleBlur }) => (
+      {({ values, handleChange }) => (
         <Form>
           <FormattingOptions
             values={values}
@@ -39,7 +44,7 @@ function Sidebar({ editorConfig }) {
           <JsonOptions
             values={values}
             handleChange={handleChange}
-            handleBlur={handleBlur}
+            handleBlur={() => changeJsonOptions(values)}
           />
         </Form>
       )}
@@ -50,6 +55,7 @@ function Sidebar({ editorConfig }) {
 Sidebar.propTypes = {
   editorConfig: PropTypes.shape({
     updateFormatOptions: PropTypes.func.isRequired,
+    updateJsonOptions: PropTypes.func.isRequired,
   }),
 }
 

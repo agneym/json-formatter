@@ -6,7 +6,8 @@ import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js';
  * @returns {function} config.createEditor - Function to create or return the editor already created.
  * @returns {function} config.destory - Function to destory current editor instance
  * @returns {function} config.format - Function to format the editor
- * @returns {functions} config.updateOptions - Function to update options to format a document
+ * @returns {function} config.updateFormatOptions - Function to update options to format a document
+ * @returns {function} config.updateJsonOptions - Function to update JSON options
  */
 function getEditor() {
   let editor = null;
@@ -61,11 +62,20 @@ function getEditor() {
     format();
   }
 
+  const updateJsonOptions = (options) => {
+    console.log(options)
+    if(!editor) {
+      return;
+    }
+    monaco.languages.json.jsonDefaults.setDiagnosticsOptions(options);
+  }
+
   return {
     createEditor,
     destroy,
     format,
     updateFormatOptions,
+    updateJsonOptions,
   };
 }
 

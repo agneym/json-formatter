@@ -53,6 +53,7 @@ function getEditor() {
    * @param {Object} options 
    */
   const updateFormatOptions = (options) => {
+    debugger;
     if(!editor) {
       return;
     } 

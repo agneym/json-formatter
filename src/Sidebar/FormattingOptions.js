@@ -13,9 +13,10 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         <InputNumber
           id="tab-size"
           name="tabSize"
+          min={1}
           value={values.tabSize}
           onChange={handleChange}
-          handleBlur={handleBlur}
+          onBlur={handleBlur}
         />
       </Field>
       <Field>
@@ -23,9 +24,10 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         <InputNumber
           id="intent-size"
           name="intentSize"
+          min={1}
           value={values.intentSize}
           onChange={handleChange}
-          handleBlur={handleBlur}
+          onBlur={handleBlur}
         />
       </Field>
     </FieldSet>

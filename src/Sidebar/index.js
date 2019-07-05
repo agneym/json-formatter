@@ -25,14 +25,16 @@ function Sidebar({ editorConfig }) {
     editorConfig.updateFormatOptions(values);
   };
   const changeJsonOptions = (values, changed) => {
-    setTimeout(() => {
-      editorConfig.updateJsonOptions({
-        validate: values.validate,
-        allowComments: values.allowComments,
-        enableSchemaRequest: true,
-        ...changed,
-      });
-    }, 0);
+    editorConfig.updateJsonOptions({
+      validate: values.validate,
+      allowComments: values.allowComments,
+      enableSchemaRequest: true,
+      schemas: [{
+        uri: "http://json.schemastore.org/package",
+        fileMatch: ["*"]
+      }],
+      ...changed,
+    });
   };
   return (
     <Formik initialValues={initialConfig}>

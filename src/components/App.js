@@ -5,11 +5,11 @@ import {
   Fonts as BuffetFonts,
 } from "buffetjs";
 
-import theme from "./utils/theme";
-import GlobalStyles from "./utils/GlobalStyles";
+import theme from "../utils/theme";
+import GlobalStyles from "../utils/GlobalStyles";
 import Editor from "./Editor";
 import Header from "./Header";
-import getEditor from "./utils/editor-actions";
+import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
 
 const Main = styled.main`

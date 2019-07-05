@@ -23,6 +23,7 @@
   "rules": {
     "no-console": 0,
     "no-unused-vars": 1,
+    "no-debugger": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-uses-react": 1

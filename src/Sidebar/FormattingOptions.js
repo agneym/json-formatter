@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { InputNumber, Label } from "buffetjs";
+import { InputNumber, Label, Toggle } from "buffetjs";
 
-import FieldSet, { Field } from "./FieldSet";
+import FieldSet, { Field, HorizontalField, HorizontalLabel } from "./FieldSet";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
   return (
@@ -20,7 +20,7 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         />
       </Field>
       <Field>
-        <Label htmlFor="intent-size">Intent Size</Label>
+        <HorizontalLabel htmlFor="intent-size">Intent Size</HorizontalLabel>
         <InputNumber
           id="intent-size"
           name="intentSize"
@@ -30,6 +30,22 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           onBlur={handleBlur}
         />
       </Field>
+      <HorizontalField>
+        <HorizontalLabel htmlFor="insert-spaces">Insert Spaces</HorizontalLabel>
+        <Toggle
+          value={values.insertSpaces}
+          name="insertSpaces"
+          onChange={handleChange}
+        />
+      </HorizontalField>
+      <HorizontalField>
+        <HorizontalLabel htmlFor="trim-whitespace">Trim Whitespace</HorizontalLabel>
+        <Toggle
+          value={values.trimAutoWhitespace}
+          name="trimAutoWhitespace"
+          onChange={handleChange}
+        />
+      </HorizontalField>
     </FieldSet>
   );
 }

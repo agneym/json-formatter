@@ -63,7 +63,6 @@ function getEditor() {
   }
 
   const updateJsonOptions = (options) => {
-    console.log(options)
     if(!editor) {
       return;
     }

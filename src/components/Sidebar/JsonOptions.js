@@ -1,8 +1,8 @@
 import React from "react";
-
-import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
 import { Toggle } from "buffetjs";
 import PropTypes from "prop-types";
+
+import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
 
 function JsonOptions({ values, handleChange, handleBlur }) {
   const handleToggleChange = event => {

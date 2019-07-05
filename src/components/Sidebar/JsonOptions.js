@@ -1,8 +1,14 @@
 import React from "react";
-import { Toggle } from "buffetjs";
+import { Toggle, Label } from "buffetjs";
 import PropTypes from "prop-types";
+import AsyncCreatableSelect from 'react-select/async-creatable';
 
 import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
+import api from "../../lib/api";
+
+const getSchemas = () => {
+  return api.catalogue.get().then(res => (res.schemas || []));
+}
 
 function JsonOptions({ values, handleChange, handleBlur }) {
   const handleToggleChange = event => {
@@ -35,6 +41,17 @@ function JsonOptions({ values, handleChange, handleBlur }) {
           onChange={handleToggleChange}
         />
       </HorizontalField>
+      <Label htmlFor="schema">Schema</Label>
+      <AsyncCreatableSelect
+        cacheOptions
+        name="schemaInput"
+        id="schema"
+        defaultOptions
+        allowCreateWhileLoading
+        loadOptions={getSchemas}
+        getOptionLabel={option=>option.name}
+        getOptionValue={option=>option.url}
+      />
     </FieldSet>
   );
 }

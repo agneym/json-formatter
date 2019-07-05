@@ -1,5 +1,7 @@
 import catalogue from "./catalogue";
 
-export default {
+const api = {
   catalogue,
 }
+
+export default api;

@@ -24,11 +24,15 @@ function Sidebar({ editorConfig }) {
   const changeFormat = (values) => {
     editorConfig.updateFormatOptions(values);
   }
-  const changeJsonOptions = (values) => {
-    editorConfig.updateJsonOptions({
-      validate: values.validate,
-      allowComments: values.allowComments,
-    });
+  const changeJsonOptions = (values, changed) => {
+    setTimeout(() => {
+      editorConfig.updateJsonOptions({
+        validate: values.validate,
+        allowComments: values.allowComments,
+        ...changed,
+      });
+    }, 0);
+    
   }
   return (
     <Formik
@@ -44,7 +48,7 @@ function Sidebar({ editorConfig }) {
           <JsonOptions
             values={values}
             handleChange={handleChange}
-            handleBlur={() => changeJsonOptions(values)}
+            handleBlur={(changed) => changeJsonOptions(values, changed)}
           />
         </Form>
       )}

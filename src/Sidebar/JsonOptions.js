@@ -7,7 +7,8 @@ import PropTypes from "prop-types";
 function JsonOptions({ values, handleChange, handleBlur }) {
   const handleToggleChange = (event) => {
     handleChange(event);
-    handleBlur();
+    const { target: { name, value } } = event;
+    handleBlur({ [name]: value });
   }
   return (
     <FieldSet>

@@ -1,30 +1,10 @@
 import React from "react";
 import { Toggle, Label } from "buffetjs";
 import PropTypes from "prop-types";
-import AsyncCreatableSelect from 'react-select/async-creatable';
 import { Field } from "formik";
 
 import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
-import api from "../../lib/api";
-
-const getSchemas = (inputVal) => {
-  return new window.Promise(resolve => {
-    api.catalogue.get()
-      .then(res => (res.schemas || []))
-      .then(res => {
-        if(inputVal) {
-          resolve(res.filter(item => item.name.toLowerCase().includes(inputVal.toLowerCase())));
-        } else {
-          resolve(res);
-        }
-      });
-  });
-}
-
-const validateUrl = (inputVal, selectVal) => {
-  console.log(inputVal, selectVal);
-  return true;
-}
+import SchemaSelect from "./SchemaSelect";
 
 function JsonOptions({ values, handleChange, handleBlur }) {
   const handleToggleChange = event => {
@@ -60,24 +40,7 @@ function JsonOptions({ values, handleChange, handleBlur }) {
       <Label htmlFor="schema">Schema</Label>
       <Field
         name="schemaInput"
-        render={({ field, form }) => (
-          <AsyncCreatableSelect
-            cacheOptions
-            name={field.name}
-            id="schema"
-            value={field.value}
-            onChange={(option) => form.setFieldValue(field.name, option)}
-            defaultOptions
-            isClearable
-            allowCreateWhileLoading
-            placeholder="Select/Add schema"
-            getNewOptionData={(_, optionLabel) => ({ name: optionLabel, url: optionLabel })}
-            formatCreateLabel={(inputVal) => `Validate with ${inputVal}`}
-            loadOptions={getSchemas}
-            getOptionLabel={option => option.name}
-            getOptionValue={option => option.url}
-          />
-        )}
+        component={SchemaSelect}
       />
     </FieldSet>
   );

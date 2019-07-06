@@ -13,12 +13,17 @@ const getSchemas = (inputVal) => {
       .then(res => (res.schemas || []))
       .then(res => {
         if(inputVal) {
-          resolve(res.filter(item => item.name.includes(inputVal)));
+          resolve(res.filter(item => item.name.toLowerCase().includes(inputVal.toLowerCase())));
         } else {
           resolve(res);
         }
       });
   });
+}
+
+const validateUrl = (inputVal, selectVal) => {
+  console.log(inputVal, selectVal);
+  return true;
 }
 
 function JsonOptions({ values, handleChange, handleBlur }) {
@@ -65,6 +70,9 @@ function JsonOptions({ values, handleChange, handleBlur }) {
             defaultOptions
             isClearable
             allowCreateWhileLoading
+            placeholder="Select/Add schema"
+            getNewOptionData={(_, optionLabel) => ({ name: optionLabel, url: optionLabel })}
+            formatCreateLabel={(inputVal) => `Validate with ${inputVal}`}
             loadOptions={getSchemas}
             getOptionLabel={option => option.name}
             getOptionValue={option => option.url}

@@ -18,6 +18,7 @@ const initialConfig = {
   trimAutoWhitespace: true,
   allowComments: true,
   validate: true,
+  schemaInput: null,
 };
 
 function Sidebar({ editorConfig }) {
@@ -29,10 +30,7 @@ function Sidebar({ editorConfig }) {
       validate: values.validate,
       allowComments: values.allowComments,
       enableSchemaRequest: true,
-      schemas: [{
-        uri: "http://json.schemastore.org/package",
-        fileMatch: ["*"]
-      }],
+      schemas: [],
       ...changed,
     });
   };

@@ -2,12 +2,23 @@ import React from "react";
 import { Toggle, Label } from "buffetjs";
 import PropTypes from "prop-types";
 import AsyncCreatableSelect from 'react-select/async-creatable';
+import { Field } from "formik";
 
 import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
 import api from "../../lib/api";
 
-const getSchemas = () => {
-  return api.catalogue.get().then(res => (res.schemas || []));
+const getSchemas = (inputVal) => {
+  return new window.Promise(resolve => {
+    api.catalogue.get()
+      .then(res => (res.schemas || []))
+      .then(res => {
+        if(inputVal) {
+          resolve(res.filter(item => item.name.includes(inputVal)));
+        } else {
+          resolve(res);
+        }
+      });
+  });
 }
 
 function JsonOptions({ values, handleChange, handleBlur }) {
@@ -42,15 +53,23 @@ function JsonOptions({ values, handleChange, handleBlur }) {
         />
       </HorizontalField>
       <Label htmlFor="schema">Schema</Label>
-      <AsyncCreatableSelect
-        cacheOptions
+      <Field
         name="schemaInput"
-        id="schema"
-        defaultOptions
-        allowCreateWhileLoading
-        loadOptions={getSchemas}
-        getOptionLabel={option=>option.name}
-        getOptionValue={option=>option.url}
+        render={({ field, form }) => (
+          <AsyncCreatableSelect
+            cacheOptions
+            name={field.name}
+            id="schema"
+            value={field.value}
+            onChange={(option) => form.setFieldValue(field.name, option)}
+            defaultOptions
+            isClearable
+            allowCreateWhileLoading
+            loadOptions={getSchemas}
+            getOptionLabel={option => option.name}
+            getOptionValue={option => option.url}
+          />
+        )}
       />
     </FieldSet>
   );

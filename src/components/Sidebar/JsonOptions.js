@@ -40,7 +40,7 @@ function JsonOptions({ values, handleChange, handleBlur, changeSchema }) {
       <Label htmlFor="schema">Schema</Label>
       <Field
         name="schemaInput"
-        onBlur={changeSchema}
+        schemaOnBlur={changeSchema}
         component={SchemaSelect}
       />
     </FieldSet>

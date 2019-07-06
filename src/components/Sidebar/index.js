@@ -40,6 +40,7 @@ function Sidebar({ editorConfig }) {
     editorConfig.updateJsonOptions({
       schemas: [{
         uri: newSchema.url,
+        fileMatch: ["*"]
       }],
     })
   } 

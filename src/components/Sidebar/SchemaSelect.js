@@ -27,7 +27,7 @@ const validateUrl = (inputVal) => {
   }
 }
 
-function SchemaSelect({ field, form }) {
+function SchemaSelect({ field, form, schemaOnBlur }) {
   return (
     <AsyncCreatableSelect
       cacheOptions
@@ -45,7 +45,7 @@ function SchemaSelect({ field, form }) {
       loadOptions={getSchemas}
       getOptionLabel={option => option.name}
       getOptionValue={option => option.url}
-      onBlur={() => field.onBlur(field.value)}
+      onBlur={() => schemaOnBlur(field.value)}
     />
   );
 }
@@ -54,8 +54,8 @@ SchemaSelect.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.object.isRequired,
-    onBlur: PropTypes.func.isRequired,
   }),
+  schemaOnBlur: PropTypes.func.isRequired,
   form: PropTypes.shape({
     setFieldValue: PropTypes.func.isRequired,
   }),

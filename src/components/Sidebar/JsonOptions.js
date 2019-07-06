@@ -6,7 +6,7 @@ import { Field } from "formik";
 import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
 import SchemaSelect from "./SchemaSelect";
 
-function JsonOptions({ values, handleChange, handleBlur }) {
+function JsonOptions({ values, handleChange, handleBlur, changeSchema }) {
   const handleToggleChange = event => {
     handleChange(event);
     const {
@@ -40,6 +40,7 @@ function JsonOptions({ values, handleChange, handleBlur }) {
       <Label htmlFor="schema">Schema</Label>
       <Field
         name="schemaInput"
+        onBlur={changeSchema}
         component={SchemaSelect}
       />
     </FieldSet>
@@ -54,6 +55,7 @@ JsonOptions.propTypes = {
   values: PropTypes.any.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func,
+  changeSchema: PropTypes.func.isRequired,
 };
 
 export default JsonOptions;

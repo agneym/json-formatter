@@ -45,6 +45,7 @@ function SchemaSelect({ field, form }) {
       loadOptions={getSchemas}
       getOptionLabel={option => option.name}
       getOptionValue={option => option.url}
+      onBlur={() => field.onBlur(field.value)}
     />
   );
 }
@@ -53,6 +54,7 @@ SchemaSelect.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.object.isRequired,
+    onBlur: PropTypes.func.isRequired,
   }),
   form: PropTypes.shape({
     setFieldValue: PropTypes.func.isRequired,

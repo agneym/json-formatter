@@ -30,10 +30,19 @@ function Sidebar({ editorConfig }) {
       validate: values.validate,
       allowComments: values.allowComments,
       enableSchemaRequest: true,
-      schemas: [],
       ...changed,
     });
   };
+  const changeSchema = (newSchema) => {
+    if(!newSchema) {
+      return;
+    }
+    editorConfig.updateJsonOptions({
+      schemas: [{
+        uri: newSchema.url,
+      }],
+    })
+  } 
   return (
     <Formik initialValues={initialConfig}>
       {({ values, handleChange }) => (
@@ -47,6 +56,7 @@ function Sidebar({ editorConfig }) {
             values={values}
             handleChange={handleChange}
             handleBlur={changed => changeJsonOptions(values, changed)}
+            changeSchema={changeSchema}
           />
         </Form>
       )}

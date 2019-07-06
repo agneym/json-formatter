@@ -53,7 +53,7 @@ function SchemaSelect({ field, form, schemaOnBlur }) {
 SchemaSelect.propTypes = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.object.isRequired,
+    value: PropTypes.object,
   }),
   schemaOnBlur: PropTypes.func.isRequired,
   form: PropTypes.shape({

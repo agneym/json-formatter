@@ -21,6 +21,13 @@ const initialConfig = {
   schemaInput: null,
 };
 
+const createSchema = (schemaConfig) => {
+  return [{
+    uri: schemaConfig.url,
+    fileMatch: ["*"]
+  }]
+}
+
 function Sidebar({ editorConfig }) {
   const changeFormat = values => {
     editorConfig.updateFormatOptions(values);
@@ -30,18 +37,19 @@ function Sidebar({ editorConfig }) {
       validate: values.validate,
       allowComments: values.allowComments,
       enableSchemaRequest: true,
+      schemas: values.schemaInput ? createSchema(values.schemaInput) : [],
       ...changed,
     });
   };
-  const changeSchema = (newSchema) => {
+  const changeSchema = (values, newSchema) => {
     if(!newSchema) {
       return;
     }
     editorConfig.updateJsonOptions({
-      schemas: [{
-        uri: newSchema.url,
-        fileMatch: ["*"]
-      }],
+      validate: values.validate,
+      allowComments: values.allowComments,
+      enableSchemaRequest: true,
+      schemas: createSchema(newSchema),
     })
   } 
   return (
@@ -57,7 +65,7 @@ function Sidebar({ editorConfig }) {
             values={values}
             handleChange={handleChange}
             handleBlur={changed => changeJsonOptions(values, changed)}
-            changeSchema={changeSchema}
+            changeSchema={(newSchema) => changeSchema(values, newSchema)}
           />
         </Form>
       )}

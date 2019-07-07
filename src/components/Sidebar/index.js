@@ -10,6 +10,7 @@ import EditorOptions, { themes } from "./EditorOptions";
 const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
   width: 20%;
+  overflow-y: auto;
 `;
 
 const initialConfig = {

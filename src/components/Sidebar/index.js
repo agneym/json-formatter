@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
+import EditorOptions, { themes } from "./EditorOptions";
 
 const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
@@ -19,6 +20,7 @@ const initialConfig = {
   allowComments: true,
   validate: true,
   schemaInput: null,
+  theme: themes[0],
 };
 
 const createSchema = (schemaConfig) => {
@@ -51,7 +53,11 @@ function Sidebar({ editorConfig }) {
       enableSchemaRequest: true,
       schemas: createSchema(newSchema),
     })
-  } 
+  }
+  const changeTheme = (option) => {
+    const theme = option.value;
+    editorConfig.changeTheme(theme);
+  }
   return (
     <Formik initialValues={initialConfig}>
       {({ values, handleChange }) => (
@@ -67,6 +73,11 @@ function Sidebar({ editorConfig }) {
             handleBlur={changed => changeJsonOptions(values, changed)}
             changeSchema={(newSchema) => changeSchema(values, newSchema)}
           />
+          <EditorOptions
+            values={values}
+            handleChange={handleChange}
+            handleBlur={() => changeTheme(values.theme)}
+          />
         </Form>
       )}
     </Formik>
@@ -77,6 +88,7 @@ Sidebar.propTypes = {
   editorConfig: PropTypes.shape({
     updateFormatOptions: PropTypes.func.isRequired,
     updateJsonOptions: PropTypes.func.isRequired,
+    changeTheme: PropTypes.func.isRequired,
   }),
 };
 

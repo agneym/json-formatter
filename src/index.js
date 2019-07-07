@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as ServiceWorker from "./sw";
 
 import App from "./components/App";
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function() {
-    navigator.serviceWorker.register("/sw.js").then(
+    navigator.serviceWorker.register(ServiceWorker).then(
       function(registration) {
         // Registration was successful
         console.log(

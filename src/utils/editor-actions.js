@@ -8,6 +8,7 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.format - Function to format the editor
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
+ * @returns {function} config.changeTheme - Function to change theme
  */
 function getEditor() {
   let editor = null;
@@ -69,12 +70,20 @@ function getEditor() {
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions(options);
   };
 
+  const changeTheme = theme => {
+    if(!editor) {
+      return;
+    }
+    monaco.editor.setTheme(theme);
+  }
+
   return {
     createEditor,
     destroy,
     format,
     updateFormatOptions,
     updateJsonOptions,
+    changeTheme,
   };
 }
 

@@ -16,14 +16,15 @@ function EditorOptions({ values, handleBlur }) {
         <FormikField
           name="theme"
         >
-          {(field, form) => (
+          {({field, form}) => (
             <Select
               options={themes}
               name={field.name}
               id="theme"
               value={values.theme}
-              onChange={(option) => form.setFieldValue(field.name, option)}
+              onChange={(option) => console.log(option) || form.setFieldValue(field.name, option)}
               onBlur={handleBlur}
+              menuPlacement="top"
             />
           )}
         </FormikField>

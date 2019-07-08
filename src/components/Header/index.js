@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
+import UploadIcon from "../../icons/upload.svg";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -17,6 +18,9 @@ function Header({ editorConfig }) {
   return (
     <Nav>
       <FormatBtn onClick={formatCode} />
+      <button>
+        <UploadIcon />
+      </button>
     </Nav>
   );
 }

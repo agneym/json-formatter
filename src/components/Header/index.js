@@ -4,11 +4,16 @@ import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
 import UploadIcon from "../../icons/upload.svg";
+import HeaderBtn from "./HeaderBtn";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
   background-color: ${props => props.theme.colors.primary};
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
 `;
 
 function Header({ editorConfig }) {
@@ -18,9 +23,9 @@ function Header({ editorConfig }) {
   return (
     <Nav>
       <FormatBtn onClick={formatCode} />
-      <button>
+      <HeaderBtn title="Upload a File">
         <UploadIcon />
-      </button>
+      </HeaderBtn>
     </Nav>
   );
 }

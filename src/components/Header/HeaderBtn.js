@@ -7,8 +7,8 @@ const Button = styled.button`
   box-shadow: none;
   background-color: #FFFFFF;
   border-radius: 50%;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3rem;
+  width: 3rem;
 
   svg {
     height: 100%;

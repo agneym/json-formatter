@@ -13,7 +13,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 1rem;
+  padding: 0 2rem;
 `;
 
 function Header({ editorConfig }) {

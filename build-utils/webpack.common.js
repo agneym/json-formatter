@@ -19,9 +19,9 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(jpe?g|png|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(jpe?g|png|gif|eot|ttf|woff|woff2)$/i,
         use: [
-          // uses file-loader as default.
+          // uses file-loader as default fallback.
           {
             loader: "url-loader",
             options: {
@@ -31,8 +31,12 @@ const config = {
         ]
       },
       {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /\.html$/,
-        loader: "html-loader"
+        use: ["html-loader"],
       }
     ]
   },

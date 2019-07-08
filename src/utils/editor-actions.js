@@ -25,6 +25,7 @@ function getEditor() {
         language: "json",
         formatOnPaste: true,
         formatOnType: true,
+        fontSize: "16px"
       });
     }
     return editor;

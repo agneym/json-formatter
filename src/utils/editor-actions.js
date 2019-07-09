@@ -25,7 +25,10 @@ function getEditor() {
         language: "json",
         formatOnPaste: true,
         formatOnType: true,
-        fontSize: "16px"
+        fontSize: "16px",
+        minimap: {
+          enabled: false
+        }
       });
     }
     return editor;

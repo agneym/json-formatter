@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Action from './Action';
+import Trigger from './Trigger';
 import DropBanner from './DropBanner';
 
 const Container = styled.div`
@@ -17,7 +17,7 @@ function Popover({ children }) {
   );
 }
 
-Popover.Action = Action;
+Popover.Trigger = Trigger;
 Popover.DropBanner = DropBanner;
 
 Popover.propTypes = {

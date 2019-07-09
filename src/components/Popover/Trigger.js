@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Action({ className, children }) {
+function Trigger({ className, children }) {
   return (
     <div className={className}>
       { children }
@@ -9,10 +9,10 @@ function Action({ className, children }) {
   );
 }
 
-Action.propTypes = {
+Trigger.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 
-export default Action;
+export default Trigger;
 

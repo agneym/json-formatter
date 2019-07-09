@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
+import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
 import HeaderBtn from "./HeaderBtn";
 
@@ -23,9 +24,13 @@ function Header({ editorConfig }) {
   return (
     <Nav>
       <FormatBtn onClick={formatCode} />
-      <HeaderBtn title="Upload a File">
-        <UploadIcon />
-      </HeaderBtn>
+      <Popover>
+        <Popover.Trigger>
+          <HeaderBtn title="Upload a File">
+            <UploadIcon />
+          </HeaderBtn>
+        </Popover.Trigger>
+      </Popover>
     </Nav>
   );
 }

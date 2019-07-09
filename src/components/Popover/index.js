@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import PopoverCtxProvider from "./PopoverContext";
 import Trigger from './Trigger';
 import DropBanner from './DropBanner';
 
@@ -11,9 +12,11 @@ const Container = styled.div`
 
 function Popover({ children }) {
   return (
-    <Container>
-      {children}
-    </Container>
+    <PopoverCtxProvider>
+      <Container>
+        {children}
+      </Container>
+    </PopoverCtxProvider>
   );
 }
 

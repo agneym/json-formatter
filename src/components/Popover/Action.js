@@ -1,9 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Action() {
+function Action({ className, children }) {
   return (
-    <p>Action</p>
+    <div className={className}>
+      { children }
+    </div>
   );
+}
+
+Action.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
 
 export default Action;

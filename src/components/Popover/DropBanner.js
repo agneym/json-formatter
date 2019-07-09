@@ -1,9 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-function DropBanner() {
+const Container = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+`;
+
+function DropBanner({ children }) {
   return (
-    <p>Drop Banner</p>
+    <Container>
+      { children }
+    </Container>
   );
+}
+
+DropBanner.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default DropBanner;

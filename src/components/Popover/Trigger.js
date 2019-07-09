@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { PopoverContext } from './PopoverContext';
 
-function Trigger({ activate, className, children }) {
+function Trigger({ className, children }) {
+  const { setOpen } = useContext(PopoverContext);
+  const toggle = () => {
+    setOpen(open => !open);
+  }
   return (
-    <div className={className} onClick={activate} role="button" tabIndex="0" onKeyDown={activate}>
+    <div className={className} onClick={toggle} role="button" tabIndex="0" onKeyDown={toggle}>
       { children }
     </div>
   );
 }
 
-Trigger.defaultProps = {
-  activate: () => {},
-}
-
 Trigger.propTypes = {
-  activate: PropTypes.func,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 }

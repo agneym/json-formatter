@@ -6,6 +6,7 @@ import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
 import HeaderBtn from "./HeaderBtn";
+import UploadBanner from "./UploadBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -31,7 +32,7 @@ function Header({ editorConfig }) {
           </HeaderBtn>
         </Popover.Trigger>
         <Popover.DropBanner>
-          <p>Drop Banner</p>
+          <UploadBanner />
         </Popover.DropBanner>
       </Popover>
     </Nav>

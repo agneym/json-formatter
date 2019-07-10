@@ -8,7 +8,7 @@ import useClickOutside from '../../utils/hooks/use-click-outside';
 
 const Container = styled.div`
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1rem);
   right: 0;
   z-index: 1;
 

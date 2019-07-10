@@ -1,9 +1,9 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useClickAway, useKey } from 'react-use';
 
 import { PopoverContext } from './PopoverContext';
+import useKey from '../../utils/hooks/use-key';
 
 const Container = styled.div`
   position: absolute;
@@ -19,8 +19,7 @@ const Container = styled.div`
 function DropBanner({ children }) {
   const container = useRef(null);
   const { open, setOpen } = useContext(PopoverContext);
-  const closeBanner = () => setOpen(false);
-  useClickAway(container, closeBanner);
+  const closeBanner = useCallback(() => setOpen(false), [setOpen]);
   useKey("Escape", closeBanner);
   return (
     <Container open={open} aria-hidden={!open} ref={container}>

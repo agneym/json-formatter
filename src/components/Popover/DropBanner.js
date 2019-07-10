@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { PopoverContext } from './PopoverContext';
 import useKey from '../../utils/hooks/use-key';
+import useClickOutside from '../../utils/hooks/use-click-outside';
 
 const Container = styled.div`
   position: absolute;
@@ -17,12 +18,15 @@ const Container = styled.div`
 `;
 
 function DropBanner({ children }) {
-  const container = useRef(null);
+  const containerRef = useRef(null);
   const { open, setOpen } = useContext(PopoverContext);
+
   const closeBanner = useCallback(() => setOpen(false), [setOpen]);
   useKey("Escape", closeBanner);
+  useClickOutside(containerRef, closeBanner);
+  
   return (
-    <Container open={open} aria-hidden={!open} ref={container}>
+    <Container open={open} aria-hidden={!open} ref={containerRef}>
       { children }
     </Container>
   );

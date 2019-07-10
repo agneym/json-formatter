@@ -30,6 +30,9 @@ function Header({ editorConfig }) {
             <UploadIcon />
           </HeaderBtn>
         </Popover.Trigger>
+        <Popover.DropBanner>
+          <p>Drop Banner</p>
+        </Popover.DropBanner>
       </Popover>
     </Nav>
   );

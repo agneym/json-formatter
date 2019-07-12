@@ -27,8 +27,8 @@ function getEditor() {
         formatOnType: true,
         fontSize: "16px",
         minimap: {
-          enabled: false
-        }
+          enabled: false,
+        },
       });
     }
     return editor;
@@ -75,11 +75,11 @@ function getEditor() {
   };
 
   const changeTheme = theme => {
-    if(!editor) {
+    if (!editor) {
       return;
     }
     monaco.editor.setTheme(theme);
-  }
+  };
 
   return {
     createEditor,

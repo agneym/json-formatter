@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
-import { Button, InputText } from "buffetjs";
+import { Button } from "buffetjs";
 
 import UploadFile from './UploadFile';
 import Seperator from './Seperator';
+import JsonUrl from "./JsonUrl";
 
 const Container = styled.form`
   background-color: #FFFFFF;
@@ -19,7 +20,7 @@ function UploadBanner() {
     <Container>
       <UploadFile />
       <Seperator />
-      <InputText type="url" name="url" placeholder="Enter a JSON URL" css={`margin: 1rem 3rem; width: 85%;`} />
+      <JsonUrl />
       <Button type="submit" css={`margin: 1rem auto; text-align: center; display: block;`}>Load</Button>
     </Container>
   );

@@ -21,11 +21,27 @@ const OutInput = styled.input`
   }
 `;
 
+const readFile = (file) => {
+  const reader = new FileReader();
+  reader.addEventListener("load", (event) => {
+    const target = event.target;
+    const result = target.result;
+  });
+  reader.readAsText(file);
+}
+
 function UploadFile() {
+  const onChange = (event) => {
+    const target = event.target;
+    const file = target.files[0];
+    if(file) {
+      readFile(file);
+    }
+  }
   return (
     <div css={`text-align: center;`}>
       <Label htmlFor="upload-file">Upload JSON File</Label>
-      <OutInput type="file" id="upload-file" />
+      <OutInput type="file" id="upload-file" accept=".json" onChange={onChange} />
     </div>
   );
 }

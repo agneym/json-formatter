@@ -19,12 +19,9 @@ const Nav = styled.nav`
 `;
 
 function Header({ editorConfig }) {
-  const formatCode = () => {
-    editorConfig.format();
-  };
   return (
     <Nav>
-      <FormatBtn onClick={formatCode} />
+      <FormatBtn onClick={editorConfig.format} />
       <Popover>
         <Popover.Trigger>
           <HeaderBtn title="Upload a File">
@@ -32,7 +29,7 @@ function Header({ editorConfig }) {
           </HeaderBtn>
         </Popover.Trigger>
         <Popover.DropBanner>
-          <UploadBanner />
+          <UploadBanner setValue={editorConfig.setValue} />
         </Popover.DropBanner>
       </Popover>
     </Nav>
@@ -44,6 +41,7 @@ Header.propTypes = {
     createEditor: PropTypes.func.isRequired,
     destroy: PropTypes.func.isRequired,
     format: PropTypes.func.isRequired,
+    setValue: PropTypes.func.isRequired,
   }),
 };
 

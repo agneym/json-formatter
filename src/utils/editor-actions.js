@@ -9,6 +9,7 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
  * @returns {function} config.changeTheme - Function to change theme
+ * @returns {function} config.setValue - sets the text in editor
  */
 function getEditor() {
   let editor = null;
@@ -33,6 +34,13 @@ function getEditor() {
     }
     return editor;
   };
+
+  const setValue = (value) => {
+    if(!editor) {
+      return;
+    }
+    editor.setValue(value);
+  }
 
   /**
    * Destory editor instance if already created.
@@ -83,11 +91,12 @@ function getEditor() {
 
   return {
     createEditor,
+    changeTheme,
     destroy,
     format,
+    setValue,
     updateFormatOptions,
     updateJsonOptions,
-    changeTheme,
   };
 }
 

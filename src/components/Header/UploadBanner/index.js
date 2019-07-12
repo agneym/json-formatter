@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { Button } from "buffetjs";
+import PropTypes from "prop-types";
 
 import UploadFile from './UploadFile';
 import Seperator from './Seperator';
@@ -15,16 +16,19 @@ const Container = styled.form`
   padding: 3rem 0;
 `;
 
-function UploadBanner() {
-  const [jsonData, setJsonData] = useState(null);
+function UploadBanner({ setValue }) {
   return (
-    <Container>
-      <UploadFile setData={setJsonData} />
+    <Container onSubmit={(event) => event.preventDefault()}>
+      <UploadFile setData={setValue} />
       <Seperator />
-      <JsonUrl setData={setJsonData} />
+      <JsonUrl setData={setValue} />
       <Button type="submit" css={`margin: 1rem auto; text-align: center; display: block;`}>Load</Button>
     </Container>
   );
+}
+
+UploadBanner.propTypes = {
+  setValue: PropTypes.func.isRequired,
 }
 
 export default UploadBanner;

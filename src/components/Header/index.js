@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
+import SearchIcon from "../../icons/search.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./UploadBanner";
 
@@ -22,6 +23,9 @@ function Header({ editorConfig }) {
   return (
     <Nav>
       <FormatBtn onClick={editorConfig.format} />
+      <HeaderBtn title="Search" onClick={editorConfig.find}>
+        <SearchIcon />
+      </HeaderBtn>
       <Popover>
         <Popover.Trigger>
           <HeaderBtn title="Upload a File">
@@ -42,6 +46,7 @@ Header.propTypes = {
     destroy: PropTypes.func.isRequired,
     format: PropTypes.func.isRequired,
     setValue: PropTypes.func.isRequired,
+    find: PropTypes.func.isRequired,
   }),
 };
 

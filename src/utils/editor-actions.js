@@ -5,6 +5,7 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {Object} config
  * @returns {function} config.createEditor - Function to create or return the editor already created.
  * @returns {function} config.destory - Function to destory current editor instance
+ * @returns {function} config.find - Trigger find in the editor
  * @returns {function} config.format - Function to format the editor
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
@@ -63,6 +64,16 @@ function getEditor() {
   };
 
   /**
+   * Format the editor document.
+   */
+  const find = () => {
+    if (!editor) {
+      return;
+    }
+    editor.getAction("actions.find").run();
+  };
+
+  /**
    * Update formatting options for editor
    * @param {Object} options
    */
@@ -93,6 +104,7 @@ function getEditor() {
     createEditor,
     changeTheme,
     destroy,
+    find,
     format,
     setValue,
     updateFormatOptions,

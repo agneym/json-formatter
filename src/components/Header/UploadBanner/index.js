@@ -20,8 +20,10 @@ function UploadBanner({ setValue, close }) {
   const [jsonData, setJsonData] = useState(null);
   const setEditor = (event) => {
     event.preventDefault();
-    setValue(jsonData);
-    close();
+    if(jsonData) {
+      setValue(jsonData);
+      close();
+    }
   }
   return (
     <Container onSubmit={setEditor}>

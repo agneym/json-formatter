@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -33,18 +33,34 @@ const readFile = (file, setData) => {
 }
 
 function UploadFile({ setData }) {
+  const [hasFile, setHasFile] = useState(false);
+
   const onChange = (event) => {
     const target = event.target;
     const file = target.files[0];
     if(file) {
       readFile(file, setData);
+      setHasFile(true);
     }
   }
+  const clearFile = () => {
+    setData(null);
+    setHasFile(false);
+  }
   return (
-    <div css={`text-align: center;`}>
-      <Label htmlFor="upload-file">Upload JSON File</Label>
-      <OutInput type="file" id="upload-file" accept=".json" onChange={onChange} />
-    </div>
+    <Fragment>
+      { hasFile ? (
+        <div css={`text-align: center;`}>
+          <p>1 File Selected.</p>
+          <button title="Clear File" onClick={clearFile}>✖</button>
+        </div>
+      ): (
+        <div css={`text-align: center;`}>
+          <Label htmlFor="upload-file">Upload JSON File</Label>
+          <OutInput type="file" id="upload-file" accept=".json" onChange={onChange} />
+        </div>
+      )}
+    </Fragment>
   );
 }
 

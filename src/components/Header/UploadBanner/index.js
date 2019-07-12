@@ -16,11 +16,12 @@ const Container = styled.form`
   padding: 3rem 0;
 `;
 
-function UploadBanner({ setValue }) {
+function UploadBanner({ setValue, close }) {
   const [jsonData, setJsonData] = useState(null);
   const setEditor = (event) => {
     event.preventDefault();
     setValue(jsonData);
+    close();
   }
   return (
     <Container onSubmit={setEditor}>
@@ -34,6 +35,7 @@ function UploadBanner({ setValue }) {
 
 UploadBanner.propTypes = {
   setValue: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
 }
 
 export default UploadBanner;

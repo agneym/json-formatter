@@ -29,7 +29,7 @@ function Header({ editorConfig }) {
           </HeaderBtn>
         </Popover.Trigger>
         <Popover.DropBanner>
-          <UploadBanner setValue={editorConfig.setValue} />
+          {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
         </Popover.DropBanner>
       </Popover>
     </Nav>

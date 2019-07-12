@@ -27,13 +27,13 @@ function DropBanner({ children }) {
   
   return (
     <Container open={open} aria-hidden={!open} ref={containerRef}>
-      { children }
+      { children(closeBanner) }
     </Container>
   );
 }
 
 DropBanner.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
 }
 
 export default DropBanner;

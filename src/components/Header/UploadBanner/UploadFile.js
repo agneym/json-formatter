@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Label = styled.label`
   background-color: ${props => props.theme.colors.secondary};
@@ -21,21 +22,22 @@ const OutInput = styled.input`
   }
 `;
 
-const readFile = (file) => {
+const readFile = (file, setData) => {
   const reader = new FileReader();
   reader.addEventListener("load", (event) => {
     const target = event.target;
     const result = target.result;
+    setData(result);
   });
   reader.readAsText(file);
 }
 
-function UploadFile() {
+function UploadFile({ setData }) {
   const onChange = (event) => {
     const target = event.target;
     const file = target.files[0];
     if(file) {
-      readFile(file);
+      readFile(file, setData);
     }
   }
   return (
@@ -44,6 +46,10 @@ function UploadFile() {
       <OutInput type="file" id="upload-file" accept=".json" onChange={onChange} />
     </div>
   );
+}
+
+UploadFile.propTypes = {
+  setData: PropTypes.func.isRequired,
 }
 
 export default UploadFile;

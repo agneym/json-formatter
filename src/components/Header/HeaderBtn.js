@@ -9,6 +9,7 @@ const Button = styled.button`
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
+  margin: 0 0.6rem;
 
   svg {
     height: 100%;
@@ -16,9 +17,9 @@ const Button = styled.button`
   }
 `;
 
-function HeaderBtn({ title, children }) {
+function HeaderBtn({ title, children, onClick, ...props }) {
   return (
-    <Button title={title ? title : undefined}>
+    <Button title={title ? title : undefined} onClick={onClick} {...props}>
       {children}
     </Button>
   );
@@ -26,11 +27,13 @@ function HeaderBtn({ title, children }) {
 
 HeaderBtn.defaultProps = {
   title: null,
+  onClick: () => {},
 }
 
 HeaderBtn.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 }
 
 export default HeaderBtn;

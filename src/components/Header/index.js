@@ -3,8 +3,11 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
+import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
+import SearchIcon from "../../icons/search.svg";
 import HeaderBtn from "./HeaderBtn";
+import UploadBanner from "./UploadBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -17,15 +20,22 @@ const Nav = styled.nav`
 `;
 
 function Header({ editorConfig }) {
-  const formatCode = () => {
-    editorConfig.format();
-  };
   return (
     <Nav>
-      <FormatBtn onClick={formatCode} />
-      <HeaderBtn title="Upload a File">
-        <UploadIcon />
+      <FormatBtn onClick={editorConfig.format} />
+      <HeaderBtn title="Search" onClick={editorConfig.find}>
+        <SearchIcon />
       </HeaderBtn>
+      <Popover>
+        <Popover.Trigger>
+          <HeaderBtn title="Upload a File">
+            <UploadIcon />
+          </HeaderBtn>
+        </Popover.Trigger>
+        <Popover.DropBanner>
+          {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
+        </Popover.DropBanner>
+      </Popover>
     </Nav>
   );
 }
@@ -35,6 +45,8 @@ Header.propTypes = {
     createEditor: PropTypes.func.isRequired,
     destroy: PropTypes.func.isRequired,
     format: PropTypes.func.isRequired,
+    setValue: PropTypes.func.isRequired,
+    find: PropTypes.func.isRequired,
   }),
 };
 

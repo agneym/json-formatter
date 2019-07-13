@@ -5,10 +5,12 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {Object} config
  * @returns {function} config.createEditor - Function to create or return the editor already created.
  * @returns {function} config.destory - Function to destory current editor instance
+ * @returns {function} config.find - Trigger find in the editor
  * @returns {function} config.format - Function to format the editor
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
  * @returns {function} config.changeTheme - Function to change theme
+ * @returns {function} config.setValue - sets the text in editor
  */
 function getEditor() {
   let editor = null;
@@ -27,12 +29,19 @@ function getEditor() {
         formatOnType: true,
         fontSize: "16px",
         minimap: {
-          enabled: false
-        }
+          enabled: false,
+        },
       });
     }
     return editor;
   };
+
+  const setValue = (value) => {
+    if(!editor) {
+      return;
+    }
+    editor.setValue(value);
+  }
 
   /**
    * Destory editor instance if already created.
@@ -52,6 +61,16 @@ function getEditor() {
       return;
     }
     editor.getAction("editor.action.formatDocument").run();
+  };
+
+  /**
+   * Format the editor document.
+   */
+  const find = () => {
+    if (!editor) {
+      return;
+    }
+    editor.getAction("actions.find").run();
   };
 
   /**
@@ -75,19 +94,21 @@ function getEditor() {
   };
 
   const changeTheme = theme => {
-    if(!editor) {
+    if (!editor) {
       return;
     }
     monaco.editor.setTheme(theme);
-  }
+  };
 
   return {
     createEditor,
+    changeTheme,
     destroy,
+    find,
     format,
+    setValue,
     updateFormatOptions,
     updateJsonOptions,
-    changeTheme,
   };
 }
 

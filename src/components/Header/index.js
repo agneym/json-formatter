@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
+import LogoIcon from "../../icons/logo.svg";
 import SearchIcon from "../../icons/search.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./UploadBanner";
@@ -15,27 +16,30 @@ const Nav = styled.nav`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 2rem;
 `;
 
 function Header({ editorConfig }) {
   return (
     <Nav>
+      <LogoIcon css={`width: 18%;`} />
       <FormatBtn onClick={editorConfig.format} />
-      <HeaderBtn title="Search" onClick={editorConfig.find}>
-        <SearchIcon />
-      </HeaderBtn>
-      <Popover>
-        <Popover.Trigger>
-          <HeaderBtn title="Upload a File">
-            <UploadIcon />
-          </HeaderBtn>
-        </Popover.Trigger>
-        <Popover.DropBanner>
-          {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
-        </Popover.DropBanner>
-      </Popover>
+      <div css={`display: flex;`}>
+        <HeaderBtn title="Search" onClick={editorConfig.find}>
+          <SearchIcon />
+        </HeaderBtn>
+        <Popover>
+          <Popover.Trigger>
+            <HeaderBtn title="Upload a File">
+              <UploadIcon />
+            </HeaderBtn>
+          </Popover.Trigger>
+          <Popover.DropBanner>
+            {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
+          </Popover.DropBanner>
+        </Popover>
+      </div>
     </Nav>
   );
 }

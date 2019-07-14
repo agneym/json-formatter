@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
 import PropTypes from "prop-types";
@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
 import EditorOptions, { themes } from "./EditorOptions";
+import storage from "../../lib/storage";
 
 const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
@@ -13,6 +14,7 @@ const Form = styled.form`
   overflow-y: auto;
 `;
 
+const key = "json.config";
 const initialConfig = {
   tabSize: 4,
   intentSize: 4,
@@ -32,10 +34,14 @@ const createSchema = (schemaConfig) => {
 }
 
 function Sidebar({ editorConfig }) {
-  const changeFormat = values => {
+  const [config, setConfig] = useState(initialConfig);
+
+  const changeFormat = useCallback(values => {
+    storage.set(key, values);
     editorConfig.updateFormatOptions(values);
-  };
-  const changeJsonOptions = (values, changed) => {
+  }, [editorConfig]);
+  const changeJsonOptions = useCallback((values, changed) => {
+    storage.set(key, { ...values, ...changed });
     editorConfig.updateJsonOptions({
       validate: values.validate,
       allowComments: values.allowComments,
@@ -43,9 +49,9 @@ function Sidebar({ editorConfig }) {
       schemas: values.schemaInput ? createSchema(values.schemaInput) : [],
       ...changed,
     });
-  };
-  const changeSchema = (values, newSchema) => {
-    if(!newSchema) {
+  }, [editorConfig]);
+  const changeSchema = useCallback((values, newSchema) => {
+    if (!newSchema) {
       return;
     }
     editorConfig.updateJsonOptions({
@@ -54,13 +60,33 @@ function Sidebar({ editorConfig }) {
       enableSchemaRequest: true,
       schemas: createSchema(newSchema),
     })
-  }
-  const changeTheme = (option) => {
-    const theme = option.value;
+  }, [editorConfig]);
+  const changeTheme = useCallback((values) => {
+    const theme = values.theme.value;
+    storage.set(key, values);
     editorConfig.changeTheme(theme);
-  }
+  }, [editorConfig]);
+
+  useEffect(() => {
+    const getConfig = () => {
+      const data = storage.get(key);
+      if (!data) {
+        storage.set(key, initialConfig);
+        return initialConfig;
+      } else {
+        setTimeout(() => {
+          changeFormat(data);
+          changeJsonOptions(data, {});
+          changeTheme(data);
+        }, 0);
+        return data;
+      }
+    }
+    setConfig(getConfig());
+  }, [changeFormat, changeJsonOptions, changeTheme]);
+
   return (
-    <Formik initialValues={initialConfig}>
+    <Formik initialValues={config} enableReinitialize={true}>
       {({ values, handleChange }) => (
         <Form>
           <FormattingOptions
@@ -77,7 +103,7 @@ function Sidebar({ editorConfig }) {
           <EditorOptions
             values={values}
             handleChange={handleChange}
-            handleBlur={() => changeTheme(values.theme)}
+            handleBlur={() => changeTheme(values)}
           />
         </Form>
       )}

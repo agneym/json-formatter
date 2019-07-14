@@ -22,7 +22,7 @@ function EditorOptions({ values, handleBlur }) {
               name={field.name}
               id="theme"
               value={values.theme}
-              onChange={(option) => console.log(option) || form.setFieldValue(field.name, option)}
+              onChange={(option) => form.setFieldValue(field.name, option)}
               onBlur={handleBlur}
               menuPlacement="top"
             />

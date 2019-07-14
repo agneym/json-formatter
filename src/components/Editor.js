@@ -28,6 +28,7 @@ function Editor({ editorConfig }) {
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
+      editorConfig.createJsonModel();
     }
     return () => {
       editorConfig.destroy();
@@ -47,6 +48,7 @@ Editor.propTypes = {
   editorConfig: PropTypes.shape({
     createEditor: PropTypes.func.isRequired,
     destroy: PropTypes.func.isRequired,
+    createJsonModel: PropTypes.func.isRequired,
   }),
 };
 

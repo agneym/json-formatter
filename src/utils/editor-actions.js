@@ -11,9 +11,11 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.updateJsonOptions - Function to update JSON options
  * @returns {function} config.changeTheme - Function to change theme
  * @returns {function} config.setValue - sets the text in editor
+ * @returns {function} config.createJsonModel - sets the text in editor
  */
 function getEditor() {
   let editor = null;
+  let jsonModel = null;
 
   /**
    * Create or return the editor instance
@@ -23,8 +25,6 @@ function getEditor() {
   const createEditor = container => {
     if (!editor) {
       editor = monaco.editor.create(container, {
-        value: ``,
-        language: "json",
         formatOnPaste: true,
         formatOnType: true,
         fontSize: "16px",
@@ -35,6 +35,17 @@ function getEditor() {
     }
     return editor;
   };
+
+  const createJsonModel = () => {
+    if(!editor) {
+      return;
+    }
+    if(!jsonModel) {
+      jsonModel = monaco.editor.createModel(``, "json");
+      editor.setModel(jsonModel);
+    }
+    return jsonModel;
+  }
 
   const setValue = (value) => {
     if(!editor) {
@@ -109,6 +120,7 @@ function getEditor() {
     setValue,
     updateFormatOptions,
     updateJsonOptions,
+    createJsonModel,
   };
 }
 

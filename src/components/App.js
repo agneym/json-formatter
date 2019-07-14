@@ -11,9 +11,10 @@ import Editor from "./Editor";
 import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
+import Transformation from "./Transformation";
 
 const Main = styled.main`
-  height: calc(100vh - ${props => props.theme.layout.navHeight} - 2rem);
+  min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
   position: relative;
   flex: 1;
 `;
@@ -33,6 +34,7 @@ function App() {
           <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
+            <Transformation />
           </Main>
         </div>
         <BuffetFonts />

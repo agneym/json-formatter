@@ -37,7 +37,7 @@ function Editor({ editorConfig }) {
     <div
       ref={editorContainer}
       css={`
-        height: 100%;
+        height: 60%;
       `}
     />
   );

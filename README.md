@@ -1,4 +1,4 @@
-# JSON Formatter
+# JSON Cleanup Crew
 
 ## Contributing
 

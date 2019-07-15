@@ -1,7 +1,5 @@
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const workboxPlugin = require("workbox-webpack-plugin");
 const path = require("path");
@@ -30,16 +28,6 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  },
   plugins: [
     new CleanWebpackPlugin(["dist"], {
       root: commonPaths.root
@@ -51,14 +39,6 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: "production",
       DEBUG: false
-    }),
-    new UglifyJsPlugin({
-      sourceMap: true,
-      uglifyOptions: {
-        compress: {
-          inline: false
-        }
-      }
     }),
     new workboxPlugin({
       globDirectory: commonPaths.outputPath,

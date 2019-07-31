@@ -11,7 +11,6 @@ import Editor from "./Editor";
 import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
-import Transformation from "./Transformation";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -34,7 +33,6 @@ function App() {
           <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
-            <Transformation />
           </Main>
         </div>
         <BuffetFonts />

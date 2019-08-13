@@ -10,6 +10,7 @@ import SearchIcon from "../../icons/search.svg";
 import ShareIcon from "../../icons/share.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./Banner/UploadBanner";
+import ShareBanner from "./Banner/ShareBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -47,7 +48,7 @@ function Header({ editorConfig }) {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {(closeBanner) => <p>Chumma Content</p>}
+            {(closeBanner) => <ShareBanner close={closeBanner} />}
           </Popover.DropBanner>
         </Popover>
       </div>

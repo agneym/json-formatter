@@ -7,8 +7,9 @@ import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
 import LogoIcon from "../../icons/logo.svg";
 import SearchIcon from "../../icons/search.svg";
+import ShareIcon from "../../icons/share.svg";
 import HeaderBtn from "./HeaderBtn";
-import UploadBanner from "./UploadBanner";
+import UploadBanner from "./Banner/UploadBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -37,6 +38,16 @@ function Header({ editorConfig }) {
           </Popover.Trigger>
           <Popover.DropBanner>
             {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
+          </Popover.DropBanner>
+        </Popover>
+        <Popover>
+          <Popover.Trigger>
+            <HeaderBtn title="Share">
+              <ShareIcon />
+            </HeaderBtn>
+          </Popover.Trigger>
+          <Popover.DropBanner>
+            {(closeBanner) => <p>Chumma Content</p>}
           </Popover.DropBanner>
         </Popover>
       </div>

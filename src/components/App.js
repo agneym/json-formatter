@@ -4,6 +4,7 @@ import {
   GlobalStyle as BuffetGlobalStyles,
   Fonts as BuffetFonts,
 } from "buffetjs";
+import Peer from "peerjs";
 
 import theme from "../utils/theme";
 import GlobalStyles from "../utils/GlobalStyles";
@@ -20,6 +21,15 @@ const Main = styled.main`
 
 function App() {
   const editorConfig = getEditor();
+  const params = new URLSearchParams(window.location.search);
+  const userLink = params.get("user");
+  if(userLink) {
+    const peer = new Peer();
+    const connection = peer.connect(userLink);
+    connection.on("open", () => {
+      connection.send("hello");
+    });
+  }
   return (
     <ThemeProvider theme={theme}>
       <Fragment>

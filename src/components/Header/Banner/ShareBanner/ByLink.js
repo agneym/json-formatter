@@ -6,10 +6,9 @@ import shortid from "shortid";
 const ByLink = () => {
   const shareLink = useCallback(() => {
     const id = shortid.generate();
-    const peer = new Peer();
-    const connection = peer.connect(id);
-    connection.on("open", () => {
-      connection.send("hello");
+    const peer = new Peer(id);
+    peer.on("connection", (conn) => {
+      conn.on("data", console.log);
     });
     console.log(id);
   }, []);

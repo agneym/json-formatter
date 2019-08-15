@@ -54,6 +54,13 @@ function getEditor() {
     editor.setValue(value);
   }
 
+  const getValue = () => {
+    if(!editor) {
+      return;
+    }
+    return editor.getValue();
+  }
+
   /**
    * Destory editor instance if already created.
    */
@@ -117,6 +124,7 @@ function getEditor() {
     destroy,
     find,
     format,
+    getValue,
     setValue,
     updateFormatOptions,
     updateJsonOptions,

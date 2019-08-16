@@ -1,20 +1,37 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, Fragment } from "react";
+import PropTypes from "prop-types";
 import { Button } from "buffetjs";
 import Peer from "peerjs";
 import shortid from "shortid";
 
-const ByLink = () => {
+const ByLink = ({ value }) => {
+  const [link, setLink] = useState("");
+
   const shareLink = useCallback(() => {
     const id = shortid.generate();
     const peer = new Peer(id);
     peer.on("connection", (conn) => {
-      conn.on("data", console.log);
+      conn.send(value);
     });
-    console.log(id);
-  }, []);
+    setLink(`${window.location.href}?q=${shortid}`)
+  }, [value]);
   return (
-    <Button color="primary" icon={false} label={"Share URL"} onClick={shareLink} />
+    <Fragment>
+      <Button color="primary" icon={false} label={"Share URL"} onClick={shareLink} />
+      { !!link && (
+        <p>{link}</p>
+      )}
+    </Fragment>
   );
+}
+
+ByLink.defaultProps = {
+  value: "",
+}
+
+ByLink.propTypes = {
+  value: PropTypes.string,
+  complete: PropTypes.func.isRequired,
 }
 
 export default ByLink;

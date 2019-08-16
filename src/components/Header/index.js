@@ -48,7 +48,7 @@ function Header({ editorConfig }) {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {(closeBanner) => <ShareBanner close={closeBanner} />}
+            {(closeBanner) => <ShareBanner editorConfig={editorConfig} close={closeBanner} />}
           </Popover.DropBanner>
         </Popover>
       </div>

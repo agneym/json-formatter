@@ -84,12 +84,12 @@
     "monaco-editor": "^0.17.1",
     "peerjs": "^1.0.2",
     "prop-types": "^15.7.2",
+    "random-words": "^1.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-select": "^3.0.4",
-    "shortid": "^2.2.14",
     "styled-components": "^4.3.2",
     "whatwg-fetch": "^2.0.4"
   },

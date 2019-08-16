@@ -2,13 +2,13 @@ import React, { useCallback, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Button } from "buffetjs";
 import Peer from "peerjs";
-import shortid from "shortid";
+import randomWords from "random-words";
 
 const ByLink = ({ value }) => {
   const [link, setLink] = useState("");
 
   const shareLink = useCallback(() => {
-    const id = shortid.generate();
+    const id = randomWords({ exactly: 2, join: "-" });
     const peer = new Peer(id);
     peer.on("connection", (conn) => {
       conn.on("open", () => {

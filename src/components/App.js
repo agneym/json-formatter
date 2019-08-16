@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import {
   GlobalStyle as BuffetGlobalStyles,
@@ -21,15 +21,19 @@ const Main = styled.main`
 
 function App() {
   const editorConfig = getEditor();
-  const params = new URLSearchParams(window.location.search);
-  const userLink = params.get("user");
-  if(userLink) {
-    const peer = new Peer();
-    const connection = peer.connect(userLink);
-    connection.on("open", () => {
-      connection.send("hello");
-    });
-  }
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const userLink = params.get("q");
+    if (userLink) {
+      const peer = new Peer();
+      const connection = peer.connect(userLink);
+      connection.on("open", () => {
+        connection.on("data", (value) => {
+          editorConfig.setValue(value);
+        });
+      })
+    }
+  }, [editorConfig]);
   return (
     <ThemeProvider theme={theme}>
       <Fragment>

@@ -11,9 +11,11 @@ const ByLink = ({ value }) => {
     const id = shortid.generate();
     const peer = new Peer(id);
     peer.on("connection", (conn) => {
-      conn.send(value);
+      conn.on("open", () => {
+        conn.send(value);
+      });
     });
-    setLink(`${window.location.href}?q=${shortid}`)
+    setLink(`${window.location.href}?q=${id}`)
   }, [value]);
   return (
     <Fragment>

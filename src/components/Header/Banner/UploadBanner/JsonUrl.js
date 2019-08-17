@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InputText } from 'buffetjs';
 import PropTypes from "prop-types";
 
-import fetchData from "../../../lib/api/fetchData";
+import fetchData from "../../../../lib/api/fetchData";
 
 function JsonUrl({ setData }) {
   const [url, setUrl] = useState("");

@@ -12,7 +12,7 @@ import Editor from "./Editor";
 import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
-import Message from "./Message";
+import DetectPaste from "./DetectPaste";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -48,7 +48,7 @@ function App() {
           <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
-            <Message />
+            <DetectPaste />
           </Main>
         </div>
         <BuffetFonts />

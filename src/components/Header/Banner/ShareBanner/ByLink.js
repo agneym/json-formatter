@@ -1,9 +1,10 @@
-import React, { useCallback, useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button, InputText } from "buffetjs";
+import { Button } from "buffetjs";
 import Peer from "peerjs";
 import randomWords from "random-words";
 import styled from "styled-components";
+import ClipInput from "../../ClipInput";
 
 const Container = styled.div`
   display: flex; 
@@ -18,7 +19,7 @@ const Container = styled.div`
 const ByLink = ({ value }) => {
   const [link, setLink] = useState("");
 
-  const shareLink = useCallback(() => {
+  useEffect(() => {
     const id = randomWords({ exactly: 2, join: "-" });
     const peer = new Peer(id);
     peer.on("connection", (conn) => {
@@ -26,18 +27,20 @@ const ByLink = ({ value }) => {
         conn.send(value);
       });
     });
-    setLink(`${window.location.href}?q=${id}`)
+    setLink(`${window.location.href}?q=${id}`);
+    return () => {
+      peer.disconnect();
+    }
   }, [value]);
   return (
     <Container>
-      <Button color="primary" icon={false} label={"Share URL"} onClick={shareLink} />
       { !!link && (
         <Fragment>
           <p>Share your link:</p>
-          <InputText value={link} readonly />
+          <ClipInput value={link} />
         </Fragment>
       )}
-      <sub>We do not send your content to our servers. But this also means that you need to stay online for the sharing to work.</sub>
+      <sub>We do not send your content to our servers. This also means that you need to stay online for sharing to work.</sub>
     </Container>
   );
 }

@@ -14,24 +14,30 @@ const Container = styled.div`
 `;
 
 const Message = ({ show, children }) => {
-  const slideUpTransitions = useTransition(show, null, { enter: { transform: "scaleY(1)" }, leave: { transform: "scale(0)" }, from: { transform: "scaleY(0)" }, config: config.slow });
+  const slideUpTransitions = useTransition(show, null, {
+    enter: { transform: "scaleY(1)" },
+    leave: { transform: "scale(0)" },
+    from: { transform: "scaleY(0)" },
+    config: config.slow,
+  });
   const AnimatedContainer = animated(Container);
-  return slideUpTransitions.map(({ item, key, props }) => (
-    item && (
-      <AnimatedContainer style={props} key={key}>
-        {children}
-      </AnimatedContainer>
-    )
-  ))
-}
+  return slideUpTransitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <AnimatedContainer style={props} key={key}>
+          {children}
+        </AnimatedContainer>
+      )
+  );
+};
 
 Message.defaultProps = {
   show: false,
-}
+};
 
 Message.propTypes = {
   show: PropTypes.bool,
   children: PropTypes.node.isRequired,
-}
+};
 
 export default Message;

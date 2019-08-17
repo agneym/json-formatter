@@ -9,13 +9,13 @@ const events = ["mousedown", "touchstart"];
  */
 function useClickOutside(elementRef, handler) {
   useEffect(() => {
-    const clickHandler = (event) => {
+    const clickHandler = event => {
       const target = event.target;
       const { current: element } = elementRef;
-      if(target && element && !element.contains(target)) {
+      if (target && element && !element.contains(target)) {
         handler();
       }
-    }
+    };
 
     for (const eventName of events) {
       document.addEventListener(eventName, clickHandler);
@@ -25,7 +25,7 @@ function useClickOutside(elementRef, handler) {
       for (const eventName of events) {
         document.removeEventListener(eventName, clickHandler);
       }
-    }
+    };
   }, [elementRef, handler]);
 }
 

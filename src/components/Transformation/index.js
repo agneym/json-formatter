@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import Popover from '../Popover';
+import Popover from "../Popover";
 
 const Container = styled.aside`
   position: fixed;
@@ -16,9 +16,7 @@ function Transformation() {
           <p>Transformations</p>
         </Popover.Trigger>
         <Popover.DropBanner>
-          {() => (
-            <p>Lets put rest of the content</p>
-          )}
+          {() => <p>Lets put rest of the content</p>}
         </Popover.DropBanner>
       </Popover>
     </Container>
@@ -26,4 +24,3 @@ function Transformation() {
 }
 
 export default Transformation;
-

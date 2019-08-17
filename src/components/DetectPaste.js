@@ -11,12 +11,12 @@ const DetectPaste = ({ editorConfig }) => {
     async function getClipboardContents() {
       try {
         const text = await navigator.clipboard.readText();
-        if(text) {
+        if (text) {
           setShow(true);
           setText(text);
         }
       } catch (err) {
-        console.warn('Failed to read clipboard contents: ', err);
+        console.warn("Failed to read clipboard contents: ", err);
       }
     }
     getClipboardContents();
@@ -25,14 +25,14 @@ const DetectPaste = ({ editorConfig }) => {
     const intervalId = setInterval(checkForContents, 2000);
     function checkForContents() {
       const editorText = editorConfig.getValue();
-      if(editorText) {
+      if (editorText) {
         setShow(false);
         clearInterval(intervalId);
       }
     }
     return () => {
       clearInterval(intervalId);
-    }
+    };
   }, [editorConfig]);
   const pasteContents = useCallback(() => {
     editorConfig.setValue(text);
@@ -40,19 +40,32 @@ const DetectPaste = ({ editorConfig }) => {
   }, [text, editorConfig]);
   return (
     <Message show={show}>
-      <div css={`margin: 0 2rem; display: flex; align-items: center;`}>
+      <div
+        css={`
+          margin: 0 2rem;
+          display: flex;
+          align-items: center;
+        `}
+      >
         <p>We detected some text in your clipboard. Do you want to paste?</p>
-        <Button css={`margin: 0 4rem;`} onClick={pasteContents}>Paste</Button>
+        <Button
+          css={`
+            margin: 0 4rem;
+          `}
+          onClick={pasteContents}
+        >
+          Paste
+        </Button>
       </div>
     </Message>
-  )
-}
+  );
+};
 
 DetectPaste.propTypes = {
   editorConfig: PropTypes.shape({
     setValue: PropTypes.func.isRequired,
     getValue: PropTypes.func.isRequired,
   }),
-}
+};
 
 export default DetectPaste;

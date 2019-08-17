@@ -8,13 +8,13 @@ function PopoverCtxProvider({ children }) {
   const createValue = useCallback(() => ({ open, setOpen }), [open]);
   return (
     <PopoverContext.Provider value={createValue()}>
-      { children }
+      {children}
     </PopoverContext.Provider>
   );
 }
 
 PopoverCtxProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export default PopoverCtxProvider;

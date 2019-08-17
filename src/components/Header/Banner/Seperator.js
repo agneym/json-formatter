@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const Line = styled.hr`
@@ -14,14 +14,19 @@ const Text = styled.p`
   left: 50%;
   top: 0;
   transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0 0.5rem;
   color: ${props => props.theme.colors.grey};
 `;
 
 function Seperator() {
   return (
-    <div css={`position: relative; margin: 3rem;`}>
+    <div
+      css={`
+        position: relative;
+        margin: 3rem;
+      `}
+    >
       <Line />
       <Text>OR</Text>
     </div>
@@ -29,4 +34,3 @@ function Seperator() {
 }
 
 export default Seperator;
-

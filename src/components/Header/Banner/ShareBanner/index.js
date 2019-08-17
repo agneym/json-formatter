@@ -8,11 +8,11 @@ import DownloadBtn from "./DownloadBtn";
 
 const ShareBanner = ({ close, editorConfig }) => {
   const currentValue = editorConfig.getValue();
-  
+
   const actionComplete = useCallback(() => {
     close();
   }, [close]);
-  
+
   return (
     <Container>
       <DownloadBtn value={currentValue} complete={actionComplete} />
@@ -20,11 +20,11 @@ const ShareBanner = ({ close, editorConfig }) => {
       <ByLink value={currentValue} complete={actionComplete} />
     </Container>
   );
-}
+};
 
 ShareBanner.propTypes = {
   close: PropTypes.func.isRequired,
   editorConfig: PropTypes.object.isRequired,
-}
+};
 
 export default ShareBanner;

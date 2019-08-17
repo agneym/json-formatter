@@ -29,10 +29,10 @@ function App() {
       const peer = new Peer();
       const connection = peer.connect(userLink);
       connection.on("open", () => {
-        connection.on("data", (value) => {
+        connection.on("data", value => {
           editorConfig.setValue(value);
         });
-      })
+      });
     }
   }, [editorConfig]);
   return (

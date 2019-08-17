@@ -77,7 +77,6 @@
   "dependencies": {
     "buffetjs": "^1.0.3",
     "core-js": "3",
-    "dat-js": "^8.0.2",
     "eslint": "5",
     "formik": "^1.5.7",
     "lodash": "^4.17.11",

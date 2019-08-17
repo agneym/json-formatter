@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Container from "../BannerContainer";
 import Seperator from "../Seperator";
 import ByLink from "./ByLink";
+import DownloadBtn from "./DownloadBtn";
 
 const ShareBanner = ({ close, editorConfig }) => {
   const currentValue = editorConfig.getValue();
@@ -14,7 +15,7 @@ const ShareBanner = ({ close, editorConfig }) => {
   
   return (
     <Container>
-      <p>Download</p>
+      <DownloadBtn value={currentValue} complete={actionComplete} />
       <Seperator />
       <ByLink value={currentValue} complete={actionComplete} />
     </Container>

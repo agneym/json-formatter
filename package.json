@@ -78,6 +78,7 @@
     "buffetjs": "^1.0.3",
     "core-js": "3",
     "eslint": "5",
+    "file-saver": "^2.0.2",
     "formik": "^1.5.7",
     "lodash": "^4.17.11",
     "monaco-editor": "^0.17.1",

@@ -1,8 +1,19 @@
 import React, { useCallback, useState, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Button } from "buffetjs";
+import { Button, InputText } from "buffetjs";
 import Peer from "peerjs";
 import randomWords from "random-words";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex; 
+  flex-direction: column; 
+  margin: 0 2rem;
+
+  > * {
+    margin: 1rem 0;
+  }
+`
 
 const ByLink = ({ value }) => {
   const [link, setLink] = useState("");
@@ -18,12 +29,16 @@ const ByLink = ({ value }) => {
     setLink(`${window.location.href}?q=${id}`)
   }, [value]);
   return (
-    <Fragment>
+    <Container>
       <Button color="primary" icon={false} label={"Share URL"} onClick={shareLink} />
       { !!link && (
-        <p>{link}</p>
+        <Fragment>
+          <p>Share your link:</p>
+          <InputText value={link} readonly />
+        </Fragment>
       )}
-    </Fragment>
+      <sub>We do not send your content to our servers. But this also means that you need to stay online for the sharing to work.</sub>
+    </Container>
   );
 }
 

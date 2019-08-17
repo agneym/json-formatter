@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
+import { useTransition, animated, config } from "react-spring";
 
 const Container = styled.div`
   position: fixed;
@@ -14,16 +14,15 @@ const Container = styled.div`
 `;
 
 const Message = ({ show, children }) => {
-  const slideUp = useSpring({ transform: "scaleY(1)", from: { transform: "scaleY(0)" }});
+  const slideUpTransitions = useTransition(show, null, { enter: { transform: "scaleY(1)" }, leave: { transform: "scale(0)" }, from: { transform: "scaleY(0)" }, config: config.slow });
   const AnimatedContainer = animated(Container);
-  if(!show) {
-    return null;
-  }
-  return (
-    <AnimatedContainer style={slideUp}>
-      { children }
-    </AnimatedContainer>
-  );
+  return slideUpTransitions.map(({ item, key, props }) => (
+    item && (
+      <AnimatedContainer style={props} key={key}>
+        {children}
+      </AnimatedContainer>
+    )
+  ))
 }
 
 Message.defaultProps = {

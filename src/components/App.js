@@ -48,7 +48,7 @@ function App() {
           <Sidebar editorConfig={editorConfig} />
           <Main>
             <Editor editorConfig={editorConfig} />
-            <DetectPaste />
+            <DetectPaste editorConfig={editorConfig} />
           </Main>
         </div>
         <BuffetFonts />

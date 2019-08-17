@@ -1,6 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Button } from "buffetjs";
 import Peer from "peerjs";
 import randomWords from "random-words";
 import styled from "styled-components";

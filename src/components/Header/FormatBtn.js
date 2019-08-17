@@ -9,7 +9,7 @@ const Button = styled.button`
   bottom: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: none;
   height: 3.5rem;
   width: 3.5rem;

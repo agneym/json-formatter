@@ -19,7 +19,7 @@ const NakedButton = styled.button`
   background-color: transparent;
   width: 3rem;
   line-height: 3rem;
-  border: 1px solid #E3E9F3;
+  border: 1px solid #e3e9f3;
   border-left: none;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ const ClipInput = ({ value }) => {
   const inputRef = useRef(null);
   const copy = useCallback(() => {
     const inputEl = inputRef.current;
-    if(inputEl) {
+    if (inputEl) {
       inputEl.focus();
       inputEl.select();
       document.execCommand("copy");
@@ -40,18 +40,22 @@ const ClipInput = ({ value }) => {
     <Container onClick={copy}>
       <Input name="url-input-readonly" value={value} readOnly ref={inputRef} />
       <NakedButton>
-        <CopyIcon css={`width: 100%;`} />
+        <CopyIcon
+          css={`
+            width: 100%;
+          `}
+        />
       </NakedButton>
     </Container>
-  )
-}
+  );
+};
 
 ClipInput.defaultProps = {
   value: "",
-}
+};
 
 ClipInput.propTypes = {
   value: PropTypes.string,
-}
+};
 
 export default ClipInput;

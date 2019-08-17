@@ -25,9 +25,17 @@ const Nav = styled.nav`
 function Header({ editorConfig }) {
   return (
     <Nav>
-      <LogoIcon css={`width: 18%;`} />
+      <LogoIcon
+        css={`
+          width: 18%;
+        `}
+      />
       <FormatBtn onClick={editorConfig.format} />
-      <div css={`display: flex;`}>
+      <div
+        css={`
+          display: flex;
+        `}
+      >
         <HeaderBtn title="Search" onClick={editorConfig.find}>
           <SearchIcon />
         </HeaderBtn>
@@ -38,7 +46,12 @@ function Header({ editorConfig }) {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
+            {closeBanner => (
+              <UploadBanner
+                setValue={editorConfig.setValue}
+                close={closeBanner}
+              />
+            )}
           </Popover.DropBanner>
         </Popover>
         <Popover>
@@ -48,7 +61,9 @@ function Header({ editorConfig }) {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {(closeBanner) => <ShareBanner editorConfig={editorConfig} close={closeBanner} />}
+            {closeBanner => (
+              <ShareBanner editorConfig={editorConfig} close={closeBanner} />
+            )}
           </Popover.DropBanner>
         </Popover>
       </div>

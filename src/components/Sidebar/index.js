@@ -26,46 +26,60 @@ const initialConfig = {
   theme: themes[0],
 };
 
-const createSchema = (schemaConfig) => {
-  return [{
-    uri: schemaConfig.url,
-    fileMatch: ["*"]
-  }]
-}
+const createSchema = schemaConfig => {
+  return [
+    {
+      uri: schemaConfig.url,
+      fileMatch: ["*"],
+    },
+  ];
+};
 
 function Sidebar({ editorConfig }) {
   const [config, setConfig] = useState(initialConfig);
 
-  const changeFormat = useCallback(values => {
-    storage.set(key, values);
-    editorConfig.updateFormatOptions(values);
-  }, [editorConfig]);
-  const changeJsonOptions = useCallback((values, changed) => {
-    storage.set(key, { ...values, ...changed });
-    editorConfig.updateJsonOptions({
-      validate: values.validate,
-      allowComments: values.allowComments,
-      enableSchemaRequest: true,
-      schemas: values.schemaInput ? createSchema(values.schemaInput) : [],
-      ...changed,
-    });
-  }, [editorConfig]);
-  const changeSchema = useCallback((values, newSchema) => {
-    if (!newSchema) {
-      return;
-    }
-    editorConfig.updateJsonOptions({
-      validate: values.validate,
-      allowComments: values.allowComments,
-      enableSchemaRequest: true,
-      schemas: createSchema(newSchema),
-    })
-  }, [editorConfig]);
-  const changeTheme = useCallback((values) => {
-    const theme = values.theme.value;
-    storage.set(key, values);
-    editorConfig.changeTheme(theme);
-  }, [editorConfig]);
+  const changeFormat = useCallback(
+    values => {
+      storage.set(key, values);
+      editorConfig.updateFormatOptions(values);
+    },
+    [editorConfig]
+  );
+  const changeJsonOptions = useCallback(
+    (values, changed) => {
+      storage.set(key, { ...values, ...changed });
+      editorConfig.updateJsonOptions({
+        validate: values.validate,
+        allowComments: values.allowComments,
+        enableSchemaRequest: true,
+        schemas: values.schemaInput ? createSchema(values.schemaInput) : [],
+        ...changed,
+      });
+    },
+    [editorConfig]
+  );
+  const changeSchema = useCallback(
+    (values, newSchema) => {
+      if (!newSchema) {
+        return;
+      }
+      editorConfig.updateJsonOptions({
+        validate: values.validate,
+        allowComments: values.allowComments,
+        enableSchemaRequest: true,
+        schemas: createSchema(newSchema),
+      });
+    },
+    [editorConfig]
+  );
+  const changeTheme = useCallback(
+    values => {
+      const theme = values.theme.value;
+      storage.set(key, values);
+      editorConfig.changeTheme(theme);
+    },
+    [editorConfig]
+  );
 
   useEffect(() => {
     const getConfig = () => {
@@ -81,7 +95,7 @@ function Sidebar({ editorConfig }) {
         }, 0);
         return data;
       }
-    }
+    };
     setConfig(getConfig());
   }, [changeFormat, changeJsonOptions, changeTheme]);
 
@@ -98,7 +112,7 @@ function Sidebar({ editorConfig }) {
             values={values}
             handleChange={handleChange}
             handleBlur={changed => changeJsonOptions(values, changed)}
-            changeSchema={(newSchema) => changeSchema(values, newSchema)}
+            changeSchema={newSchema => changeSchema(values, newSchema)}
           />
           <EditorOptions
             values={values}

@@ -37,29 +37,29 @@ function getEditor() {
   };
 
   const createJsonModel = () => {
-    if(!editor) {
+    if (!editor) {
       return;
     }
-    if(!jsonModel) {
+    if (!jsonModel) {
       jsonModel = monaco.editor.createModel(``, "json");
       editor.setModel(jsonModel);
     }
     return jsonModel;
-  }
+  };
 
-  const setValue = (value) => {
-    if(!editor) {
+  const setValue = value => {
+    if (!editor) {
       return;
     }
     editor.setValue(value);
-  }
+  };
 
   const getValue = () => {
-    if(!editor) {
+    if (!editor) {
       return;
     }
     return editor.getValue();
-  }
+  };
 
   /**
    * Destory editor instance if already created.

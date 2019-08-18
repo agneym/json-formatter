@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -15,11 +15,12 @@ const HeaderContainer = styled.div`
 `;
 
 const CollapsibleTabs = ({ tabs }) => {
+  const [selected, setSelected] = useState(null);
   return (
     <Aside>
       <HeaderContainer>
-      { tabs.map(({ header }, index) => (
-        <SideBtn key={index}>
+      { tabs.map(({ key, header }) => (
+        <SideBtn key={key} onClick={() => setSelected(key)}>
           {header}
         </SideBtn>
       ))}
@@ -31,6 +32,7 @@ const CollapsibleTabs = ({ tabs }) => {
 CollapsibleTabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
+      key: PropTypes.string.isRequired,
       header: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
       component: PropTypes.node,
     }),

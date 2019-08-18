@@ -9,6 +9,7 @@ const SideBtn = styled.button`
   padding: 1rem;
   text-align: center;
   font-size: 1.6rem;
+  margin: 0 1rem;
 `;
 
 export default SideBtn;

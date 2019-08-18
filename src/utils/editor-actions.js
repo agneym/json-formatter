@@ -17,6 +17,7 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
 function getEditor() {
   let editor = null;
   let jsonModel = null;
+  let jsModel = null;
 
   /**
    * Create or return the editor instance
@@ -48,18 +49,29 @@ function getEditor() {
     return jsonModel;
   };
 
+  const createJsModel = (value) => {
+    if (!editor) {
+      return;
+    }
+    if (!jsModel) {
+      jsModel = monaco.editor.createModel(value || "", "javascript");
+      editor.setModel(jsModel);
+    }
+    return jsModel;
+  };
+
   const setValue = value => {
     if (!editor) {
       return;
     }
-    jsonModel.setValue(value);
+    jsModel.setValue(value);
   };
 
   const getValue = () => {
     if (!editor) {
       return;
     }
-    return jsonModel.getValue();
+    return jsModel.getValue();
   };
 
   /**
@@ -129,6 +141,7 @@ function getEditor() {
     setValue,
     updateFormatOptions,
     updateJsonOptions,
+    createJsModel,
     createJsonModel,
   };
 }

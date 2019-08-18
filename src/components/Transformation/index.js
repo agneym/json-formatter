@@ -2,6 +2,7 @@ import React from "react";
 
 import CollapsibleTabs from "../CollapsibleTabs";
 import getEditor from "../../utils/editor-actions";
+import Editor from "../Editor";
 
 function Transformation() {
   const transformEditor = getEditor();
@@ -11,7 +12,9 @@ function Transformation() {
   const createComponent = (selected) => {
     switch(selected) {
       case "transformation":
-        return null;
+        return (
+          <Editor modelType="js" editorConfig={transformEditor} />
+        );
       default:
         return null;
     }

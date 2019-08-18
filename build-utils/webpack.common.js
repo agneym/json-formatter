@@ -6,6 +6,7 @@ const config = {
   entry: {
     app: commonPaths.startPoint,
     "json.worker": 'monaco-editor/esm/vs/language/json/json.worker',
+    "ts.worker": 'monaco-editor/esm/vs/language/typescript/ts.worker',
   },
   output: {
     globalObject: "self",

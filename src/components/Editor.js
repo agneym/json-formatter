@@ -6,6 +6,7 @@ import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
 import "monaco-editor/esm/vs/editor/contrib/find/findController.js";
 import "monaco-editor/esm/vs/editor/contrib/folding/folding.js";
 import "monaco-editor/esm/vs/editor/contrib/bracketMatching/bracketMatching.js";
+import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
 import "monaco-editor/esm/vs/language/json/monaco.contribution";
 import "monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.js";
 import "monaco-editor/esm/vs/editor/contrib/wordHighlighter/wordHighlighter.js";
@@ -18,7 +19,10 @@ import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
 window.MonacoEnvironment = {
-  getWorkerUrl: function() {
+  getWorkerUrl: function(moduleId, label) {
+    if (label === 'typescript' || label === 'javascript') {
+      return './ts.worker.bundle.js';
+    }
     return "./json.worker.bundle.js";
   },
 };

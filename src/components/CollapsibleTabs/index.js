@@ -11,6 +11,7 @@ const Aside = styled.aside`
   top: calc(${props => props.theme.layout.navHeight});
   right: 0;
   height: 100%;
+  box-shadow: -0.2rem 0 0.6rem -0.5rem #333;
 `;
 
 const HeaderContainer = styled.div`

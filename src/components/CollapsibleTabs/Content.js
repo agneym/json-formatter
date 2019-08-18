@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { animated, useTransition, config } from "react-spring";
+import { animated, useTransition } from "react-spring";
 import styled from "styled-components";
 
 const Container = styled.div`
   width: 25vw;
   height: 100%;
-  box-shadow: 5px 0 5px -5px #333;
   transform: scaleX(0);
   transform-origin: right;
 `;

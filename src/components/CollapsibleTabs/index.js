@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Aside = styled.aside`
@@ -7,12 +8,25 @@ const Aside = styled.aside`
   right: 0;
 `;
 
-const CollapsibleTabs = () => {
+const CollapsibleTabs = ({ tabs }) => {
   return (
     <Aside>
-      <p>Tabs</p>
+      { tabs.map(({ header }, index) => (
+        <button key={index}>
+          {header}
+        </button>
+      ))}
     </Aside>
   );
+}
+
+CollapsibleTabs.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      header: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
+      component: PropTypes.node,
+    }),
+  ),
 }
 
 export default CollapsibleTabs;

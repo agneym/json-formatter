@@ -23,17 +23,21 @@ window.MonacoEnvironment = {
   },
 };
 
-function Editor({ editorConfig }) {
+function Editor({ editorConfig, modelType }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
-      editorConfig.createJsonModel();
+      if(modelType === "json") {
+        editorConfig.createJsonModel();
+      } else {
+        editorConfig.createJsModel();
+      }
     }
     return () => {
       editorConfig.destroy();
     };
-  });
+  }, [modelType, editorConfig]);
   return (
     <div
       ref={editorContainer}
@@ -44,12 +48,18 @@ function Editor({ editorConfig }) {
   );
 }
 
+Editor.defaultProps = {
+  modelType: "json",
+}
+
 Editor.propTypes = {
   editorConfig: PropTypes.shape({
     createEditor: PropTypes.func.isRequired,
     destroy: PropTypes.func.isRequired,
     createJsonModel: PropTypes.func.isRequired,
+    createJsModel: PropTypes.func.isRequired,
   }),
+  modelType: PropTypes.string,
 };
 
 export default Editor;

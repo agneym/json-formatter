@@ -21,7 +21,7 @@ const HeaderContainer = styled.div`
   transform: rotate(270deg);
 `;
 
-const CollapsibleTabs = ({ tabs }) => {
+const CollapsibleTabs = ({ tabs, children }) => {
   const sideContainer = useRef(null);
   const [selected, setSelected] = useState(null);
   useClickOutside(sideContainer, () => {
@@ -37,7 +37,7 @@ const CollapsibleTabs = ({ tabs }) => {
       ))}
       </HeaderContainer>
       <Content show={!!selected}>
-        <p>Some content here</p>
+        {children(selected)}
       </Content>
     </Aside>
   );
@@ -48,9 +48,9 @@ CollapsibleTabs.propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       header: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
-      component: PropTypes.node,
     }),
   ),
+  children: PropTypes.func.isRequired,
 }
 
 export default CollapsibleTabs;

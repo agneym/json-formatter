@@ -33,7 +33,7 @@ Content.defaultProps = {
 
 Content.propTypes = {
   show: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export default Content;

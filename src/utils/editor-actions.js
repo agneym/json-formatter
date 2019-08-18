@@ -57,21 +57,21 @@ function getEditor() {
       jsModel = monaco.editor.createModel(value || "", "javascript");
       editor.setModel(jsModel);
     }
-    return jsModel;
+    return jsonModel;
   };
 
   const setValue = value => {
     if (!editor) {
       return;
     }
-    jsModel.setValue(value);
+    jsonModel.setValue(value);
   };
 
   const getValue = () => {
     if (!editor) {
       return;
     }
-    return jsModel.getValue();
+    return jsonModel.getValue();
   };
 
   /**

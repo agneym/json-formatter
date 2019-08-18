@@ -4,7 +4,7 @@ import CollapsibleTabs from "../CollapsibleTabs";
 
 function Transformation() {
   const tabs = [
-    { key: "transformation", header: <span>Transformation</span>}
+    { key: "transformation", header: <span>Transform</span>}
   ]
   return (
     <CollapsibleTabs

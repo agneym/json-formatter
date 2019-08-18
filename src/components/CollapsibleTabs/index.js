@@ -20,8 +20,8 @@ const CollapsibleTabs = ({ tabs }) => {
     <Aside>
       <HeaderContainer>
       { tabs.map(({ key, header }) => (
-        <SideBtn key={key} onClick={() => setSelected(key)}>
-          {header}
+        <SideBtn active={key === selected} key={key} onClick={() => setSelected(key)}>
+          {header} 
         </SideBtn>
       ))}
       </HeaderContainer>

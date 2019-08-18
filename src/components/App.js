@@ -13,6 +13,7 @@ import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
 import DetectPaste from "./DetectPaste";
+import CollapsibleTabs from "./CollapsibleTabs";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -49,6 +50,7 @@ function App() {
           <Main>
             <Editor editorConfig={editorConfig} />
             <DetectPaste editorConfig={editorConfig} />
+            <CollapsibleTabs />
           </Main>
         </div>
         <BuffetFonts />

@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import SideBtn from "./SideBtn";
+import Content from "./Content";
+import useClickOutside from "../../utils/hooks/use-click-outside";
 
 const Aside = styled.aside`
   position: fixed;
-  top: calc(${props => props.theme.layout.navHeight} + 4rem);
+  top: calc(${props => props.theme.layout.navHeight});
   right: 0;
+  height: 100%;
 `;
 
 const HeaderContainer = styled.div`
-  transform: translate(35%, 50%) rotate(270deg);
+  position: absolute;
+  top: 5rem;
+  left: -8rem;
+  transform: rotate(270deg);
 `;
 
 const CollapsibleTabs = ({ tabs }) => {
+  const sideContainer = useRef(null);
   const [selected, setSelected] = useState(null);
+  useClickOutside(sideContainer, () => {
+    setSelected(null);
+  });
   return (
-    <Aside>
+    <Aside ref={sideContainer}>
       <HeaderContainer>
       { tabs.map(({ key, header }) => (
         <SideBtn active={key === selected} key={key} onClick={() => setSelected(key)}>
@@ -25,6 +35,9 @@ const CollapsibleTabs = ({ tabs }) => {
         </SideBtn>
       ))}
       </HeaderContainer>
+      <Content show={!!selected}>
+        <p>Some content here</p>
+      </Content>
     </Aside>
   );
 }

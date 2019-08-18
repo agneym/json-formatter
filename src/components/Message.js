@@ -18,7 +18,7 @@ const Message = ({ show, children }) => {
     enter: { transform: "scaleY(1)" },
     leave: { transform: "scale(0)" },
     from: { transform: "scaleY(0)" },
-    config: config.slow,
+    config: config.gentle,
   });
   const AnimatedContainer = animated(Container);
   return slideUpTransitions.map(

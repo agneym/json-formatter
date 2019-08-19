@@ -8,12 +8,10 @@ import Peer from "peerjs";
 
 import theme from "../utils/theme";
 import GlobalStyles from "../utils/GlobalStyles";
-import Editor from "./Editor";
 import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
-import DetectPaste from "./DetectPaste";
-import Transformation from "./Transformation";
+import EditorView from "./EditorView";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -48,9 +46,7 @@ function App() {
         >
           <Sidebar editorConfig={editorConfig} />
           <Main>
-            <Editor editorConfig={editorConfig} />
-            <DetectPaste editorConfig={editorConfig} />
-            <Transformation />
+            <EditorView editorConfig={editorConfig} />
           </Main>
         </div>
         <BuffetFonts />

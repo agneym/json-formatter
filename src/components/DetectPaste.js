@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useCallback, useContext, useRef } from "react";
 import { Button } from "buffetjs";
 
 import Message from "./Message";
 import EditorContext from "./EditorContext";
+import useClickOutside from "../utils/hooks/use-click-outside";
 
 const DetectPaste = () => {
   const editorConfig = useContext(EditorContext);
+  const containerRef = useRef(null);
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   useEffect(() => {
@@ -22,19 +24,9 @@ const DetectPaste = () => {
     }
     getClipboardContents();
   }, []);
-  useEffect(() => {
-    const intervalId = setInterval(checkForContents, 2000);
-    function checkForContents() {
-      const editorText = editorConfig.getValue();
-      if (editorText) {
-        setShow(false);
-        clearInterval(intervalId);
-      }
-    }
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [editorConfig]);
+  useClickOutside(containerRef, () => {
+    setShow(false);
+  });
   const pasteContents = useCallback(() => {
     editorConfig.setValue(text);
     setShow(false);
@@ -42,6 +34,7 @@ const DetectPaste = () => {
   return (
     <Message show={show}>
       <div
+        ref={containerRef}
         css={`
           margin: 0 2rem;
           display: flex;

@@ -12,6 +12,7 @@ import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
 import EditorView from "./EditorView";
+import { EditorCtxProvider } from "./EditorContext";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -36,8 +37,8 @@ function App() {
   }, [editorConfig]);
   return (
     <ThemeProvider theme={theme}>
-      <Fragment>
-        <Header editorConfig={editorConfig} />
+      <EditorCtxProvider value={editorConfig}>
+        <Header />
         <div
           role="group"
           css={`
@@ -46,13 +47,13 @@ function App() {
         >
           <Sidebar editorConfig={editorConfig} />
           <Main>
-            <EditorView editorConfig={editorConfig} />
+            <EditorView />
           </Main>
         </div>
         <BuffetFonts />
         <BuffetGlobalStyles />
         <GlobalStyles />
-      </Fragment>
+      </EditorCtxProvider>
     </ThemeProvider>
   );
 }

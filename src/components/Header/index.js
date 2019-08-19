@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -11,6 +11,7 @@ import ShareIcon from "../../icons/share.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./Banner/UploadBanner";
 import ShareBanner from "./Banner/ShareBanner";
+import EditorContext from "../EditorContext";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -22,7 +23,8 @@ const Nav = styled.nav`
   padding: 0 2rem;
 `;
 
-function Header({ editorConfig }) {
+function Header() {
+  const editorConfig = useContext(EditorContext);
   return (
     <Nav>
       <LogoIcon
@@ -70,15 +72,5 @@ function Header({ editorConfig }) {
     </Nav>
   );
 }
-
-Header.propTypes = {
-  editorConfig: PropTypes.shape({
-    createEditor: PropTypes.func.isRequired,
-    destroy: PropTypes.func.isRequired,
-    format: PropTypes.func.isRequired,
-    setValue: PropTypes.func.isRequired,
-    find: PropTypes.func.isRequired,
-  }),
-};
 
 export default Header;

@@ -4,11 +4,11 @@ import Editor from "./Editor";
 import DetectPaste from "./DetectPaste";
 import Transformation from "./Transformation";
 
-const EditorView = ({ editorConfig }) => {
+const EditorView = () => {
   return (
     <Fragment>
-      <Editor editorConfig={editorConfig} />
-      <DetectPaste editorConfig={editorConfig} />
+      <Editor />
+      <DetectPaste />
       <Transformation />
     </Fragment>
   );

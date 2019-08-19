@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Button } from "buffetjs";
 
 import Message from "./Message";
+import EditorContext from "./EditorContext";
 
-const DetectPaste = ({ editorConfig }) => {
+const DetectPaste = () => {
+  const editorConfig = useContext(EditorContext);
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   useEffect(() => {
@@ -62,10 +63,6 @@ const DetectPaste = ({ editorConfig }) => {
 };
 
 DetectPaste.propTypes = {
-  editorConfig: PropTypes.shape({
-    setValue: PropTypes.func.isRequired,
-    getValue: PropTypes.func.isRequired,
-  }),
 };
 
 export default DetectPaste;

@@ -11,6 +11,9 @@ const Container = styled.div`
   width: 100%;
   transform: scaleY(0);
   transform-origin: bottom;
+  box-shadow: 0 -1px 2px -1px #333;
+  display: flex;
+  align-items: center;
 `;
 
 const Message = ({ show, children }) => {

@@ -57,7 +57,7 @@ function getEditor() {
       jsModel = monaco.editor.createModel(value || "", "javascript");
       editor.setModel(jsModel);
     }
-    return jsonModel;
+    return jsModel;
   };
 
   const setValue = value => {

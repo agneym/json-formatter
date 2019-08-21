@@ -38,7 +38,7 @@ function Editor({ modelType }) {
       if(modelType === "json") {
         editorConfig.createJsonModel();
       } else {
-        editorConfig.createJsModel();
+        editorConfig.createJsModel(`function(jsonData){}`);
       }
     }
     return () => {

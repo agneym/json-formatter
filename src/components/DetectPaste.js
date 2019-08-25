@@ -29,6 +29,7 @@ const DetectPaste = () => {
   });
   const pasteContents = useCallback(() => {
     editorConfig.setValue(text);
+    editorConfig.format();
     setShow(false);
   }, [text, editorConfig]);
   return (

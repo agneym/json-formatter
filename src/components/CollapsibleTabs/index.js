@@ -47,9 +47,9 @@ CollapsibleTabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
-      header: PropTypes.oneOf([PropTypes.node, PropTypes.string]).isRequired,
+      header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
     }),
-  ),
+  ).isRequired,
   children: PropTypes.func.isRequired,
 }
 

@@ -24,6 +24,7 @@ function getEditor() {
    * @returns {Object}
    */
   const createEditor = container => {
+    console.log("create editor being called", container)
     if (!editor) {
       editor = monaco.editor.create(container, {
         formatOnPaste: true,

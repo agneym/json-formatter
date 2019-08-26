@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import "monaco-editor/esm/vs/editor/contrib/hover/hover.js";
@@ -18,10 +18,9 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
-import EditorContext from "./EditorContext";
-
 window.MonacoEnvironment = {
   getWorkerUrl: function(moduleId, label) {
+    console.log(label);
     if (label === 'typescript' || label === 'javascript') {
       return './ts.worker.bundle.js';
     }
@@ -29,8 +28,7 @@ window.MonacoEnvironment = {
   },
 };
 
-function Editor({ modelType }) {
-  const editorConfig = useContext(EditorContext);
+function Editor({ editorConfig, modelType }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if (editorContainer.current) {
@@ -61,6 +59,7 @@ Editor.defaultProps = {
 
 Editor.propTypes = {
   modelType: PropTypes.string,
+  editorConfig: PropTypes.any.isRequired,
 };
 
 export default Editor;

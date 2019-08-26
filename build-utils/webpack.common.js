@@ -1,15 +1,13 @@
 const commonPaths = require("./common-paths");
 const webpack = require("webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const config = {
   entry: {
     app: commonPaths.startPoint,
-    "json.worker": 'monaco-editor/esm/vs/language/json/json.worker',
-    "ts.worker": 'monaco-editor/esm/vs/language/typescript/ts.worker',
   },
   output: {
-    globalObject: "self",
     filename: "[name].bundle.js",
     path: commonPaths.outputPath,
     publicPath: "/"
@@ -45,6 +43,9 @@ const config = {
     new webpack.ProgressPlugin(),
     new htmlWebpackPlugin({
       template: "public/index.html"
+    }),
+    new MonacoWebpackPlugin({
+      languages: ["javascript", "json", "typescript"],
     })
   ]
 };

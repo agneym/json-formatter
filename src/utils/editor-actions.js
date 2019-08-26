@@ -24,7 +24,6 @@ function getEditor() {
    * @returns {Object}
    */
   const createEditor = container => {
-    console.log("create editor being called", container)
     if (!editor) {
       editor = monaco.editor.create(container, {
         formatOnPaste: true,
@@ -54,7 +53,7 @@ function getEditor() {
       return;
     }
     if (!model) {
-      model = monaco.editor.createModel(value || "", "javascript");
+      model = monaco.editor.createModel(value || "", "javascript", "transformation.js");
       editor.setModel(model);
     }
     return model;
@@ -80,6 +79,7 @@ function getEditor() {
   const destroy = () => {
     if (editor) {
       editor.dispose();
+      model = null;
       editor = null;
     }
   };

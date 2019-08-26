@@ -18,16 +18,6 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
-window.MonacoEnvironment = {
-  getWorkerUrl: function(moduleId, label) {
-    console.log(label);
-    if (label === 'typescript' || label === 'javascript') {
-      return './ts.worker.bundle.js';
-    }
-    return "./json.worker.bundle.js";
-  },
-};
-
 function Editor({ editorConfig, modelType }) {
   const editorContainer = useRef(null);
   useEffect(() => {

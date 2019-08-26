@@ -26,7 +26,9 @@ function Editor({ editorConfig, modelType }) {
       if(modelType === "json") {
         editorConfig.createJsonModel();
       } else {
-        editorConfig.createJsModel(`function(jsonData){}`);
+        editorConfig.createJsModel(`function transform(jsonData) {
+
+}`);
       }
     }
     return () => {

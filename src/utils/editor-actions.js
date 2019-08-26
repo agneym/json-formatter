@@ -53,7 +53,7 @@ function getEditor() {
       return;
     }
     if (!model) {
-      model = monaco.editor.createModel(value || "", "javascript", "transformation.js");
+      model = monaco.editor.createModel(value || "", "javascript");
       editor.setModel(model);
     }
     return model;
@@ -64,6 +64,7 @@ function getEditor() {
       return;
     }
     model.setValue(value);
+    format();
   };
 
   const getValue = () => {

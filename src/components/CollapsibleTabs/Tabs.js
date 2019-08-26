@@ -3,7 +3,7 @@ import React from "react";
 import CollapsibleTabs from "../CollapsibleTabs";
 import Transformation from "../Transformation";
 
-function Tabs() {
+function Tabs({ onTransform }) {
   const tabs = [
     { key: "transformation", header: <span>Transform</span>}
   ];
@@ -11,7 +11,7 @@ function Tabs() {
     switch(selected) {
       case "transformation":
         return (
-          <Transformation />
+          <Transformation transformCode={onTransform} />
         );
       default:
         return null;

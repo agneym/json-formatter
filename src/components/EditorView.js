@@ -7,10 +7,19 @@ import EditorContext from "./EditorContext";
 
 const EditorView = () => {
   const editorConfig = useContext(EditorContext);
+  const onTransform = (transformCode) => {
+    try {
+      const originalValue = JSON.parse(editorConfig.getValue());
+      const transformedValue = Function(`"use strict";return (${transformCode})`)()(originalValue);
+      editorConfig.setValue(JSON.stringify(transformedValue));
+    } catch(err) {
+      console.error(err);
+    }
+  }
   return (
     <Fragment>
       <Editor editorConfig={editorConfig} />
-      <Tabs />
+      <Tabs onTransform={onTransform} />
       <DetectPaste />
     </Fragment>
   );

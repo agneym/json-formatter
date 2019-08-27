@@ -2,6 +2,7 @@ import React from "react";
 
 import getEditor from "../../utils/editor-actions";
 import Editor from "../Editor";
+import Header from "./header";
 
 function Transformation({ transformCode }) {
   const transformEditor = getEditor();
@@ -11,10 +12,7 @@ function Transformation({ transformCode }) {
   }
   return (
     <div css={`height: 100%;`}>
-      <header>
-        <h2>Transformation</h2>
-        <button onClick={onRun}>Run</button>
-      </header>
+      <Header onRun={onRun} />
       <Editor modelType="js" editorConfig={transformEditor} />
     </div>
   );

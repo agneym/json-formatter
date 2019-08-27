@@ -1,11 +1,22 @@
 import React from "react";
+import styled from "styled-components";
+
+import PlayIcon from "../../icons/play.svg";
+
+const Container = styled.header`
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+`;
 
 const Header = ({ onRun }) => {
   return (
-    <header>
-      <h2>Transformation</h2>
-      <button onClick={onRun}>Run</button>
-    </header>
+    <Container>
+      <h2 css={`margin-right: 1rem;`}>Transformation</h2>
+      <button onClick={onRun} css={`-webkit-appearance: none; background-color: transparent; border: none;`}>
+        <PlayIcon css={`height: 3rem; width: 3rem;`} />
+      </button>
+    </Container>
   )
 }
 

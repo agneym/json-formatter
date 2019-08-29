@@ -4,21 +4,25 @@ import Editor from "./Editor";
 import DetectPaste from "./DetectPaste";
 import Tabs from "./CollapsibleTabs/Tabs";
 import EditorContext from "./EditorContext";
+import DiffEditor from "./DiffEditor";
 
 const EditorView = () => {
   const editorConfig = useContext(EditorContext);
+  const [transformed, setTransformed] = useState(null);
   const onTransform = (transformCode) => {
     try {
       const originalValue = JSON.parse(editorConfig.getValue());
       const transformedValue = Function(`"use strict";return (${transformCode})`)()(originalValue);
-      editorConfig.setValue(JSON.stringify(transformedValue));
+      setTransformed(transformedValue);
     } catch(err) {
       console.error(err);
     }
   }
   return (
     <Fragment>
-      <Editor editorConfig={editorConfig} />
+      {transformed ? <DiffEditor transformed={transformed} original={editorConfig.getValue()} /> : (
+        <Editor editorConfig={editorConfig} />
+      )}
       <Tabs onTransform={onTransform} />
       <DetectPaste />
     </Fragment>

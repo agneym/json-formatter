@@ -1,27 +1,24 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 
 import CollapsibleTabs from "../CollapsibleTabs";
-import Transformation from "../Transformation";
+
+const Transformation = lazy(() => import("../Transformation"));
 
 function Tabs({ onTransform }) {
   const tabs = [
-    { key: "transformation", header: <span>Transform</span>}
+    {
+      key: "transformation",
+      header: <span>Transform</span>,
+      component: <Transformation transformCode={onTransform} />,
+    },
   ];
-  const createComponent = (selected) => {
-    switch(selected) {
-      case "transformation":
-        return (
-          <Transformation transformCode={onTransform} />
-        );
-      default:
-        return null;
-    }
-  }
   return (
-    <CollapsibleTabs
-      tabs={tabs}
-    >
-      {createComponent}
+    <CollapsibleTabs tabs={tabs}>
+      {selectedComponent => (
+        <Suspense fallback={<div>Loading ...</div>}>
+          {selectedComponent}
+        </Suspense>
+      )}
     </CollapsibleTabs>
   );
 }

@@ -12,12 +12,30 @@ const Container = styled.header`
 const Header = ({ onRun }) => {
   return (
     <Container>
-      <h2 css={`margin-right: 1rem;`}>Transformation</h2>
-      <button onClick={onRun} css={`-webkit-appearance: none; background-color: transparent; border: none;`}>
-        <PlayIcon css={`height: 3rem; width: 3rem;`} />
+      <h2
+        css={`
+          margin-right: 1rem;
+        `}
+      >
+        Transformation
+      </h2>
+      <button
+        onClick={onRun}
+        css={`
+          -webkit-appearance: none;
+          background-color: transparent;
+          border: none;
+        `}
+      >
+        <PlayIcon
+          css={`
+            height: 3rem;
+            width: 3rem;
+          `}
+        />
       </button>
     </Container>
-  )
-}
+  );
+};
 
 export default Header;

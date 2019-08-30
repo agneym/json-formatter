@@ -6,7 +6,7 @@ import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
 import "monaco-editor/esm/vs/editor/contrib/find/findController.js";
 import "monaco-editor/esm/vs/editor/contrib/folding/folding.js";
 import "monaco-editor/esm/vs/editor/contrib/bracketMatching/bracketMatching.js";
-import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
+import "monaco-editor/esm/vs/language/typescript/monaco.contribution";
 import "monaco-editor/esm/vs/language/json/monaco.contribution";
 import "monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.js";
 import "monaco-editor/esm/vs/editor/contrib/wordHighlighter/wordHighlighter.js";
@@ -25,7 +25,7 @@ function Editor({ editorConfig, modelType }) {
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
-      if(modelType === "json") {
+      if (modelType === "json") {
         editorConfig.createJsonModel();
       } else {
         editorConfig.createJsModel(codeForTransform);
@@ -40,6 +40,7 @@ function Editor({ editorConfig, modelType }) {
       ref={editorContainer}
       css={`
         height: 100%;
+        width: 100%;
       `}
     />
   );
@@ -47,7 +48,7 @@ function Editor({ editorConfig, modelType }) {
 
 Editor.defaultProps = {
   modelType: "json",
-}
+};
 
 Editor.propTypes = {
   modelType: PropTypes.string,

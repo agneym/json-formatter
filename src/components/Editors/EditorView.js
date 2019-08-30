@@ -10,26 +10,33 @@ const EditorView = () => {
   const editorConfig = useContext(EditorContext);
   const [transformed, setTransformed] = useState(null);
 
-  const onTransform = (transformCode) => {
+  const onTransform = transformCode => {
     try {
       const originalValue = editorConfig.getValue();
       const originalValueObj = JSON.parse(originalValue);
-      const transformedValue = Function(`"use strict";return (${transformCode})`)()(originalValueObj);
+      const transformedValue = Function(
+        `"use strict";return (${transformCode})`
+      )()(originalValueObj);
       const transformedValueJson = JSON.stringify(transformedValue);
       setTransformed(transformedValueJson);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
   return (
     <Fragment>
-      {transformed ? <DiffEditor transformed={transformed} original={editorConfig.getValue()} /> : (
+      {transformed ? (
+        <DiffEditor
+          transformed={transformed}
+          original={editorConfig.getValue()}
+        />
+      ) : (
         <Editor editorConfig={editorConfig} />
       )}
       <Tabs onTransform={onTransform} />
       <DetectPaste />
     </Fragment>
   );
-}
+};
 
 export default EditorView;

@@ -30,27 +30,30 @@ const CollapsibleTabs = ({ tabs, children }) => {
   return (
     <Aside ref={sideContainer}>
       <HeaderContainer>
-      { tabs.map(({ key, header }) => (
-        <SideBtn active={key === selected} key={key} onClick={() => setSelected(key)}>
-          {header} 
-        </SideBtn>
-      ))}
+        {tabs.map(({ key, header, component }) => (
+          <SideBtn
+            active={key === selected}
+            key={key}
+            onClick={() => setSelected(component)}
+          >
+            {header}
+          </SideBtn>
+        ))}
       </HeaderContainer>
-      <Content show={!!selected}>
-        {children(selected)}
-      </Content>
+      <Content show={!!selected}>{children(selected)}</Content>
     </Aside>
   );
-}
+};
 
 CollapsibleTabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
-      header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-    }),
+      header: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+        .isRequired,
+    })
   ).isRequired,
   children: PropTypes.func.isRequired,
-}
+};
 
 export default CollapsibleTabs;

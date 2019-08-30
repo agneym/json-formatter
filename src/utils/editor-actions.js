@@ -48,7 +48,7 @@ function getEditor() {
     return model;
   };
 
-  const createJsModel = (value) => {
+  const createJsModel = value => {
     if (!editor) {
       return;
     }

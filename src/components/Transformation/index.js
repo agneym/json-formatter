@@ -9,9 +9,13 @@ function Transformation({ transformCode }) {
   const onRun = () => {
     const value = transformEditor.getValue();
     transformCode(value);
-  }
+  };
   return (
-    <div css={`height: 100%;`}>
+    <div
+      css={`
+        height: 100%;
+      `}
+    >
       <Header onRun={onRun} />
       <Editor modelType="js" editorConfig={transformEditor} />
     </div>

@@ -25,15 +25,15 @@ const Content = ({ show, children }) => {
         </AnimatedContainer>
       )
   );
-}
+};
 
 Content.defaultProps = {
   show: false,
-}
+};
 
 Content.propTypes = {
   show: PropTypes.bool,
   children: PropTypes.node,
-}
+};
 
 export default Content;

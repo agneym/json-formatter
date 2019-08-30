@@ -40,9 +40,11 @@ const ByLink = ({ value }) => {
         </Fragment>
       )}
       <sub>
-        <span>We do not send your content to our servers.</span> 
+        <span>We do not send your content to our servers.</span>
         <br />
-        <span>This also means that you need to stay online for sharing to work.</span>
+        <span>
+          This also means that you need to stay online for sharing to work.
+        </span>
       </sub>
     </Container>
   );

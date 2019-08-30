@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback, useContext, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  useRef,
+} from "react";
 import { Button } from "buffetjs";
 
 import Message from "../Message";
@@ -56,7 +62,6 @@ const DetectPaste = () => {
   );
 };
 
-DetectPaste.propTypes = {
-};
+DetectPaste.propTypes = {};
 
 export default DetectPaste;

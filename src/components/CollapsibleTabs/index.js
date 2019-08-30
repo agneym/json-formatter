@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import SideBtn from "./SideBtn";
 import Content from "./Content";
+import ErrorBoundary from "../ErrorBoundary";
 import useClickOutside from "../../utils/hooks/use-click-outside";
 
 const Aside = styled.aside`
@@ -28,20 +29,22 @@ const CollapsibleTabs = ({ tabs, children }) => {
     setSelected(null);
   });
   return (
-    <Aside ref={sideContainer}>
-      <HeaderContainer>
-        {tabs.map(({ key, header, component }) => (
-          <SideBtn
-            active={key === selected}
-            key={key}
-            onClick={() => setSelected(component)}
-          >
-            {header}
-          </SideBtn>
-        ))}
-      </HeaderContainer>
-      <Content show={!!selected}>{children(selected)}</Content>
-    </Aside>
+    <ErrorBoundary>
+      <Aside ref={sideContainer}>
+        <HeaderContainer>
+          {tabs.map(({ key, header, component }) => (
+            <SideBtn
+              active={key === selected}
+              key={key}
+              onClick={() => setSelected(component)}
+            >
+              {header}
+            </SideBtn>
+          ))}
+        </HeaderContainer>
+        <Content show={!!selected}>{children(selected)}</Content>
+      </Aside>
+    </ErrorBoundary>
   );
 };
 

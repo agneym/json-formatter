@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack-cli --mode=production --env=prod",
     "start": "webpack-dev-server --mode=development --env=dev",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest",
     "format": "prettier --write src/**/*.{js,jsx,css,html,json}",
     "test:coverage": "jest --coverage"
   },
@@ -21,20 +21,22 @@
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@svgr/webpack": "^4.3.1",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^8.0.9",
+    "@types/jest": "^24.0.18",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
     "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-styled-components": "^1.10.4",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^1.1.12",
     "copy-webpack-plugin": "^4.6.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "cssnano": "^4.1.7",
     "eslint-config-airbnb": "^17.1.0",
@@ -54,7 +56,6 @@
     "lint-staged": "^4.3.0",
     "mini-css-extract-plugin": "^0.4.5",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "npm-install-webpack-plugin": "^4.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.4.0",
@@ -63,6 +64,7 @@
     "purify-css": "^1.2.6",
     "purifycss-webpack": "^0.7.0",
     "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.9.0",
     "style-loader": "^0.18.2",
     "stylelint": "^8.4.0",
     "stylelint-config-standard": "^17.0.0",
@@ -106,10 +108,8 @@
       "!**/vendor/**",
       "!**/scripts/**"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules",
-      "/scripts",
-      "/build-utils"
+    "transformIgnorePatterns": [
+      "node_modules/(?!(monaco-editor)/)"
     ]
   },
   "repository": {

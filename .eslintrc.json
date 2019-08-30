@@ -26,7 +26,8 @@
     "no-debugger": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-uses-react": 1
+    "react/jsx-uses-react": 1,
+    "react/prop-types": 1
   },
   "globals": {
     "window": true,

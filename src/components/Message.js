@@ -11,6 +11,9 @@ const Container = styled.div`
   width: 100%;
   transform: scaleY(0);
   transform-origin: bottom;
+  box-shadow: 0 -1px 2px -1px #333;
+  display: flex;
+  align-items: center;
 `;
 
 const Message = ({ show, children }) => {
@@ -18,7 +21,7 @@ const Message = ({ show, children }) => {
     enter: { transform: "scaleY(1)" },
     leave: { transform: "scale(0)" },
     from: { transform: "scaleY(0)" },
-    config: config.slow,
+    config: config.gentle,
   });
   const AnimatedContainer = animated(Container);
   return slideUpTransitions.map(

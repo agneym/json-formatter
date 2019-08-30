@@ -6,6 +6,7 @@ import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
 import "monaco-editor/esm/vs/editor/contrib/find/findController.js";
 import "monaco-editor/esm/vs/editor/contrib/folding/folding.js";
 import "monaco-editor/esm/vs/editor/contrib/bracketMatching/bracketMatching.js";
+import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
 import "monaco-editor/esm/vs/language/json/monaco.contribution";
 import "monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.js";
 import "monaco-editor/esm/vs/editor/contrib/wordHighlighter/wordHighlighter.js";
@@ -17,23 +18,23 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
-window.MonacoEnvironment = {
-  getWorkerUrl: function() {
-    return "./json.worker.bundle.js";
-  },
-};
-
-function Editor({ editorConfig }) {
+function Editor({ editorConfig, modelType }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
-      editorConfig.createJsonModel();
+      if(modelType === "json") {
+        editorConfig.createJsonModel();
+      } else {
+        editorConfig.createJsModel(`function transform(jsonData) {
+
+}`);
+      }
     }
     return () => {
       editorConfig.destroy();
     };
-  });
+  }, [modelType, editorConfig]);
   return (
     <div
       ref={editorContainer}
@@ -44,12 +45,13 @@ function Editor({ editorConfig }) {
   );
 }
 
+Editor.defaultProps = {
+  modelType: "json",
+}
+
 Editor.propTypes = {
-  editorConfig: PropTypes.shape({
-    createEditor: PropTypes.func.isRequired,
-    destroy: PropTypes.func.isRequired,
-    createJsonModel: PropTypes.func.isRequired,
-  }),
+  modelType: PropTypes.string,
+  editorConfig: PropTypes.any.isRequired,
 };
 
 export default Editor;

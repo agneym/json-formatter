@@ -1,25 +1,20 @@
 import React from "react";
-import styled from "styled-components";
-import Popover from "../Popover";
 
-const Container = styled.aside`
-  position: fixed;
-  bottom: 0;
-  height: 40%;
-`;
+import getEditor from "../../utils/editor-actions";
+import Editor from "../Editor";
+import Header from "./header";
 
-function Transformation() {
+function Transformation({ transformCode }) {
+  const transformEditor = getEditor();
+  const onRun = () => {
+    const value = transformEditor.getValue();
+    transformCode(value);
+  }
   return (
-    <Container>
-      <Popover>
-        <Popover.Trigger>
-          <p>Transformations</p>
-        </Popover.Trigger>
-        <Popover.DropBanner>
-          {() => <p>Lets put rest of the content</p>}
-        </Popover.DropBanner>
-      </Popover>
-    </Container>
+    <div css={`height: 100%;`}>
+      <Header onRun={onRun} />
+      <Editor modelType="js" editorConfig={transformEditor} />
+    </div>
   );
 }
 

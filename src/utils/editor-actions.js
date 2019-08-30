@@ -10,12 +10,13 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
  * @returns {function} config.changeTheme - Function to change theme
+ * @returns {function} config.getValue - gets the text in editor
  * @returns {function} config.setValue - sets the text in editor
  * @returns {function} config.createJsonModel - sets the text in editor
  */
 function getEditor() {
   let editor = null;
-  let jsonModel = null;
+  let model = null;
 
   /**
    * Create or return the editor instance
@@ -40,25 +41,37 @@ function getEditor() {
     if (!editor) {
       return;
     }
-    if (!jsonModel) {
-      jsonModel = monaco.editor.createModel(``, "json");
-      editor.setModel(jsonModel);
+    if (!model) {
+      model = monaco.editor.createModel(``, "json");
+      editor.setModel(model);
     }
-    return jsonModel;
+    return model;
+  };
+
+  const createJsModel = (value) => {
+    if (!editor) {
+      return;
+    }
+    if (!model) {
+      model = monaco.editor.createModel(value || "", "javascript");
+      editor.setModel(model);
+    }
+    return model;
   };
 
   const setValue = value => {
     if (!editor) {
       return;
     }
-    editor.setValue(value);
+    model.setValue(value);
+    format();
   };
 
   const getValue = () => {
     if (!editor) {
       return;
     }
-    return editor.getValue();
+    return model.getValue();
   };
 
   /**
@@ -67,6 +80,7 @@ function getEditor() {
   const destroy = () => {
     if (editor) {
       editor.dispose();
+      model = null;
       editor = null;
     }
   };
@@ -128,6 +142,7 @@ function getEditor() {
     setValue,
     updateFormatOptions,
     updateJsonOptions,
+    createJsModel,
     createJsonModel,
   };
 }

@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect, useCallback, useContext, useRef } from "react";
 import { Button } from "buffetjs";
 
 import Message from "./Message";
+import EditorContext from "./EditorContext";
+import useClickOutside from "../utils/hooks/use-click-outside";
 
-const DetectPaste = ({ editorConfig }) => {
+const DetectPaste = () => {
+  const editorConfig = useContext(EditorContext);
+  const containerRef = useRef(null);
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   useEffect(() => {
@@ -21,26 +24,18 @@ const DetectPaste = ({ editorConfig }) => {
     }
     getClipboardContents();
   }, []);
-  useEffect(() => {
-    const intervalId = setInterval(checkForContents, 2000);
-    function checkForContents() {
-      const editorText = editorConfig.getValue();
-      if (editorText) {
-        setShow(false);
-        clearInterval(intervalId);
-      }
-    }
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [editorConfig]);
+  useClickOutside(containerRef, () => {
+    setShow(false);
+  });
   const pasteContents = useCallback(() => {
     editorConfig.setValue(text);
+    editorConfig.format();
     setShow(false);
   }, [text, editorConfig]);
   return (
     <Message show={show}>
       <div
+        ref={containerRef}
         css={`
           margin: 0 2rem;
           display: flex;
@@ -62,10 +57,6 @@ const DetectPaste = ({ editorConfig }) => {
 };
 
 DetectPaste.propTypes = {
-  editorConfig: PropTypes.shape({
-    setValue: PropTypes.func.isRequired,
-    getValue: PropTypes.func.isRequired,
-  }),
 };
 
 export default DetectPaste;

@@ -10,10 +10,7 @@
   "env": {
     "browser": true
   },
-  "plugins": [
-    "react-hooks",
-    "jsx-a11y"
-  ],
+  "plugins": ["react-hooks", "jsx-a11y"],
   "extends": [
     "eslint:recommended",
     "plugin:jsx-a11y/recommended",
@@ -28,10 +25,5 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-uses-react": 1,
     "react/prop-types": 1
-  },
-  "globals": {
-    "window": true,
-    "document": true,
-    "navigator": true
   }
 }

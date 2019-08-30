@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
@@ -11,7 +10,7 @@ import ShareIcon from "../../icons/share.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./Banner/UploadBanner";
 import ShareBanner from "./Banner/ShareBanner";
-import EditorContext from "../EditorContext";
+import EditorContext from "../Editors/EditorContext";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};

@@ -1,7 +1,7 @@
 import React from "react";
 
 import getEditor from "../../utils/editor-actions";
-import Editor from "../Editor";
+import Editor from "../Editors/Editor";
 import Header from "./header";
 
 function Transformation({ transformCode }) {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useContext, useRef } from "react";
 import { Button } from "buffetjs";
 
-import Message from "./Message";
+import Message from "../Message";
 import EditorContext from "./EditorContext";
-import useClickOutside from "../utils/hooks/use-click-outside";
+import useClickOutside from "../../utils/hooks/use-click-outside";
 
 const DetectPaste = () => {
   const editorConfig = useContext(EditorContext);

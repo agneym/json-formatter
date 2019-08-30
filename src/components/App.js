@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import {
   GlobalStyle as BuffetGlobalStyles,
@@ -11,8 +11,8 @@ import GlobalStyles from "../utils/GlobalStyles";
 import Header from "./Header";
 import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
-import EditorView from "./EditorView";
-import { EditorCtxProvider } from "./EditorContext";
+import EditorView from "./Editors/EditorView";
+import { EditorCtxProvider } from "./Editors/EditorContext";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);

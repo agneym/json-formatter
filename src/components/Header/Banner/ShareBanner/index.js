@@ -5,7 +5,7 @@ import Container from "../BannerContainer";
 import Seperator from "../Seperator";
 import ByLink from "./ByLink";
 import DownloadBtn from "./DownloadBtn";
-import EditorContext from "../../../EditorContext";
+import EditorContext from "../../../Editors/EditorContext";
 
 const ShareBanner = ({ close }) => {
   const editorConfig = useContext(EditorContext);

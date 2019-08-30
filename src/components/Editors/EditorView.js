@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useState } from "react";
 
 import Editor from "./Editor";
 import DetectPaste from "./DetectPaste";
-import Tabs from "./CollapsibleTabs/Tabs";
+import Tabs from "../CollapsibleTabs/Tabs";
 import EditorContext from "./EditorContext";
 import DiffEditor from "./DiffEditor";
 

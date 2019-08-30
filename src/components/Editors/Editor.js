@@ -18,6 +18,8 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
+import codeForTransform from "../../config/transform";
+
 function Editor({ editorConfig, modelType }) {
   const editorContainer = useRef(null);
   useEffect(() => {
@@ -26,9 +28,7 @@ function Editor({ editorConfig, modelType }) {
       if(modelType === "json") {
         editorConfig.createJsonModel();
       } else {
-        editorConfig.createJsModel(`function transform(jsonData) {
-
-}`);
+        editorConfig.createJsModel(codeForTransform);
       }
     }
     return () => {

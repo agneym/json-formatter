@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import PropTypes from "prop-types";
 
 import CollapsibleTabs from "../CollapsibleTabs";
 
@@ -22,5 +23,9 @@ function Tabs({ onTransform }) {
     </CollapsibleTabs>
   );
 }
+
+Tabs.propTypes = {
+  onTransform: PropTypes.func.isRequired,
+};
 
 export default Tabs;

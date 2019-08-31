@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import PlayIcon from "../../icons/play.svg";
@@ -36,6 +37,10 @@ const Header = ({ onRun }) => {
       </button>
     </Container>
   );
+};
+
+Header.propTypes = {
+  onRun: PropTypes.func.isRequired,
 };
 
 export default Header;

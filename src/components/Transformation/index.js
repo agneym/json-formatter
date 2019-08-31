@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import getEditor from "../../utils/editor-actions";
 import Editor from "../Editors/Editor";
@@ -21,5 +22,9 @@ function Transformation({ transformCode }) {
     </div>
   );
 }
+
+Transformation.propTypes = {
+  transformCode: PropTypes.func.isRequired,
+};
 
 export default Transformation;

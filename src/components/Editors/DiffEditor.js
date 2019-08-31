@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
 
 const DiffEditor = ({ transformed, original }) => {
@@ -26,6 +27,11 @@ const DiffEditor = ({ transformed, original }) => {
       `}
     />
   );
+};
+
+DiffEditor.propTypes = {
+  transformed: PropTypes.string.isRequired,
+  original: PropTypes.string.isRequired,
 };
 
 export default DiffEditor;

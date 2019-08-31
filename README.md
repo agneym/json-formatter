@@ -10,6 +10,8 @@
 
 An in-place JSON Viewer, Formatter and Transfomer.
 
+![poster](https://raw.githubusercontent.com/BoyWithSilverWings/json-formatter/master/public/image-small.png)
+
 ## Features
 
 1. JSON Viewer

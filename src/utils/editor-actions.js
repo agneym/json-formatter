@@ -37,12 +37,12 @@ function getEditor() {
     return editor;
   };
 
-  const createJsonModel = () => {
+  const createJsonModel = value => {
     if (!editor) {
       return;
     }
     if (!model) {
-      model = monaco.editor.createModel(``, "json");
+      model = monaco.editor.createModel(value || ``, "json");
       editor.setModel(model);
     }
     return model;

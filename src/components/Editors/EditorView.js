@@ -9,6 +9,7 @@ import DiffEditor from "./DiffEditor";
 const EditorView = () => {
   const editorConfig = useContext(EditorContext);
   const [transformed, setTransformed] = useState(null);
+  const [editorVal, setEditorVal] = useState("");
 
   const onTransform = transformCode => {
     try {
@@ -23,15 +24,21 @@ const EditorView = () => {
       console.error(err);
     }
   };
+  const loadEditor = value => {
+    setTransformed("");
+    setEditorVal(value);
+    editorConfig.format();
+  };
   return (
     <Fragment>
       {transformed ? (
         <DiffEditor
           transformed={transformed}
           original={editorConfig.getValue()}
+          returnEditor={loadEditor}
         />
       ) : (
-        <Editor editorConfig={editorConfig} />
+        <Editor value={editorVal} editorConfig={editorConfig} />
       )}
       <Tabs onTransform={onTransform} />
       <DetectPaste />

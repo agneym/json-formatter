@@ -20,13 +20,13 @@ import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
 import codeForTransform from "../../config/transform";
 
-function Editor({ editorConfig, modelType }) {
+function Editor({ editorConfig, modelType, value }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
       if (modelType === "json") {
-        editorConfig.createJsonModel();
+        editorConfig.createJsonModel(value);
       } else {
         editorConfig.createJsModel(codeForTransform);
       }
@@ -47,10 +47,12 @@ function Editor({ editorConfig, modelType }) {
 }
 
 Editor.defaultProps = {
+  value: ``,
   modelType: "json",
 };
 
 Editor.propTypes = {
+  value: PropTypes.string,
   modelType: PropTypes.string,
   editorConfig: PropTypes.any.isRequired,
 };

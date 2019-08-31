@@ -7,6 +7,7 @@ import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
 import EditorOptions, { themes } from "./EditorOptions";
 import storage from "../../lib/storage";
+import { SCHEMA_URL } from "../../config/api";
 
 const Form = styled.form`
   height: calc(100vh - ${props => props.theme.layout.navHeight});
@@ -27,9 +28,15 @@ const initialConfig = {
 };
 
 const createSchema = schemaConfig => {
+  const url = schemaConfig.url;
+  // Convert to azure proxy for HTTPS
+  const urlSegments = url.split("/");
+  const reqdUrl = url.includes("http://json.schemastore.org/")
+    ? `${SCHEMA_URL}${urlSegments[urlSegments.length - 1]}.json`
+    : url;
   return [
     {
-      uri: schemaConfig.url,
+      uri: reqdUrl,
       fileMatch: ["*"],
     },
   ];

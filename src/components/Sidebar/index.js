@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, Fragment } from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
 import PropTypes from "prop-types";
@@ -107,28 +107,45 @@ function Sidebar({ editorConfig }) {
   }, [changeFormat, changeJsonOptions, changeTheme]);
 
   return (
-    <Formik initialValues={config} enableReinitialize={true}>
-      {({ values, handleChange }) => (
-        <Form>
-          <FormattingOptions
-            values={values}
-            handleChange={handleChange}
-            handleBlur={() => changeFormat(values)}
-          />
-          <JsonOptions
-            values={values}
-            handleChange={handleChange}
-            handleBlur={changed => changeJsonOptions(values, changed)}
-            changeSchema={newSchema => changeSchema(values, newSchema)}
-          />
-          <EditorOptions
-            values={values}
-            handleChange={handleChange}
-            handleBlur={() => changeTheme(values)}
-          />
-        </Form>
-      )}
-    </Formik>
+    <Fragment>
+      <Formik initialValues={config} enableReinitialize={true}>
+        {({ values, handleChange }) => (
+          <Form>
+            <FormattingOptions
+              values={values}
+              handleChange={handleChange}
+              handleBlur={() => changeFormat(values)}
+            />
+            <JsonOptions
+              values={values}
+              handleChange={handleChange}
+              handleBlur={changed => changeJsonOptions(values, changed)}
+              changeSchema={newSchema => changeSchema(values, newSchema)}
+            />
+            <EditorOptions
+              values={values}
+              handleChange={handleChange}
+              handleBlur={() => changeTheme(values)}
+            />
+            <a
+              href="https://www.producthunt.com/posts/json-crew?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-json-crew"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=166378&theme=light"
+                alt="JSON Crew - A JSON Editor, Formatter, Validator, Transformer and more. | Product Hunt Embed"
+                css={`
+                  height: 54px;
+                  margin: 2rem auto;
+                  display: block;
+                `}
+              />
+            </a>
+          </Form>
+        )}
+      </Formik>
+    </Fragment>
   );
 }
 

@@ -7,10 +7,12 @@ import UploadIcon from "../../icons/upload.svg";
 import LogoIcon from "../../icons/logo.svg";
 import SearchIcon from "../../icons/search.svg";
 import ShareIcon from "../../icons/share.svg";
+import InfoIcon from "../../icons/info.svg";
 import HeaderBtn from "./HeaderBtn";
 import UploadBanner from "./Banner/UploadBanner";
 import ShareBanner from "./Banner/ShareBanner";
 import EditorContext from "../Editors/EditorContext";
+import InfoBanner from "./Banner/InfoBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -66,6 +68,14 @@ function Header() {
               <ShareBanner editorConfig={editorConfig} close={closeBanner} />
             )}
           </Popover.DropBanner>
+        </Popover>
+        <Popover>
+          <Popover.Trigger>
+            <HeaderBtn title="Info">
+              <InfoIcon />
+            </HeaderBtn>
+          </Popover.Trigger>
+          <Popover.DropBanner>{() => <InfoBanner />}</Popover.DropBanner>
         </Popover>
       </div>
     </Nav>

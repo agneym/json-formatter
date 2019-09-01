@@ -42,11 +42,40 @@
       type="image/svg"
     />
   </head>
+
   <body>
     <div id="root"></div>
     <noscript
       >This app needs javascript to run and Your browser does not support
       it!</noscript
     >
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-86549623-5"
+    ></script>
+    <script>
+      function allowsTracking() {
+        const dnt =
+          window.doNotTrack || navigator.doNotTrack || navigator.msDoNotTrack;
+        if (dnt === 1 || dnt === "1" || dnt === "yes") {
+          return false;
+        }
+        if ("msTrackingProtectionEnabled" in window.external) {
+          return !window.external.msTrackingProtectionEnabled();
+        }
+        return true;
+      }
+
+      if (allowsTracking()) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "UA-86549623-5");
+      }
+    </script>
   </body>
 </html>

@@ -127,21 +127,6 @@ function Sidebar({ editorConfig }) {
               handleChange={handleChange}
               handleBlur={() => changeTheme(values)}
             />
-            <a
-              href="https://www.producthunt.com/posts/json-crew?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-json-crew"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=166378&theme=light"
-                alt="JSON Crew - A JSON Editor, Formatter, Validator, Transformer and more. | Product Hunt Embed"
-                css={`
-                  height: 54px;
-                  margin: 2rem auto;
-                  display: block;
-                `}
-              />
-            </a>
           </Form>
         )}
       </Formik>

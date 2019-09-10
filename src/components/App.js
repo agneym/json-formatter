@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import {
   GlobalStyle as BuffetGlobalStyles,
@@ -13,6 +13,7 @@ import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
 import EditorView from "./Editors/EditorView";
 import { EditorCtxProvider } from "./Editors/EditorContext";
+import MobileMessage from "./MobileMessage";
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
@@ -22,6 +23,7 @@ const Main = styled.main`
 
 function App() {
   const editorConfig = getEditor();
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const userLink = params.get("q");
@@ -35,21 +37,31 @@ function App() {
       });
     }
   }, [editorConfig]);
+  useEffect(() => {
+    const { matches } = window.matchMedia("(max-width: 600px)");
+    setIsMobile(matches);
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <EditorCtxProvider value={editorConfig}>
-        <Header />
-        <div
-          role="group"
-          css={`
-            display: flex;
-          `}
-        >
-          <Sidebar editorConfig={editorConfig} />
-          <Main>
-            <EditorView />
-          </Main>
-        </div>
+        {!isMobile ? (
+          <Fragment>
+            <Header />
+            <div
+              role="group"
+              css={`
+                display: flex;
+              `}
+            >
+              <Sidebar editorConfig={editorConfig} />
+              <Main>
+                <EditorView />
+              </Main>
+            </div>
+          </Fragment>
+        ) : (
+          <MobileMessage />
+        )}
         <BuffetFonts />
         <BuffetGlobalStyles />
         <GlobalStyles />

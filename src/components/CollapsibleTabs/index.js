@@ -17,8 +17,9 @@ const Aside = styled.aside`
 
 const HeaderContainer = styled.div`
   position: absolute;
-  top: 5rem;
-  left: -8rem;
+  top: 9rem;
+  right: -9rem;
+  display: flex;
   transform: rotate(270deg);
 `;
 

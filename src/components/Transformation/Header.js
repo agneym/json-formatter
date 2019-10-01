@@ -12,7 +12,9 @@ const Container = styled.header`
 
 const Header = ({ onRun }) => {
   return (
-    <Container>
+    <Container css={`
+      background: white;
+    `}>
       <h2
         css={`
           margin-right: 1rem;

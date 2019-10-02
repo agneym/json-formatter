@@ -18,7 +18,7 @@ const Form = styled.form`
 const key = "json.config";
 const initialConfig = {
   tabSize: 4,
-  intentSize: 4,
+  indentSize: 4,
   insertSpaces: false,
   trimAutoWhitespace: true,
   allowComments: true,

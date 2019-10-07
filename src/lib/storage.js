@@ -13,7 +13,7 @@ class Storage {
 
   /**
    * Gets the keyed item from class object
-   * @param {string} key 
+   * @param {string} key
    */
   getItem(key) {
     return this[key] || null;
@@ -21,8 +21,8 @@ class Storage {
 
   /**
    * Set the data to key
-   * @param {string} key 
-   * @param {string} data 
+   * @param {string} key
+   * @param {string} data
    */
   setItem(key, data) {
     this[key] = data;
@@ -30,16 +30,16 @@ class Storage {
 
   /**
    * Get set item from local storage
-   * @param {string} key 
+   * @param {string} key
    */
   get(key) {
     return JSON.parse(this.storage.getItem(key));
   }
-  
+
   /**
    * Set data with key
-   * @param {string} key 
-   * @param {any} data 
+   * @param {string} key
+   * @param {any} data
    */
   set(key, data) {
     return this.storage.setItem(key, JSON.stringify(data));

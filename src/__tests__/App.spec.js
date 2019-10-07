@@ -1,11 +1,14 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { render } from "@testing-library/react";
 
-import App from "../App";
+import "../../__mocks__/matchMedia.mock";
+import App from "../components/App";
+
+jest.mock("monaco-editor/esm/vs/editor/editor.api.js");
 
 describe("App Component", () => {
-  it("show render component", () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.exists()).toBe(true);
+  it("renders without fail", () => {
+    const { container } = render(<App />);
+    expect(container).toBeTruthy();
   });
 });

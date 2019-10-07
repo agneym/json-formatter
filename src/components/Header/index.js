@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
 import UploadIcon from "../../icons/upload.svg";
 import LogoIcon from "../../icons/logo.svg";
 import SearchIcon from "../../icons/search.svg";
+import ShareIcon from "../../icons/share.svg";
+import InfoIcon from "../../icons/info.svg";
 import HeaderBtn from "./HeaderBtn";
-import UploadBanner from "./UploadBanner";
+import UploadBanner from "./Banner/UploadBanner";
+import ShareBanner from "./Banner/ShareBanner";
+import EditorContext from "../Editors/EditorContext";
+import InfoBanner from "./Banner/InfoBanner";
 
 const Nav = styled.nav`
   height: ${props => props.theme.layout.navHeight};
@@ -20,12 +24,21 @@ const Nav = styled.nav`
   padding: 0 2rem;
 `;
 
-function Header({ editorConfig }) {
+function Header() {
+  const editorConfig = useContext(EditorContext);
   return (
     <Nav>
-      <LogoIcon css={`width: 18%;`} />
+      <LogoIcon
+        css={`
+          width: 18%;
+        `}
+      />
       <FormatBtn onClick={editorConfig.format} />
-      <div css={`display: flex;`}>
+      <div
+        css={`
+          display: flex;
+        `}
+      >
         <HeaderBtn title="Search" onClick={editorConfig.find}>
           <SearchIcon />
         </HeaderBtn>
@@ -36,22 +49,37 @@ function Header({ editorConfig }) {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {(closeBanner) => <UploadBanner setValue={editorConfig.setValue} close={closeBanner} />}
+            {closeBanner => (
+              <UploadBanner
+                setValue={editorConfig.setValue}
+                close={closeBanner}
+              />
+            )}
           </Popover.DropBanner>
+        </Popover>
+        <Popover>
+          <Popover.Trigger>
+            <HeaderBtn title="Share">
+              <ShareIcon />
+            </HeaderBtn>
+          </Popover.Trigger>
+          <Popover.DropBanner>
+            {closeBanner => (
+              <ShareBanner editorConfig={editorConfig} close={closeBanner} />
+            )}
+          </Popover.DropBanner>
+        </Popover>
+        <Popover>
+          <Popover.Trigger>
+            <HeaderBtn title="Info">
+              <InfoIcon />
+            </HeaderBtn>
+          </Popover.Trigger>
+          <Popover.DropBanner>{() => <InfoBanner />}</Popover.DropBanner>
         </Popover>
       </div>
     </Nav>
   );
 }
-
-Header.propTypes = {
-  editorConfig: PropTypes.shape({
-    createEditor: PropTypes.func.isRequired,
-    destroy: PropTypes.func.isRequired,
-    format: PropTypes.func.isRequired,
-    setValue: PropTypes.func.isRequired,
-    find: PropTypes.func.isRequired,
-  }),
-};
 
 export default Header;

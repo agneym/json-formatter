@@ -10,10 +10,13 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.updateFormatOptions - Function to update options to format a document
  * @returns {function} config.updateJsonOptions - Function to update JSON options
  * @returns {function} config.changeTheme - Function to change theme
+ * @returns {function} config.getValue - gets the text in editor
  * @returns {function} config.setValue - sets the text in editor
+ * @returns {function} config.createJsonModel - sets the text in editor
  */
 function getEditor() {
   let editor = null;
+  let model = null;
 
   /**
    * Create or return the editor instance
@@ -23,8 +26,6 @@ function getEditor() {
   const createEditor = container => {
     if (!editor) {
       editor = monaco.editor.create(container, {
-        value: ``,
-        language: "json",
         formatOnPaste: true,
         formatOnType: true,
         fontSize: "16px",
@@ -36,12 +37,42 @@ function getEditor() {
     return editor;
   };
 
-  const setValue = (value) => {
-    if(!editor) {
+  const createJsonModel = value => {
+    if (!editor) {
       return;
     }
-    editor.setValue(value);
-  }
+    if (!model) {
+      model = monaco.editor.createModel(value || ``, "json");
+      editor.setModel(model);
+    }
+    return model;
+  };
+
+  const createJsModel = value => {
+    if (!editor) {
+      return;
+    }
+    if (!model) {
+      model = monaco.editor.createModel(value || "", "javascript");
+      editor.setModel(model);
+    }
+    return model;
+  };
+
+  const setValue = value => {
+    if (!editor) {
+      return;
+    }
+    model.setValue(value);
+    format();
+  };
+
+  const getValue = () => {
+    if (!editor) {
+      return;
+    }
+    return model.getValue();
+  };
 
   /**
    * Destory editor instance if already created.
@@ -49,6 +80,7 @@ function getEditor() {
   const destroy = () => {
     if (editor) {
       editor.dispose();
+      model = null;
       editor = null;
     }
   };
@@ -106,9 +138,12 @@ function getEditor() {
     destroy,
     find,
     format,
+    getValue,
     setValue,
     updateFormatOptions,
     updateJsonOptions,
+    createJsModel,
+    createJsonModel,
   };
 }
 

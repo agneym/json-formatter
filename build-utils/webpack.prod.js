@@ -1,5 +1,7 @@
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const workboxPlugin = require("workbox-webpack-plugin");
 const path = require("path");
@@ -26,6 +28,12 @@ module.exports = {
         },
         exclude: /(node_modules|dist|build-utils|webpack.config.js)/
       }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin(),
+      new OptimizeCSSAssetsPlugin({})
     ]
   },
   plugins: [

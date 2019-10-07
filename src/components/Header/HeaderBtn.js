@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Button = styled.button`
   border: none;
   box-shadow: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
@@ -28,13 +28,12 @@ function HeaderBtn({ title, children, onClick, ...props }) {
 HeaderBtn.defaultProps = {
   title: null,
   onClick: () => {},
-}
+};
 
 HeaderBtn.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
-}
+};
 
 export default HeaderBtn;
-

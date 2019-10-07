@@ -6,6 +6,7 @@ import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
 import "monaco-editor/esm/vs/editor/contrib/find/findController.js";
 import "monaco-editor/esm/vs/editor/contrib/folding/folding.js";
 import "monaco-editor/esm/vs/editor/contrib/bracketMatching/bracketMatching.js";
+import "monaco-editor/esm/vs/language/typescript/monaco.contribution";
 import "monaco-editor/esm/vs/language/json/monaco.contribution";
 import "monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.js";
 import "monaco-editor/esm/vs/editor/contrib/wordHighlighter/wordHighlighter.js";
@@ -17,37 +18,43 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
-window.MonacoEnvironment = {
-  getWorkerUrl: function() {
-    return "./json.worker.bundle.js";
-  },
-};
+import codeForTransform from "../../config/transform";
 
-function Editor({ editorConfig }) {
+function Editor({ editorConfig, modelType, value }) {
   const editorContainer = useRef(null);
   useEffect(() => {
     if (editorContainer.current) {
       editorConfig.createEditor(editorContainer.current);
+      if (modelType === "json") {
+        editorConfig.createJsonModel(value);
+      } else {
+        editorConfig.createJsModel(codeForTransform);
+      }
     }
     return () => {
       editorConfig.destroy();
     };
-  });
+  }, [modelType, editorConfig]);
   return (
     <div
       ref={editorContainer}
       css={`
         height: 100%;
+        width: 100%;
       `}
     />
   );
 }
 
+Editor.defaultProps = {
+  value: ``,
+  modelType: "json",
+};
+
 Editor.propTypes = {
-  editorConfig: PropTypes.shape({
-    createEditor: PropTypes.func.isRequired,
-    destroy: PropTypes.func.isRequired,
-  }),
+  value: PropTypes.string,
+  modelType: PropTypes.string,
+  editorConfig: PropTypes.any.isRequired,
 };
 
 export default Editor;

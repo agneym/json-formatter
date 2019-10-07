@@ -11,6 +11,20 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     padding: 0;
   }
+
+  ::-webkit-scrollbar-track {
+	  border: 0.1rem solid black;
+	  background-color: #F5F5F5;
+  }
+
+  ::-webkit-scrollbar {
+	  width: 0.6rem;
+	  background-color: #F5F5F5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+	  background-color: #555555;
+  }
 `;
 
 export default GlobalStyles;

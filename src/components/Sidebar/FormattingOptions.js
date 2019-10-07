@@ -24,12 +24,12 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
         />
       </Field>
       <Field>
-        <HorizontalLabel htmlFor="intent-size">Intent Size</HorizontalLabel>
+        <HorizontalLabel htmlFor="indent-size">Indent Size</HorizontalLabel>
         <InputNumber
-          id="intent-size"
-          name="intentSize"
+          id="indent-size"
+          name="indentSize"
           min={1}
-          value={values.intentSize}
+          value={values.indentSize}
           onChange={handleChange}
           onBlur={handleBlur}
         />

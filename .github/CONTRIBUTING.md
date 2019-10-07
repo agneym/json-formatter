@@ -55,4 +55,8 @@ If you are new to open source, here are some resources to help:
 
 Come back once in a while and check for review comments if any.
 
+## Notes
+
+If you have any other questions, feel free to add a comment to the respective issue, [ping me on Twitter](https://twitter.com/agneymenon) or send a mail.
+
 _Once again, Thanks for taking the time and effort._

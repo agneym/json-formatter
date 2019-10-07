@@ -25,3 +25,5 @@ npm start
 ```
 
 Development server started at http://localhost:3000.
+
+For more details, view [Contributing Guidelines](.github/CONTRIBUTING.md)

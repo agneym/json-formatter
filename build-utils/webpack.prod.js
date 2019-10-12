@@ -15,50 +15,47 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader"
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
         test: /\.jsx?$/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
         },
-        exclude: /(node_modules|dist|build-utils|webpack.config.js)/
-      }
-    ]
+        exclude: /(node_modules|dist|build-utils|webpack.config.js)/,
+      },
+    ],
   },
   optimization: {
-    minimizer: [
-      new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
     new CleanWebpackPlugin(["dist"], {
-      root: commonPaths.root
+      root: commonPaths.root,
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      chunkFilename: "[id].css",
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: "production",
-      DEBUG: false
+      DEBUG: false,
     }),
     new workboxPlugin({
       globDirectory: commonPaths.outputPath,
       globPatterns: ["**/*.{html,js,css}"],
-      swDest: path.join(commonPaths.outputPath, "sw.js")
+      swDest: path.join(commonPaths.outputPath, "sw.js"),
     }),
     new CopyWebpackPlugin([
       {
-        from: commonPaths.public,
+        from: "public/*",
         to: commonPaths.outputPath,
-        ignore: ["index.html"]
-      }
-    ])
-  ]
+        ignore: ["index.html"],
+      },
+      {
+        from: "_redirects",
+        to: commonPaths.outputPath,
+      },
+    ]),
+  ],
 };

@@ -48,7 +48,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: "public/*",
+        from: commonPaths.public,
         to: commonPaths.outputPath,
         ignore: ["index.html"],
       },

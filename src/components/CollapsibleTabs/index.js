@@ -27,9 +27,7 @@ const HeaderContainer = styled.div`
 const CollapsibleTabs = ({ tabs, children }) => {
   const sideContainer = useRef(null);
   const [selected, setSelected] = useState(null);
-  useClickOutside(sideContainer, () => {
-    setSelected(null);
-  });
+
   return (
     <ErrorBoundary>
       <Aside ref={sideContainer}>

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Plugins() {
-  return null;
+  return <p>Plugins</p>;
 }
 
 export default Plugins;

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CollapsibleTabs from "../CollapsibleTabs";
 
 const Transformation = lazy(() => import("../Transformation"));
+const Plugins = lazy(() => import("../Plugins"));
 
 function Tabs({ onTransform }) {
   const tabs = [
@@ -11,6 +12,11 @@ function Tabs({ onTransform }) {
       key: "transformation",
       header: <span>Transform</span>,
       component: <Transformation transformCode={onTransform} />,
+    },
+    {
+      key: "Plugins",
+      header: <span>Plugins</span>,
+      component: <Plugins />,
     },
   ];
   return (

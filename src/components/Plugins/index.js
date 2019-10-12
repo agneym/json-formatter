@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 import Header from "./Header";
 
 function Plugins() {
   return (
-    <div>
+    <Fragment>
       <Header title="Plugins" />
-    </div>
+    </Fragment>
   );
 }
 

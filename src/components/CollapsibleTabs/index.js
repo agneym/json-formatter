@@ -5,7 +5,6 @@ import styled from "styled-components";
 import SideBtn from "./SideBtn";
 import Content from "./Content";
 import ErrorBoundary from "../ErrorBoundary";
-import useClickOutside from "../../utils/hooks/use-click-outside";
 
 const Aside = styled.aside`
   position: fixed;
@@ -18,15 +17,18 @@ const Aside = styled.aside`
 const HeaderContainer = styled.div`
   position: absolute;
   top: 11rem;
-  left: -13rem;
+  left: -6rem;
   display: flex;
   flex-direction: row-reverse;
-  transform: rotate(270deg);
 `;
 
 const CollapsibleTabs = ({ tabs, children }) => {
   const sideContainer = useRef(null);
   const [selected, setSelected] = useState(null);
+
+  const close = () => {
+    setSelected(null);
+  };
 
   return (
     <ErrorBoundary>
@@ -42,7 +44,7 @@ const CollapsibleTabs = ({ tabs, children }) => {
             </SideBtn>
           ))}
         </HeaderContainer>
-        <Content show={!!selected}>{children(selected)}</Content>
+        <Content show={!!selected}>{children(selected, close)}</Content>
       </Aside>
     </ErrorBoundary>
   );

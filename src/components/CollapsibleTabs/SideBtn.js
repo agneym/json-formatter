@@ -11,6 +11,10 @@ const SideBtn = styled.button`
   text-align: center;
   font-size: 1.6rem;
   margin: 0 1rem;
+
+  & > span {
+    writing-mode: vertical-lr;
+  }
 `;
 
 export default SideBtn;

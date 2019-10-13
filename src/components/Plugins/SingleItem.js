@@ -6,6 +6,10 @@ import NakedButton from "../../utils/NakedButton";
 const Container = styled.li`
   padding: 1rem 2rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const Description = styled.p`

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import NakedButton from "../../utils/NakedButton";
 
 const Container = styled.li`
   padding: 1rem 2rem;
@@ -17,17 +18,23 @@ const Description = styled.p`
 function SingleItem({ name }) {
   return (
     <Container>
-      <h3
+      <NakedButton
         css={`
-          margin: 0 0 0.3rem;
+          width: 100%;
         `}
       >
-        Plugin Name
-      </h3>
-      <Description>
-        Description of the plugin, what it does and whatever. Some more text so
-        we can see{" "}
-      </Description>
+        <h3
+          css={`
+            margin: 0 0 0.3rem;
+          `}
+        >
+          Plugin Name
+        </h3>
+        <Description>
+          Description of the plugin, what it does and whatever. Some more text
+          so we can see
+        </Description>
+      </NakedButton>
     </Container>
   );
 }

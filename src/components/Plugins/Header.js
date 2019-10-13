@@ -16,6 +16,7 @@ const Heading = styled.h2`
   max-width: 80%;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 `;
 
 function Header({ title }) {

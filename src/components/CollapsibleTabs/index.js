@@ -17,7 +17,7 @@ const Aside = styled.aside`
 const HeaderContainer = styled.div`
   position: absolute;
   top: 11rem;
-  left: -6rem;
+  left: -4rem;
   display: flex;
   flex-direction: row-reverse;
 `;

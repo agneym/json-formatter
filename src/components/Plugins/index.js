@@ -12,13 +12,25 @@ const Content = styled.ul`
   width: 100%;
 `;
 
+const pluginsDir = [
+  {
+    name: "Plugin Name",
+    description: "Whatever works",
+  },
+];
+
 function Plugins() {
   return (
     <Fragment>
       <Header title="Plugins" />
       <Content>
-        <SingleItem />
-        <SingleItem />
+        {pluginsDir.map(pluginItem => (
+          <SingleItem
+            key={pluginItem.name}
+            name={pluginItem.name}
+            description={pluginItem.description}
+          />
+        ))}
       </Content>
     </Fragment>
   );

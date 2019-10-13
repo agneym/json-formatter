@@ -15,7 +15,7 @@ const Description = styled.p`
   overflow: hidden;
 `;
 
-function SingleItem({ name }) {
+function SingleItem({ name, description }) {
   return (
     <Container>
       <NakedButton
@@ -28,19 +28,17 @@ function SingleItem({ name }) {
             margin: 0 0 0.3rem;
           `}
         >
-          Plugin Name
+          {name}
         </h3>
-        <Description>
-          Description of the plugin, what it does and whatever. Some more text
-          so we can see
-        </Description>
+        <Description>{description}</Description>
       </NakedButton>
     </Container>
   );
 }
 
 SingleItem.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default SingleItem;

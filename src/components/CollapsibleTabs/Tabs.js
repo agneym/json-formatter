@@ -8,8 +8,8 @@ const Plugins = lazy(() => import("../Plugins"));
 function Tabs() {
   const tabs = [
     {
-      key: "Plugins",
-      header: <span>Plugins</span>,
+      key: "plugins",
+      title: "Plugins",
       component: <Plugins />,
     },
   ];

@@ -19,11 +19,11 @@ const Heading = styled.h2`
   overflow: hidden;
 `;
 
-function Header({ title }) {
+function Header({ title, onClose }) {
   return (
     <Container>
       <Heading>{title}</Heading>
-      <NakedButton title="Close">
+      <NakedButton title="Close" onClick={onClose}>
         <CloseIcon
           css={`
             height: 2rem;
@@ -40,6 +40,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
   title: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 export default Header;

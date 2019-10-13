@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 
-import Header from "./Header";
 import SingleItem from "./SingleItem";
 
 const Content = styled.ul`
@@ -22,7 +21,6 @@ const pluginsDir = [
 function Plugins() {
   return (
     <Fragment>
-      <Header title="Plugins" />
       <Content>
         {pluginsDir.map(pluginItem => (
           <SingleItem

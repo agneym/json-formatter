@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 
 import Listing from "./Listing";
+import ExternalUI from "./ExternalUI";
 
 const Content = styled.ul`
   margin: 0.8rem 0;
@@ -21,13 +22,19 @@ const pluginsDir = [
 ];
 
 function Plugins() {
+  const [plugin, setPlugin] = useState(null);
+
   const loadPlugin = () => {
     console.log("load plugin");
   };
   return (
     <Fragment>
       <Content>
-        <Listing list={pluginsDir} onClick={loadPlugin} />
+        {plugin ? (
+          <ExternalUI />
+        ) : (
+          <Listing list={pluginsDir} onClick={loadPlugin} />
+        )}
       </Content>
     </Fragment>
   );

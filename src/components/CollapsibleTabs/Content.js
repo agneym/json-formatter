@@ -8,6 +8,7 @@ const Container = styled.div`
   height: 100%;
   transform: scaleX(0);
   transform-origin: right;
+  background-color: #ffffff;
 `;
 
 const Content = ({ show, children }) => {

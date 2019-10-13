@@ -5,7 +5,7 @@ import styled from "styled-components";
 import SideBtn from "./SideBtn";
 import Content from "./Content";
 import ErrorBoundary from "../ErrorBoundary";
-import useClickOutside from "../../utils/hooks/use-click-outside";
+import Header from "./Header";
 
 const Aside = styled.aside`
   position: fixed;
@@ -17,32 +17,40 @@ const Aside = styled.aside`
 
 const HeaderContainer = styled.div`
   position: absolute;
-  top: 5rem;
-  left: -8rem;
-  transform: rotate(270deg);
+  top: 11rem;
+  left: -4rem;
+  display: flex;
+  flex-direction: row-reverse;
 `;
 
 const CollapsibleTabs = ({ tabs, children }) => {
   const sideContainer = useRef(null);
   const [selected, setSelected] = useState(null);
-  useClickOutside(sideContainer, () => {
+
+  const close = () => {
     setSelected(null);
-  });
+  };
+
   return (
     <ErrorBoundary>
       <Aside ref={sideContainer}>
         <HeaderContainer>
-          {tabs.map(({ key, header, component }) => (
+          {tabs.map(tabConfig => (
             <SideBtn
-              active={key === selected}
-              key={key}
-              onClick={() => setSelected(component)}
+              active={tabConfig.key === selected}
+              key={tabConfig.key}
+              onClick={() => setSelected(tabConfig)}
             >
-              {header}
+              <span>{tabConfig.title}</span>
             </SideBtn>
           ))}
         </HeaderContainer>
-        <Content show={!!selected}>{children(selected)}</Content>
+        {selected && (
+          <Content show={!!selected}>
+            <Header title={selected.title} onClose={close} />
+            {children(selected.component)}
+          </Content>
+        )}
       </Aside>
     </ErrorBoundary>
   );

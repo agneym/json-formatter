@@ -58,7 +58,7 @@ function InfoBanner() {
         <span role="img" aria-label="Computer">
           💻
         </span>
-        <span> by</span>
+        <span> by </span>
         <a href="https://agney.dev" target="_blank" rel="noopener noreferrer">
           Agney
         </a>

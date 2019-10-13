@@ -7,10 +7,14 @@ const SideBtn = styled.button`
   color: #ffffff;
   box-shadow: none;
   border: none;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem;
   text-align: center;
   font-size: 1.6rem;
   margin: 0 1rem;
+
+  & > span {
+    writing-mode: vertical-lr;
+  }
 `;
 
 export default SideBtn;

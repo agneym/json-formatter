@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, Fragment } from "react";
+
 import pluginPropType from "./pluginType";
 
 function ExternalUI({ details }) {
-  return <p>ExternalUI</p>;
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.setAttribute("src", details.url);
+    document.head.appendChild(script);
+  }, [details]);
+
+  const Tag = details.tagName;
+  return (
+    <Fragment>
+      <Tag />
+    </Fragment>
+  );
 }
 
 ExternalUI.propTypes = {

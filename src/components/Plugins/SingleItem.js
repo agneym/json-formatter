@@ -19,13 +19,14 @@ const Description = styled.p`
   overflow: hidden;
 `;
 
-function SingleItem({ name, description }) {
+function SingleItem({ name, description, onClick }) {
   return (
     <Container>
       <NakedButton
         css={`
           width: 100%;
         `}
+        onClick={onClick}
       >
         <h3
           css={`
@@ -43,6 +44,7 @@ function SingleItem({ name, description }) {
 SingleItem.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SingleItem;

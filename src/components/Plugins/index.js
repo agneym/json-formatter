@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 
-import SingleItem from "./SingleItem";
+import Listing from "./Listing";
 
 const Content = styled.ul`
   margin: 0.8rem 0;
@@ -13,22 +13,21 @@ const Content = styled.ul`
 
 const pluginsDir = [
   {
-    name: "Plugin Name",
+    name: "Test Plugin",
     description: "Whatever works",
+    url: "https://unpkg.com/@agney/og-json-utils",
+    tagName: "og-json-utils",
   },
 ];
 
 function Plugins() {
+  const loadPlugin = () => {
+    console.log("load plugin");
+  };
   return (
     <Fragment>
       <Content>
-        {pluginsDir.map(pluginItem => (
-          <SingleItem
-            key={pluginItem.name}
-            name={pluginItem.name}
-            description={pluginItem.description}
-          />
-        ))}
+        <Listing list={pluginsDir} onClick={loadPlugin} />
       </Content>
     </Fragment>
   );

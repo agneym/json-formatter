@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import CloseIcon from "../../icons/close.svg";
 import NakedButton from "../../utils/NakedButton";
@@ -20,7 +21,7 @@ const Heading = styled.h2`
 function Header({ title }) {
   return (
     <Container>
-      <h2>{title}</h2>
+      <Heading>{title}</Heading>
       <NakedButton title="Close">
         <CloseIcon
           css={`
@@ -31,5 +32,13 @@ function Header({ title }) {
     </Container>
   );
 }
+
+Header.defaultProps = {
+  title: "Plugin",
+};
+
+Header.propTypes = {
+  title: PropTypes.string,
+};
 
 export default Header;

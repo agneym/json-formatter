@@ -24,14 +24,14 @@ const pluginsDir = [
 function Plugins() {
   const [plugin, setPlugin] = useState(null);
 
-  const loadPlugin = () => {
-    console.log("load plugin");
+  const loadPlugin = selectedPlugin => {
+    setPlugin(selectedPlugin);
   };
   return (
     <Fragment>
       <Content>
         {plugin ? (
-          <ExternalUI />
+          <ExternalUI details={plugin} />
         ) : (
           <Listing list={pluginsDir} onClick={loadPlugin} />
         )}

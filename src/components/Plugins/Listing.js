@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import SingleItem from "./SingleItem";
+import pluginPropType from "./pluginType";
 
 function Listing({ list, onClick }) {
   return (
@@ -11,7 +12,7 @@ function Listing({ list, onClick }) {
           key={pluginItem.name}
           name={pluginItem.name}
           description={pluginItem.description}
-          onClick={onClick}
+          onClick={() => onClick(pluginItem)}
         />
       ))}
     </Fragment>
@@ -19,13 +20,7 @@ function Listing({ list, onClick }) {
 }
 
 Listing.propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string,
-      name: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ).isRequired,
+  list: PropTypes.arrayOf(pluginPropType).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

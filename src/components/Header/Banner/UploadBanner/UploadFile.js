@@ -22,6 +22,17 @@ const OutInput = styled.input`
   }
 `;
 
+const ClearButton = styled.button`
+  background: none;
+  border: none;
+  font: inherit;
+  margin-left: 5px;
+
+  &:focus {
+    outline: 0.1rem solid ${props => props.theme.colors.primary};
+  }
+`;
+
 const readFile = (file, setData) => {
   const reader = new FileReader();
   reader.addEventListener("load", event => {
@@ -55,10 +66,10 @@ function UploadFile({ setData }) {
             text-align: center;
           `}
         >
-          <p>1 File Selected.</p>
-          <button title="Clear File" onClick={clearFile}>
+          <span>1 File Selected.</span>
+          <ClearButton title="Clear File" onClick={clearFile}>
             ✖
-          </button>
+          </ClearButton>
         </div>
       ) : (
         <div

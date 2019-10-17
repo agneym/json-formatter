@@ -32,6 +32,7 @@ function getEditor() {
         minimap: {
           enabled: false,
         },
+        automaticLayout: true,
       });
     }
     return editor;

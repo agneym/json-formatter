@@ -19,7 +19,6 @@ const actionButtonStyles = {
 };
 
 function EditorActions({ editorConfig }) {
-  console.log(editorConfig);
   const copyToClipboard = () => {
     // Pull the full contents of the editor off the config
     const textToCopy = editorConfig.getValue();

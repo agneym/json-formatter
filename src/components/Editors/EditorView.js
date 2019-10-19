@@ -11,13 +11,8 @@ const EditorView = () => {
   const [transformed, setTransformed] = useState(null);
   const [editorVal, setEditorVal] = useState("");
 
-  const onTransform = transformCode => {
+  const onTransform = transformedValue => {
     try {
-      const originalValue = editorConfig.getValue();
-      const originalValueObj = JSON.parse(originalValue);
-      const transformedValue = Function(
-        `"use strict";return (${transformCode})`
-      )()(originalValueObj);
       const transformedValueJson = JSON.stringify(transformedValue);
       setTransformed(transformedValueJson);
     } catch (err) {

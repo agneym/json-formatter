@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
@@ -21,17 +22,23 @@ const pluginsDir = [
   },
 ];
 
-function Plugins() {
+function Plugins({ onTransform }) {
   const [plugin, setPlugin] = useState(null);
 
   const loadPlugin = selectedPlugin => {
     setPlugin(selectedPlugin);
   };
+
+  const handleTransform = transformedValue => {
+    console.log("transform");
+    onTransform(transformedValue);
+    setPlugin(null);
+  };
   return (
     <Fragment>
       <Content>
         {plugin ? (
-          <ExternalUI details={plugin} />
+          <ExternalUI details={plugin} onTransform={handleTransform} />
         ) : (
           <Listing list={pluginsDir} onClick={loadPlugin} />
         )}
@@ -39,5 +46,9 @@ function Plugins() {
     </Fragment>
   );
 }
+
+Plugins.propTypes = {
+  onTransform: PropTypes.func.isRequired,
+};
 
 export default Plugins;

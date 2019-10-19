@@ -1,9 +1,10 @@
 import React, { useEffect, Fragment, useContext, useRef } from "react";
+import PropTypes from "prop-types";
 
 import pluginPropType from "./pluginType";
 import EditorContext from "../Editors/EditorContext";
 
-function ExternalUI({ details }) {
+function ExternalUI({ details, onTransform }) {
   const editorConfig = useContext(EditorContext);
   const elementRef = useRef();
 
@@ -11,18 +12,25 @@ function ExternalUI({ details }) {
     const script = document.createElement("script");
     script.setAttribute("src", details.url);
     document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
   }, [details]);
 
   useEffect(() => {
     const elementNode = elementRef.current;
     function onTransform(event) {
-      const { message: data } = event.detail;
-      editorConfig.setValue(data);
+      const detail = event.detail;
+      if (detail) {
+        console.log("on transform being called", detail.message);
+        onTransform(detail.message);
+      }
     }
     if (elementNode) {
       elementNode.addEventListener("json-transform", onTransform);
     }
-  }, [editorConfig]);
+  }, [onTransform]);
 
   const value = editorConfig.getValue();
 
@@ -37,6 +45,7 @@ function ExternalUI({ details }) {
 
 ExternalUI.propTypes = {
   details: pluginPropType,
+  onTransform: PropTypes.func.isRequired,
 };
 
 export default ExternalUI;

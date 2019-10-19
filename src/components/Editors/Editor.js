@@ -6,7 +6,6 @@ import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
 import "monaco-editor/esm/vs/editor/contrib/find/findController.js";
 import "monaco-editor/esm/vs/editor/contrib/folding/folding.js";
 import "monaco-editor/esm/vs/editor/contrib/bracketMatching/bracketMatching.js";
-import "monaco-editor/esm/vs/language/typescript/monaco.contribution";
 import "monaco-editor/esm/vs/language/json/monaco.contribution";
 import "monaco-editor/esm/vs/editor/standalone/browser/accessibilityHelp/accessibilityHelp.js";
 import "monaco-editor/esm/vs/editor/contrib/wordHighlighter/wordHighlighter.js";
@@ -18,8 +17,6 @@ import "monaco-editor/esm/vs/editor/contrib/format/formatActions.js";
 import "monaco-editor/esm/vs/editor/contrib/inPlaceReplace/inPlaceReplace.js";
 import "monaco-editor/esm/vs/editor/contrib/linesOperations/linesOperations.js";
 
-import codeForTransform from "../../config/transform";
-
 function Editor({ editorConfig, modelType, value }) {
   const editorContainer = useRef(null);
   useEffect(() => {
@@ -27,8 +24,6 @@ function Editor({ editorConfig, modelType, value }) {
       editorConfig.createEditor(editorContainer.current);
       if (modelType === "json") {
         editorConfig.createJsonModel(value);
-      } else {
-        editorConfig.createJsModel(codeForTransform);
       }
     }
     return () => {

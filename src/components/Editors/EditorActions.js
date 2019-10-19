@@ -12,9 +12,10 @@ const mainButtonStyles = {
 };
 
 const actionButtonStyles = {
-  backgroundColor: "#EB5160",
+  backgroundColor: "#2F78F1",
   color: "#FFF",
   fill: "#FFF",
+  fontSize: "24px",
   fontWeight: "normal",
 };
 
@@ -57,7 +58,7 @@ function EditorActions({ editorConfig }) {
         onClick={clearEditor}
         style={actionButtonStyles}
       >
-        X
+        ×
       </Action>
     </Fab>
   );

@@ -7,11 +7,6 @@ function ExternalUI({ details }) {
   const editorConfig = useContext(EditorContext);
   const elementRef = useRef();
 
-  function onTransform(event) {
-    const data = event.detail;
-    console.log(data, event);
-  }
-
   useEffect(() => {
     const script = document.createElement("script");
     script.setAttribute("src", details.url);
@@ -20,10 +15,14 @@ function ExternalUI({ details }) {
 
   useEffect(() => {
     const elementNode = elementRef.current;
+    function onTransform(event) {
+      const { message: data } = event.detail;
+      editorConfig.setValue(data);
+    }
     if (elementNode) {
       elementNode.addEventListener("json-transform", onTransform);
     }
-  }, []);
+  }, [editorConfig]);
 
   const value = editorConfig.getValue();
 

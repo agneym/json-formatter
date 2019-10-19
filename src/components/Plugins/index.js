@@ -30,7 +30,6 @@ function Plugins({ onTransform }) {
   };
 
   const handleTransform = transformedValue => {
-    console.log("transform");
     onTransform(transformedValue);
     setPlugin(null);
   };

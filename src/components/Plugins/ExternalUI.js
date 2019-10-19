@@ -20,15 +20,14 @@ function ExternalUI({ details, onTransform }) {
 
   useEffect(() => {
     const elementNode = elementRef.current;
-    function onTransform(event) {
+    function handleTransform(event) {
       const detail = event.detail;
       if (detail) {
-        console.log("on transform being called", detail.message);
         onTransform(detail.message);
       }
     }
     if (elementNode) {
-      elementNode.addEventListener("json-transform", onTransform);
+      elementNode.addEventListener("json-transform", handleTransform);
     }
   }, [onTransform]);
 

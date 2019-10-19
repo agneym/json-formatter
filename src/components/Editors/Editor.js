@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
+import EditorActions from "./EditorActions";
 
 import "monaco-editor/esm/vs/editor/contrib/hover/hover.js";
 import "monaco-editor/esm/vs/editor/browser/controller/coreCommands.js";
@@ -36,13 +37,16 @@ function Editor({ editorConfig, modelType, value }) {
     };
   }, [modelType, editorConfig]);
   return (
-    <div
-      ref={editorContainer}
-      css={`
-        height: 100%;
-        width: 100%;
-      `}
-    />
+    <Fragment>
+      <div
+        ref={editorContainer}
+        css={`
+          height: 100%;
+          width: 100%;
+        `}
+      />
+      <EditorActions editorConfig={editorConfig} />
+    </Fragment>
   );
 }
 

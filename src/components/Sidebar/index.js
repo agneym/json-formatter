@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Formik } from "formik";
 import PropTypes from "prop-types";
 
-import CopyButton from "./CopyButton";
 import FormattingOptions from "./FormattingOptions";
 import JsonOptions from "./JsonOptions";
 import EditorOptions, { themes } from "./EditorOptions";
@@ -112,7 +111,6 @@ function Sidebar({ editorConfig }) {
       <Formik initialValues={config} enableReinitialize={true}>
         {({ values, handleChange }) => (
           <Form>
-            <CopyButton editorConfig={editorConfig} />
             <FormattingOptions
               values={values}
               handleChange={handleChange}
@@ -141,7 +139,6 @@ Sidebar.propTypes = {
     updateFormatOptions: PropTypes.func.isRequired,
     updateJsonOptions: PropTypes.func.isRequired,
     changeTheme: PropTypes.func.isRequired,
-    getValue: PropTypes.func.isRequired,
   }),
 };
 

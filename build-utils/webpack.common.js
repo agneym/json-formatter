@@ -1,7 +1,7 @@
 const commonPaths = require("./common-paths");
 const webpack = require("webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 const config = {
   entry: {
@@ -10,10 +10,10 @@ const config = {
   output: {
     filename: "[name].bundle.js",
     path: commonPaths.outputPath,
-    publicPath: "/"
+    publicPath: "/",
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
@@ -24,30 +24,30 @@ const config = {
           {
             loader: "url-loader",
             options: {
-              limit: 1000
-            }
-          }
-        ]
+              limit: 1000,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.html$/,
         use: ["html-loader"],
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new htmlWebpackPlugin({
-      template: "public/index.html"
+      template: "public/index.html",
     }),
     new MonacoWebpackPlugin({
-      languages: ["javascript", "json", "typescript"],
-    })
-  ]
+      languages: ["json"],
+    }),
+  ],
 };
 
 module.exports = config;

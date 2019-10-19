@@ -5,12 +5,12 @@ import CollapsibleTabs from "../CollapsibleTabs";
 
 const Plugins = lazy(() => import("../Plugins"));
 
-function Tabs() {
+function Tabs({ onTransform }) {
   const tabs = [
     {
       key: "plugins",
       title: "Plugins",
-      component: <Plugins />,
+      component: <Plugins onTransform={onTransform} />,
     },
   ];
   return (

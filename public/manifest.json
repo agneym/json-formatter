@@ -1,0 +1,20 @@
+{
+  "name": "JSON Crew",
+  "short_name": "JC",
+  "start_url": "/",
+  "background_color": "#000000",
+  "theme_color": "#3B8BEB",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

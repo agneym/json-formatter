@@ -22,7 +22,7 @@ const EditorView = () => {
   const loadEditor = value => {
     setTransformed("");
     setEditorVal(value);
-    editorConfig.format();
+    setTimeout(() => editorConfig.format(), 0);
   };
   return (
     <Fragment>

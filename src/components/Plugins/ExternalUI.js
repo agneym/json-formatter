@@ -1,44 +1,51 @@
-import React, { useEffect, Fragment, useContext, useRef } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import pluginPropType from "./pluginType";
 import EditorContext from "../Editors/EditorContext";
 
+const EVENT_TYPE = "json-transform";
+
 function ExternalUI({ details, onTransform }) {
   const editorConfig = useContext(EditorContext);
-  const elementRef = useRef();
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.setAttribute("src", details.url);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, [details]);
-
-  useEffect(() => {
-    const elementNode = elementRef.current;
-    function handleTransform(event) {
-      const detail = event.detail;
-      if (detail) {
-        onTransform(detail.message);
-      }
+  window.addEventListener("message", event => {
+    const eventData = event.data;
+    const eventType = eventData.__event;
+    if (eventType === EVENT_TYPE) {
+      onTransform(eventData.message);
     }
-    if (elementNode) {
-      elementNode.addEventListener("json-transform", handleTransform);
-    }
-  }, [onTransform]);
+  });
 
   const value = editorConfig.getValue();
 
-  const Tag = details.tagName;
-
   return (
-    <Fragment>
-      <Tag data={value} ref={elementRef} />
-    </Fragment>
+    <iframe
+      width="100%"
+      height="100%"
+      title="Plugin UI"
+      frameBorder="0"
+      srcDoc={`
+      <html>
+        <head>
+          <script src=${details.url}></script>
+        </head>
+        <body>
+          <${details.tagName} data='${value}'></${details.tagName}>
+          <script>
+            function handleTransform(event) {
+              const detail = event.detail;
+              if (detail) {
+                const eventDetail = {...detail, __event: "json-transform"};
+                window.top.postMessage(eventDetail, "*");
+              }
+            }
+            const el = document.querySelector("${details.tagName}");  
+            el.addEventListener("json-transform", handleTransform);
+          </script>
+        </body>
+      </html>`}
+    />
   );
 }
 

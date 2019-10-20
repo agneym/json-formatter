@@ -45,6 +45,8 @@ module.exports = {
       globDirectory: commonPaths.outputPath,
       globPatterns: ["**/*.{html,js,css}"],
       swDest: path.join(commonPaths.outputPath, "sw.js"),
+      clientsClaim: true,
+      skipWaiting: true,
     }),
     new CopyWebpackPlugin([
       {

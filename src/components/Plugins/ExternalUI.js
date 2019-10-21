@@ -22,7 +22,7 @@ function ExternalUI({ details, onTransform }) {
   return (
     <iframe
       width="100%"
-      height="100%"
+      height="99%"
       title="Plugin UI"
       frameBorder="0"
       srcDoc={`

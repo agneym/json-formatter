@@ -7,7 +7,7 @@ import ExternalUI from "./ExternalUI";
 
 const Content = styled.ul`
   margin: 0.8rem 0;
-  height: calc(100% - 10rem);
+  height: calc(100% - 11rem);
   overflow-y: auto;
   list-style: none;
   width: 100%;

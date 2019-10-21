@@ -92,7 +92,7 @@
     "react-dom": "^16.10.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-select": "^3.0.4",
+    "react-select": "^3.0.8",
     "react-spring": "^8.0.27",
     "react-tiny-fab": "^3.0.3",
     "react-use-web-share": "^1.0.0",

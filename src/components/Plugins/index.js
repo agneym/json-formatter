@@ -35,13 +35,15 @@ function Plugins({ onTransform }) {
   };
   return (
     <Fragment>
-      <Content>
-        {plugin ? (
+      {plugin ? (
+        <Content as="section">
           <ExternalUI details={plugin} onTransform={handleTransform} />
-        ) : (
+        </Content>
+      ) : (
+        <Content>
           <Listing list={pluginsDir} onClick={loadPlugin} />
-        )}
-      </Content>
+        </Content>
+      )}
     </Fragment>
   );
 }

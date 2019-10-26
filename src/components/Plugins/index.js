@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
+import pluginsDir from "./pluginDir";
 
 const Content = styled.ul`
   margin: 0.8rem 0;
@@ -12,15 +13,6 @@ const Content = styled.ul`
   list-style: none;
   width: 100%;
 `;
-
-const pluginsDir = [
-  {
-    name: "Transform JSON",
-    description: "Transform JSON strings using JavaScript.",
-    url: "https://unpkg.com/@agney/jc-transform-json",
-    tagName: "jc-transform-json",
-  },
-];
 
 function Plugins({ onTransform }) {
   const [plugin, setPlugin] = useState(null);

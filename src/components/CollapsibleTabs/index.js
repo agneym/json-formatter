@@ -6,6 +6,7 @@ import SideBtn from "./SideBtn";
 import Content from "./Content";
 import ErrorBoundary from "../ErrorBoundary";
 import Header from "./Header";
+import SelectedComp from "./SelectedComp";
 
 const Aside = styled.aside`
   position: fixed;
@@ -46,10 +47,11 @@ const CollapsibleTabs = ({ tabs, children }) => {
           ))}
         </HeaderContainer>
         {selected && (
-          <Content show={!!selected}>
-            <Header title={selected.title} onClose={close} />
-            {children(selected.component)}
-          </Content>
+          <SelectedComp
+            component={children(selected.component)}
+            selected={selected}
+            close={close}
+          />
         )}
       </Aside>
     </ErrorBoundary>

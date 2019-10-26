@@ -13,8 +13,7 @@ function ExternalUI({ details, onTransform }) {
     const eventData = event.data;
     const eventType = eventData.__event;
     if (eventType === EVENT_TYPE) {
-      const data = JSON.parse(eventData.message);
-      onTransform(data);
+      onTransform(eventData.message);
     }
   });
 

@@ -15,7 +15,20 @@ An in-place JSON Viewer, Formatter and Transformer.
 1. JSON Viewer
 2. JSON Formatting with options.
 3. JSON Validation according to schemas
-4. Transform JSON using JavaScript.
+4. Supports Plugins to extend Functionality.
+
+## How to create a JC Plugin
+
+JSON Crew Plugin system is based on Web Components.
+
+It gives the JSON data entered by the user as input to the web component and allows it to render the UI for plugin area. From here, you can transform the JSON and emit a custom event `json-transform` with transformed JSON as the transformation response.
+
+1. Web Component gets `data` as input
+2. Render UI and allow user to configure the transformation
+3. Emit a custom event `json-transform` to show the transformed JSON to the user.
+4. Give me a PR editing the [listing file](https://github.com/BoyWithSilverWings/json-formatter/blob/master/src/components/Plugins/pluginDir.js)
+
+A Starting Template with [Lit Element](https://lit-element.polymer-project.org) can be found [here](https://github.com/BoyWithSilverWings/jc-json-utils)
 
 ## Contributing
 

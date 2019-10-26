@@ -13,7 +13,8 @@ function ExternalUI({ details, onTransform }) {
     const eventData = event.data;
     const eventType = eventData.__event;
     if (eventType === EVENT_TYPE) {
-      onTransform(eventData.message);
+      const data = JSON.parse(eventData.message);
+      onTransform(data);
     }
   });
 
@@ -29,7 +30,7 @@ function ExternalUI({ details, onTransform }) {
       <html>
         <head>
           <style>.loader{position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);}</style>
-          <script src=${details.url}></script>
+          <script type="module" src=${details.url}></script>
         </head>
         <body>
           <${details.tagName} data='${value}'></${details.tagName}>

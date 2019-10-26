@@ -15,10 +15,10 @@ const Content = styled.ul`
 
 const pluginsDir = [
   {
-    name: "Test Plugin",
-    description: "Whatever works",
-    url: "https://unpkg.com/@agney/og-json-utils",
-    tagName: "og-json-utils",
+    name: "Transform JSON",
+    description: "Transform JSON strings using JavaScript.",
+    url: "https://unpkg.com/@agney/jc-transform-json",
+    tagName: "jc-transform-json",
   },
 ];
 

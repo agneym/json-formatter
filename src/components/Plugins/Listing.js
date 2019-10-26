@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 
 import SingleItem from "./SingleItem";
 import pluginPropType from "./pluginType";
+import Header from "./Header";
 
 function Listing({ list, onClick }) {
   return (
     <Fragment>
+      <Header title="Plugins" />
       {list.map(pluginItem => (
         <SingleItem
           key={pluginItem.name}

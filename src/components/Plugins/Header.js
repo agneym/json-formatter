@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import CloseIcon from "../../icons/close.svg";
 import NakedButton from "../../utils/NakedButton";
+import TabContext from "../CollapsibleTabs/TabContext";
 
 const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 0 2rem;
 `;
 
 const Heading = styled.h2`
@@ -19,11 +20,13 @@ const Heading = styled.h2`
   overflow: hidden;
 `;
 
-function Header({ title, onClose }) {
+function Header({ title, back }) {
+  const { close } = useContext(TabContext);
   return (
     <Container>
+      {back && <NakedButton onClick={back}>←</NakedButton>}
       <Heading>{title}</Heading>
-      <NakedButton title="Close" onClick={onClose}>
+      <NakedButton title="Close" onClick={close}>
         <CloseIcon
           css={`
             height: 2rem;
@@ -40,7 +43,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
   title: PropTypes.string,
-  onClose: PropTypes.func,
+  back: PropTypes.func,
 };
 
 export default Header;

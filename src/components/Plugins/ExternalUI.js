@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import PropTypes from "prop-types";
 
 import pluginPropType from "./pluginType";
 import EditorContext from "../Editors/EditorContext";
+import Header from "./Header";
 
 const EVENT_TYPE = "json-transform";
 
-function ExternalUI({ details, onTransform }) {
+function ExternalUI({ details, goBack, onTransform }) {
   const editorConfig = useContext(EditorContext);
 
   window.addEventListener("message", event => {
@@ -20,12 +21,14 @@ function ExternalUI({ details, onTransform }) {
   const value = editorConfig.getValue();
 
   return (
-    <iframe
-      width="100%"
-      height="99%"
-      title="Plugin UI"
-      frameBorder="0"
-      srcDoc={`
+    <Fragment>
+      <Header back={goBack} />
+      <iframe
+        width="100%"
+        height="99%"
+        title="Plugin UI"
+        frameBorder="0"
+        srcDoc={`
       <html>
         <head>
           <style>.loader{position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);}</style>
@@ -51,13 +54,15 @@ function ExternalUI({ details, onTransform }) {
           </script>
         </body>
       </html>`}
-    />
+      />
+    </Fragment>
   );
 }
 
 ExternalUI.propTypes = {
   details: pluginPropType,
   onTransform: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
 };
 
 export default ExternalUI;

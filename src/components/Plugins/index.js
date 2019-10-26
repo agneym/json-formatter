@@ -14,9 +14,8 @@ const Content = styled.ul`
   width: 100%;
 `;
 
-function Plugins({ close, onTransform }) {
+function Plugins({ onTransform }) {
   const [plugin, setPlugin] = useState(null);
-  console.log(close);
 
   const loadPlugin = selectedPlugin => {
     setPlugin(selectedPlugin);
@@ -26,11 +25,19 @@ function Plugins({ close, onTransform }) {
     onTransform(transformedValue);
     setPlugin(null);
   };
+
+  const goBack = () => {
+    setPlugin(null);
+  };
   return (
     <Fragment>
       {plugin ? (
         <Content as="section">
-          <ExternalUI details={plugin} onTransform={handleTransform} />
+          <ExternalUI
+            details={plugin}
+            onTransform={handleTransform}
+            goBack={goBack}
+          />
         </Content>
       ) : (
         <Content>

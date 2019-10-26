@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { lazy, useEffect, useState, Fragment } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import {
   GlobalStyle as BuffetGlobalStyles,
@@ -13,7 +13,8 @@ import getEditor from "../utils/editor-actions";
 import Sidebar from "./Sidebar";
 import EditorView from "./Editors/EditorView";
 import { EditorCtxProvider } from "./Editors/EditorContext";
-import MobileMessage from "./MobileMessage";
+
+const MobileMessage = lazy(() => import("./MobileMessage"));
 
 const Main = styled.main`
   min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);

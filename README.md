@@ -28,6 +28,8 @@ It gives the JSON data entered by the user as input to the web component and all
 3. Emit a custom event `json-transform` to show the transformed JSON to the user.
 4. Give me a PR editing the [listing file](https://github.com/BoyWithSilverWings/json-formatter/blob/master/src/components/Plugins/pluginDir.js)
 
+[Tutorial Blog](https://dev.to/boywithsilverwings/creating-a-json-crew-plugin-2l55)
+
 A Starting Template with [Lit Element](https://lit-element.polymer-project.org) can be found [here](https://github.com/BoyWithSilverWings/jc-json-utils)
 
 ## Contributing

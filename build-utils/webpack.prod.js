@@ -7,6 +7,9 @@ const workboxPlugin = require("workbox-webpack-plugin");
 const path = require("path");
 const commonPaths = require("./common-paths");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
@@ -59,5 +62,7 @@ module.exports = {
         to: commonPaths.outputPath,
       },
     ]),
+    new MomentLocalesPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
 };

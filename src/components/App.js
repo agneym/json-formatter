@@ -5,6 +5,7 @@ import {
   Fonts as BuffetFonts,
 } from "buffetjs";
 import Peer from "peerjs";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import theme from "../utils/theme";
 import GlobalStyles from "../utils/GlobalStyles";
@@ -44,29 +45,36 @@ function App() {
   }, []);
   return (
     <ThemeProvider theme={theme}>
-      <EditorCtxProvider value={editorConfig}>
-        {!isMobile ? (
-          <Fragment>
-            <Header />
-            <div
-              role="group"
-              css={`
-                display: flex;
-              `}
-            >
-              <Sidebar editorConfig={editorConfig} />
-              <Main>
-                <EditorView />
-              </Main>
-            </div>
-          </Fragment>
-        ) : (
-          <MobileMessage />
-        )}
-        <BuffetFonts />
-        <BuffetGlobalStyles />
-        <GlobalStyles />
-      </EditorCtxProvider>
+      <BrowserRouter>
+        <Route
+          path="/"
+          render={() => (
+            <EditorCtxProvider value={editorConfig}>
+              {!isMobile ? (
+                <Fragment>
+                  <Header />
+                  <div
+                    role="group"
+                    css={`
+                      display: flex;
+                    `}
+                  >
+                    <Sidebar editorConfig={editorConfig} />
+                    <Main>
+                      <EditorView />
+                    </Main>
+                  </div>
+                </Fragment>
+              ) : (
+                <MobileMessage />
+              )}
+              <BuffetFonts />
+              <BuffetGlobalStyles />
+              <GlobalStyles />
+            </EditorCtxProvider>
+          )}
+        />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

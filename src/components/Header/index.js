@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import FormatBtn from "./FormatBtn";
 import Popover from "../Popover";
@@ -28,11 +29,13 @@ function Header() {
   const editorConfig = useContext(EditorContext);
   return (
     <Nav>
-      <LogoIcon
-        css={`
-          width: 18%;
-        `}
-      />
+      <Link to="/" aria-label="Logo link to home">
+        <LogoIcon
+          css={`
+            height: 2rem;
+          `}
+        />
+      </Link>
       <FormatBtn onClick={editorConfig.format} />
       <div
         css={`

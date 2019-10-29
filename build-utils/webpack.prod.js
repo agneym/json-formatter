@@ -7,8 +7,8 @@ const workboxPlugin = require("workbox-webpack-plugin");
 const path = require("path");
 const commonPaths = require("./common-paths");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
@@ -63,6 +63,6 @@ module.exports = {
       },
     ]),
     new MomentLocalesPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };

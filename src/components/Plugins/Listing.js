@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import SingleItem from "./SingleItem";
 import pluginPropType from "./pluginType";
 import Header from "./Header";
+import FootNote from "./FootNote";
 
 function Listing({ list, onClick }) {
   return (
@@ -17,6 +18,7 @@ function Listing({ list, onClick }) {
           onClick={() => onClick(pluginItem)}
         />
       ))}
+      <FootNote />
     </Fragment>
   );
 }

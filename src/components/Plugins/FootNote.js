@@ -11,7 +11,7 @@ const FootNote = () => {
     >
       <span>Can&apos;t find one to your liking? </span>
       <a
-        href="https://dev.to/boywithsilverwings/creating-a-json-crew-plugin-2l55s"
+        href="https://dev.to/boywithsilverwings/creating-a-json-crew-plugin-2l55"
         css={`
           color: rgba(0, 0, 0, 1);
         `}

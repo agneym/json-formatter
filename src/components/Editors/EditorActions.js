@@ -35,9 +35,13 @@ function EditorActions({ editorConfig }) {
     document.body.removeChild(copyableArea);
   };
 
-  const collapseAll = () => {};
+  const collapseAll = () => {
+    editorConfig.collapseAll();
+  };
 
-  const expandAll = () => {};
+  const expandAll = () => {
+    editorConfig.expandAll();
+  };
 
   const clearEditor = () => {
     editorConfig.setValue("");

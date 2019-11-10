@@ -12,6 +12,8 @@ import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
  * @returns {function} config.changeTheme - Function to change theme
  * @returns {function} config.getValue - gets the text in editor
  * @returns {function} config.setValue - sets the text in editor
+ * @returns {function} config.collapseAll - collapse the editor content
+ * @returns {function} config.expandAll - expand the editor content
  * @returns {function} config.createJsonModel - sets the text in editor
  */
 function getEditor() {
@@ -73,6 +75,26 @@ function getEditor() {
       return;
     }
     return model.getValue();
+  };
+
+  /**
+   * Collapse the editor content.
+   */
+  const collapseAll = () => {
+    if (!editor) {
+      return;
+    }
+    editor.trigger("fold", "editor.foldAll");
+  };
+
+  /**
+   * Expand the editor content.
+   */
+  const expandAll = () => {
+    if (!editor) {
+      return;
+    }
+    editor.trigger("unfold", "editor.unfoldAll");
   };
 
   /**
@@ -145,6 +167,8 @@ function getEditor() {
     updateJsonOptions,
     createJsModel,
     createJsonModel,
+    collapseAll,
+    expandAll,
   };
 }
 

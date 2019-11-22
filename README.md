@@ -1,6 +1,6 @@
 # JSON Crew
 
-![badge](https://action-badges.now.sh/BoyWithSilverWings/json-formatter)
+![badge](https://action-badges.now.sh/agneym/json-formatter)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3748ee21-7ff9-434c-b59b-64ad757e72e5/deploy-status)](https://app.netlify.com/sites/jsoncrew/deploys)
 <a href="https://prettier.io">
 <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
@@ -26,11 +26,11 @@ It gives the JSON data entered by the user as input to the web component and all
 1. Web Component gets `data` as input
 2. Render UI and allow user to configure the transformation
 3. Emit a custom event `json-transform` to show the transformed JSON to the user.
-4. Give me a PR editing the [listing file](https://github.com/BoyWithSilverWings/json-formatter/blob/master/src/components/Plugins/pluginDir.js)
+4. Give me a PR editing the [listing file](https://github.com/agneym/json-formatter/blob/master/src/components/Plugins/pluginDir.js)
 
 [Tutorial Blog](https://dev.to/boywithsilverwings/creating-a-json-crew-plugin-2l55)
 
-A Starting Template with [Lit Element](https://lit-element.polymer-project.org) can be found [here](https://github.com/BoyWithSilverWings/jc-json-utils)
+A Starting Template with [Lit Element](https://lit-element.polymer-project.org) can be found [here](https://github.com/agneym/jc-json-utils)
 
 ## Contributing
 

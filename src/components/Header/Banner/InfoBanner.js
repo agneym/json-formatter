@@ -33,7 +33,7 @@ function InfoBanner() {
       <Section>
         <span>Code is Open Source on </span>
         <a
-          href="https://github.com/BoyWithSilverWings/json-formatter"
+          href="https://github.com/agneym/json-formatter"
           target="_blank"
           rel="noopener noreferrer"
         >

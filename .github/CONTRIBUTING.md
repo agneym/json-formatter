@@ -28,11 +28,11 @@ _You don't have to know all of them inside out to help with the project, but som
 
 I myself find this the most stressful part of contributing.
 
-Look at the [Issues](https://github.com/BoyWithSilverWings/json-formatter/issues) and pick an issue you would be comfortable with. Add a comment to the page volunteering to pick the issue up.
+Look at the [Issues](https://github.com/agneym/json-formatter/issues) and pick an issue you would be comfortable with. Add a comment to the page volunteering to pick the issue up.
 
 Definitely **don't** try to fix it before adding the comment. I know that it seems hard to put your hand up first but we certainly don't want your effort to go in vain. If you are facing issues trying to solve it, let me know in the comments again and we can figure something out; together.
 
-If you have found a new issue, [file the issue](https://github.com/BoyWithSilverWings/json-formatter/issues/new/choose) in the repository and let me know if you would like to work on it. Some things are by design or are planned to be done further down the roadmap, this would help avoid unnecessary work being done. Having a public issue can also help other weigh in on it and suggest methods to do forward.
+If you have found a new issue, [file the issue](https://github.com/agneym/json-formatter/issues/new/choose) in the repository and let me know if you would like to work on it. Some things are by design or are planned to be done further down the roadmap, this would help avoid unnecessary work being done. Having a public issue can also help other weigh in on it and suggest methods to do forward.
 
 ## Developing
 

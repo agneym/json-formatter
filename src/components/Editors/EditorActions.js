@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Fab, Action } from "react-tiny-fab";
 
-import CopyIcon from '../../icons/copy.svg';
+import CopyIcon from "../../icons/copy.svg";
+import ExpandIcon from "../../icons/expand.svg";
+import CollapseIcon from "../../icons/collapse.svg";
 
 import "react-tiny-fab/dist/styles.css";
 
@@ -33,15 +35,20 @@ function EditorActions({ editorConfig }) {
     document.body.removeChild(copyableArea);
   };
 
+  const collapseAll = () => {
+    editorConfig.collapseAll();
+  };
+
+  const expandAll = () => {
+    editorConfig.expandAll();
+  };
+
   const clearEditor = () => {
     editorConfig.setValue("");
   };
 
   return (
-    <Fab
-      icon="+"
-      mainButtonStyles={mainButtonStyles}
-    >
+    <Fab icon="+" mainButtonStyles={mainButtonStyles}>
       <Action
         text="Copy to Clipboard"
         onClick={copyToClipboard}
@@ -49,8 +56,26 @@ function EditorActions({ editorConfig }) {
       >
         <CopyIcon
           css={`
-              height: 2rem
-            `}
+            height: 2rem;
+          `}
+        />
+      </Action>
+      <Action text="Expand all" onClick={expandAll} style={actionButtonStyles}>
+        <ExpandIcon
+          css={`
+            height: 2rem;
+          `}
+        />
+      </Action>
+      <Action
+        text="Collapse all"
+        onClick={collapseAll}
+        style={actionButtonStyles}
+      >
+        <CollapseIcon
+          css={`
+            height: 2rem;
+          `}
         />
       </Action>
       <Action

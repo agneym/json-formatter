@@ -42,3 +42,7 @@ npm start
 Development server started at http://localhost:3000.
 
 For more details, view [Contributing Guidelines](.github/CONTRIBUTING.md)
+
+<a href="https://twitter.com/agneymenon">
+  <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/agneymenon?label=Follow&style=social">
+</a>

@@ -32,7 +32,7 @@ function ExternalUI({ details, goBack, onTransform }) {
       <html>
         <head>
           <style>.loader{position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);}</style>
-          <script type="module" src=${details.url}></script>
+          <script type="module" async src=${details.url}></script>
         </head>
         <body>
           <${details.tagName} data='${value}'></${details.tagName}>

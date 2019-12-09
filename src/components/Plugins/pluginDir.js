@@ -6,8 +6,8 @@ const pluginsDir = [
     tagName: "jc-transform-json",
   },
   {
-    name: "Quicktype",
-    description: "Generate type form JSON",
+    name: "Generate Type",
+    description: "Generate types directly from JSON",
     url: "https://unpkg.com/quicktype-jsoncrew-plugin",
     tagName: "quicktype-jsoncrew-plugin",
   },

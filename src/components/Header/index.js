@@ -34,21 +34,8 @@ function Header() {
           css={`
             height: 2rem;
           `}
+          aria-label="JSON Crew - A JSON Viewer, Formatter and Validator."
         />
-        <p
-          css={`
-            position: absolute;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            width: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
-          `}
-        >
-          JSON Crew - A JSON Viewer, Formatter and Validator.
-        </p>
       </Link>
       <FormatBtn onClick={editorConfig.format} />
       <div

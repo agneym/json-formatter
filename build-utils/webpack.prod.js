@@ -2,8 +2,8 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const workboxPlugin = require("workbox-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 const path = require("path");
 const commonPaths = require("./common-paths");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -33,9 +33,7 @@ module.exports = {
     minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"], {
-      root: commonPaths.root,
-    }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
@@ -44,7 +42,7 @@ module.exports = {
       NODE_ENV: "production",
       DEBUG: false,
     }),
-    new workboxPlugin({
+    new GenerateSW({
       globDirectory: commonPaths.outputPath,
       globPatterns: ["**/*.{html,js,css}"],
       swDest: path.join(commonPaths.outputPath, "sw.js"),

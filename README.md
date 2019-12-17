@@ -16,9 +16,10 @@ An in-place JSON Viewer, Formatter and Transformer.
 ## Features
 
 1. JSON Viewer
-2. JSON Formatting with options.
-3. JSON Validation according to schemas
-4. Supports Plugins to extend Functionality.
+1. JSON Formatting with options.
+1. JSON Validation according to schemas
+1. Supports Plugins to extend Functionality.
+1. PWA - You can install this directly from your browser.
 
 ## How to create a JC Plugin
 

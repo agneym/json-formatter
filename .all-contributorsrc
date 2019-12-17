@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "howareyouami",
+      "name": "Amal Jose A",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/26934320?v=4",
+      "profile": "https://github.com/howareyouami",
+      "contributions": [
+        "plugin"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "json-formatter",
+  "projectOwner": "agneym",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

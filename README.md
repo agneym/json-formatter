@@ -11,15 +11,21 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 
-An in-place JSON Viewer, Formatter and Transformer.
+An extensible JSON Viewer, Editor, Formatter and Validator that works completely on the client side. 
 
 ## Features
 
-1. JSON Viewer
+1. JSON Viewer & Editor
 1. JSON Formatting with options.
-1. JSON Validation according to schemas
-1. Supports Plugins to extend Functionality.
+1. JSON Validation with respect to readily available schemas (with option to bring your own schema)
 1. PWA - You can install this directly from your browser.
+1. Upload JSON from your system or load directly from URL
+1. Download formatted JSON
+1. Share JSON with peer to peer
+1. Search & Replace words/expressions with support for case matching, regular expressions
+1. Multi-cursor editing support
+1. Editor theming support
+1. Supports Plugins to extend Functionality.
 
 ## How to create a JC Plugin
 

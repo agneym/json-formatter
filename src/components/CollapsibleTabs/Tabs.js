@@ -10,7 +10,7 @@ function Tabs({ onTransform }) {
   const pinnedPlugins = pluginsDir.map(plugin => ({
     key: plugin.tagName,
     title: plugin.name,
-    component: <Plugins onTransform={onTransform} />,
+    component: <Plugins onTransform={onTransform} selectedPlugin={plugin} />,
     uiType: "grey",
   }));
 

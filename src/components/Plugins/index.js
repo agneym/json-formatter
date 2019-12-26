@@ -14,8 +14,8 @@ const Content = styled.ul`
   width: 100%;
 `;
 
-function Plugins({ onTransform }) {
-  const [plugin, setPlugin] = useState(null);
+function Plugins({ onTransform, selectedPlugin }) {
+  const [plugin, setPlugin] = useState(selectedPlugin);
 
   const loadPlugin = selectedPlugin => {
     setPlugin(selectedPlugin);

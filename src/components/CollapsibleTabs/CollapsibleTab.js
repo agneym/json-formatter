@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
   top: 11rem;
   left: -4rem;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
 `;
 
 const CollapsibleTab = ({ tabs, children }) => {
@@ -29,6 +29,7 @@ const CollapsibleTab = ({ tabs, children }) => {
       <HeaderContainer>
         {tabs.map(tabConfig => (
           <SideBtn
+            uiType={tabConfig.uiType}
             active={tabConfig.key === selected}
             key={tabConfig.key}
             onClick={() => setSelected(tabConfig)}

@@ -16,6 +16,13 @@ const Container = styled.li`
   }
 `;
 
+const ButtonWrapper = styled.div`
+  display: none;
+  ${Container}:hover & {
+    display: block;
+  }
+`;
+
 const Description = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -41,13 +48,15 @@ function SingleItem({ name, description, onClick }) {
         </h3>
         <Description>{description}</Description>
       </NakedButton>
-      <NakedButton>
-        <UnpinIcon
-          css={`
-            height: 2rem;
-          `}
-        />
-      </NakedButton>
+      <ButtonWrapper>
+        <NakedButton>
+          <UnpinIcon
+            css={`
+              height: 2rem;
+            `}
+          />
+        </NakedButton>
+      </ButtonWrapper>
     </Container>
   );
 }

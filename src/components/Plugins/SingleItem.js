@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import NakedButton from "../../utils/NakedButton";
+import UnpinIcon from "../../icons/unpin.svg";
 
 const Container = styled.li`
   padding: 1rem 2rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
@@ -24,7 +28,7 @@ function SingleItem({ name, description, onClick }) {
     <Container>
       <NakedButton
         css={`
-          width: 100%;
+          width: 85%;
         `}
         onClick={onClick}
       >
@@ -36,6 +40,13 @@ function SingleItem({ name, description, onClick }) {
           {name}
         </h3>
         <Description>{description}</Description>
+      </NakedButton>
+      <NakedButton>
+        <UnpinIcon
+          css={`
+            height: 2rem;
+          `}
+        />
       </NakedButton>
     </Container>
   );

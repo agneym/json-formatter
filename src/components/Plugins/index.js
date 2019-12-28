@@ -6,11 +6,6 @@ import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
 import pluginsDir from "./pluginDir";
 
-export const pinActionTypes = {
-  ADD: "ADD",
-  REMOVE: "REMOVE",
-};
-
 const Content = styled.ul`
   margin: 0.8rem 0;
   height: calc(100% - 11rem);
@@ -19,11 +14,13 @@ const Content = styled.ul`
   width: 100%;
 `;
 
-function Plugins({ onTransform, selectedPlugin }) {
+function Plugins({
+  onTransform,
+  selectedPlugin,
+  pinnedPlugins,
+  handlePinChange,
+}) {
   const [plugin, setPlugin] = useState(selectedPlugin);
-  const [pinnedPligins, setPinnedPligins] = useState(
-    JSON.parse(localStorage.getItem("pinnedPligins") || "[]")
-  );
 
   const loadPlugin = selectedPlugin => {
     setPlugin(selectedPlugin);
@@ -32,19 +29,6 @@ function Plugins({ onTransform, selectedPlugin }) {
   const handleTransform = transformedValue => {
     onTransform(transformedValue);
     setPlugin(null);
-  };
-
-  const handlePinChange = (selectedPlugin, pinActionType) => {
-    let newPinnedPlugins = [];
-    if (pinActionType === pinActionTypes.ADD) {
-      newPinnedPlugins = [...pinnedPligins, selectedPlugin.tagName];
-    } else if (pinActionType === pinActionTypes.REMOVE) {
-      newPinnedPlugins = pinnedPligins.filter(
-        pinnedPligin => pinnedPligin != selectedPlugin.tagName
-      );
-    }
-    localStorage.setItem("pinnedPligins", JSON.stringify(newPinnedPlugins));
-    setPinnedPligins(newPinnedPlugins);
   };
 
   const goBack = () => {
@@ -67,7 +51,7 @@ function Plugins({ onTransform, selectedPlugin }) {
             list={pluginsDir}
             onClick={loadPlugin}
             handlePinChange={handlePinChange}
-            pinnedPligins={pinnedPligins}
+            pinnedPlugins={pinnedPlugins}
           />
         </Content>
       )}
@@ -78,6 +62,8 @@ function Plugins({ onTransform, selectedPlugin }) {
 Plugins.propTypes = {
   onTransform: PropTypes.func.isRequired,
   selectedPlugin: PropTypes.object,
+  handlePinChange: PropTypes.func.isRequired,
+  pinnedPlugins: PropTypes.array.isRequired,
 };
 
 export default Plugins;

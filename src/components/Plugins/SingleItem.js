@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import NakedButton from "../../utils/NakedButton";
 import UnpinIcon from "../../icons/unpin.svg";
 import PinIcon from "../../icons/pin.svg";
-import { pinActionTypes } from "./index";
+import { pinActionTypes } from "../CollapsibleTabs/Tabs";
 const Container = styled.li`
   padding: 1rem 2rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);

@@ -21,7 +21,7 @@ function Tabs({ onTransform }) {
       newPinnedPlugins = [...pinnedPlugins, selectedPlugin.tagName];
     } else if (pinActionType === pinActionTypes.REMOVE) {
       newPinnedPlugins = pinnedPlugins.filter(
-        pinnedPligin => pinnedPligin != selectedPlugin.tagName
+        pinnedPlugin => pinnedPlugin != selectedPlugin.tagName
       );
     }
     localStorage.setItem("pinnedPlugins", JSON.stringify(newPinnedPlugins));
@@ -38,27 +38,23 @@ function Tabs({ onTransform }) {
     );
   };
 
-  const pinnedPluginsForTabs = pluginsDir.reduce((acc, plugin) => {
-    const isPinned = !!pinnedPlugins.find(
-      pinnedPlugin => pinnedPlugin === plugin.tagName
-    );
-    if (isPinned) {
-      acc.push({
-        key: plugin.tagName,
-        title: plugin.name,
-        component: (
-          <Plugins
-            onTransform={onTransform}
-            selectedPlugin={plugin}
-            pinnedPlugins={pinnedPlugins}
-            handlePinChange={handlePinChange}
-          />
-        ),
-        uiType: "grey",
-      });
-    }
-    return acc;
-  }, []);
+  const pinnedPluginsForTabs = [];
+  pinnedPlugins.forEach(pinnedPlugin => {
+    const plugin = pluginsDir.find(plugin => plugin.tagName === pinnedPlugin);
+    pinnedPluginsForTabs.push({
+      key: plugin.tagName,
+      title: plugin.name,
+      component: (
+        <Plugins
+          onTransform={onTransform}
+          selectedPlugin={plugin}
+          pinnedPlugins={pinnedPlugins}
+          handlePinChange={handlePinChange}
+        />
+      ),
+      uiType: "grey",
+    });
+  });
 
   const tabs = [
     {
@@ -76,6 +72,7 @@ function Tabs({ onTransform }) {
     },
     ...pinnedPluginsForTabs,
   ];
+  console.log("rerender Tabs", tabs);
 
   return (
     <CollapsibleTabs tabs={tabs}>

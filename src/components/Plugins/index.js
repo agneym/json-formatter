@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -14,12 +14,9 @@ const Content = styled.ul`
   width: 100%;
 `;
 
-function Plugins({
-  onTransform,
-  selectedPlugin,
-  pinnedPlugins,
-  handlePinChange,
-}) {
+function Plugins(props) {
+  const { onTransform, selectedPlugin, pinnedPlugins, handlePinChange } = props;
+
   const [plugin, setPlugin] = useState(selectedPlugin);
 
   const loadPlugin = selectedPlugin => {
@@ -34,6 +31,7 @@ function Plugins({
   const goBack = () => {
     setPlugin(null);
   };
+  console.log("rerender Plugins", pinnedPlugins);
 
   return (
     <Fragment>

@@ -6,18 +6,28 @@ import pluginPropType from "./pluginType";
 import Header from "./Header";
 import FootNote from "./FootNote";
 
-function Listing({ list, onClick }) {
+function Listing({ list, onClick, handlePinChange, pinnedPligins }) {
   return (
     <Fragment>
       <Header title="Plugins" />
-      {list.map(pluginItem => (
-        <SingleItem
-          key={pluginItem.name}
-          name={pluginItem.name}
-          description={pluginItem.description}
-          onClick={() => onClick(pluginItem)}
-        />
-      ))}
+      {list.map(pluginItem => {
+        const isPinned = !!pinnedPligins.find(
+          pinnedPlugin => pinnedPlugin === pluginItem.tagName
+        );
+        return (
+          <SingleItem
+            key={pluginItem.name}
+            name={pluginItem.name}
+            description={pluginItem.description}
+            onClick={() => onClick(pluginItem)}
+            onPinClick={pinActionTypes =>
+              handlePinChange(pluginItem, pinActionTypes)
+            }
+            showPin={pinnedPligins.length < 2 && !isPinned}
+            showUnpin={isPinned}
+          />
+        );
+      })}
       <FootNote />
     </Fragment>
   );
@@ -26,6 +36,8 @@ function Listing({ list, onClick }) {
 Listing.propTypes = {
   list: PropTypes.arrayOf(pluginPropType).isRequired,
   onClick: PropTypes.func.isRequired,
+  handlePinChange: PropTypes.func.isRequired,
+  pinnedPligins: PropTypes.array.isRequired,
 };
 
 export default Listing;

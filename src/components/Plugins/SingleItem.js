@@ -3,7 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import NakedButton from "../../utils/NakedButton";
 import UnpinIcon from "../../icons/unpin.svg";
-
+import PinIcon from "../../icons/pin.svg";
+import { pinActionTypes } from "./index";
 const Container = styled.li`
   padding: 1rem 2rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
@@ -30,7 +31,14 @@ const Description = styled.p`
   overflow: hidden;
 `;
 
-function SingleItem({ name, description, onClick }) {
+function SingleItem({
+  name,
+  description,
+  onClick,
+  onPinClick,
+  showPin,
+  showUnpin,
+}) {
   return (
     <Container>
       <NakedButton
@@ -49,13 +57,31 @@ function SingleItem({ name, description, onClick }) {
         <Description>{description}</Description>
       </NakedButton>
       <ButtonWrapper>
-        <NakedButton>
-          <UnpinIcon
-            css={`
-              height: 2rem;
-            `}
-          />
-        </NakedButton>
+        {(showPin || showUnpin) && (
+          <NakedButton
+            onClick={() =>
+              onPinClick(
+                (showPin && pinActionTypes.ADD) ||
+                  (showUnpin && pinActionTypes.REMOVE)
+              )
+            }
+          >
+            {showUnpin && (
+              <UnpinIcon
+                css={`
+                  height: 2rem;
+                `}
+              />
+            )}
+            {showPin && (
+              <PinIcon
+                css={`
+                  height: 2rem;
+                `}
+              />
+            )}
+          </NakedButton>
+        )}
       </ButtonWrapper>
     </Container>
   );
@@ -65,6 +91,9 @@ SingleItem.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  onPinClick: PropTypes.func.isRequired,
+  showPin: PropTypes.bool.isRequired,
+  showUnpin: PropTypes.bool.isRequired,
 };
 
 export default SingleItem;

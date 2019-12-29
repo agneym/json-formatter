@@ -1,12 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 
 import SingleItem from "./SingleItem";
 import pluginPropType from "./pluginType";
 import Header from "./Header";
 import FootNote from "./FootNote";
+import PinContext from "../Plugins/pinnedContext";
 
-function Listing({ list, onClick, handlePinChange, pinnedPlugins }) {
+function Listing({ list, onClick }) {
+  const { pinnedPlugins, handlePinChange } = useContext(PinContext);
+
   return (
     <Fragment>
       <Header title="Plugins" />

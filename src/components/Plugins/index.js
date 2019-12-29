@@ -15,7 +15,7 @@ const Content = styled.ul`
 `;
 
 function Plugins(props) {
-  const { onTransform, selectedPlugin, pinnedPlugins, handlePinChange } = props;
+  const { onTransform, selectedPlugin } = props;
 
   const [plugin, setPlugin] = useState(selectedPlugin);
 
@@ -31,7 +31,6 @@ function Plugins(props) {
   const goBack = () => {
     setPlugin(null);
   };
-  console.log("rerender Plugins", pinnedPlugins);
 
   return (
     <Fragment>
@@ -45,12 +44,7 @@ function Plugins(props) {
         </Content>
       ) : (
         <Content>
-          <Listing
-            list={pluginsDir}
-            onClick={loadPlugin}
-            handlePinChange={handlePinChange}
-            pinnedPlugins={pinnedPlugins}
-          />
+          <Listing list={pluginsDir} onClick={loadPlugin} />
         </Content>
       )}
     </Fragment>

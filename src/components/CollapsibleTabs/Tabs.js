@@ -1,57 +1,24 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import PropTypes from "prop-types";
 
 import CollapsibleTabs from "../CollapsibleTabs";
 import pluginsDir from "../Plugins/pluginDir";
+import PinContext from "../Plugins/pinnedContext";
 
 const Plugins = lazy(() => import("../Plugins"));
 
-export const pinActionTypes = {
-  ADD: "ADD",
-  REMOVE: "REMOVE",
-};
 function Tabs({ onTransform }) {
-  const [pinnedPlugins, setPinnedPlugins] = useState(
-    JSON.parse(localStorage.getItem("pinnedPlugins") || "[]")
-  );
-
-  const handlePinChange = (selectedPlugin, pinActionType) => {
-    let newPinnedPlugins = [];
-    if (pinActionType === pinActionTypes.ADD) {
-      newPinnedPlugins = [...pinnedPlugins, selectedPlugin.tagName];
-    } else if (pinActionType === pinActionTypes.REMOVE) {
-      newPinnedPlugins = pinnedPlugins.filter(
-        pinnedPlugin => pinnedPlugin != selectedPlugin.tagName
-      );
-    }
-    localStorage.setItem("pinnedPlugins", JSON.stringify(newPinnedPlugins));
-    setPinnedPlugins(newPinnedPlugins);
-    console.log(
-      "pinnedPlugins",
-      pinnedPlugins,
-      "newPinnedPlugins",
-      newPinnedPlugins,
-      "selectedPlugin",
-      selectedPlugin,
-      "pinActionType",
-      pinActionType
-    );
-  };
-
+  const s = useContext(PinContext);
+  // debugger;
+  const { pinnedPlugins } = s;
+  // const pinnedPlugins=[]
   const pinnedPluginsForTabs = [];
   pinnedPlugins.forEach(pinnedPlugin => {
     const plugin = pluginsDir.find(plugin => plugin.tagName === pinnedPlugin);
     pinnedPluginsForTabs.push({
       key: plugin.tagName,
       title: plugin.name,
-      component: (
-        <Plugins
-          onTransform={onTransform}
-          selectedPlugin={plugin}
-          pinnedPlugins={pinnedPlugins}
-          handlePinChange={handlePinChange}
-        />
-      ),
+      component: <Plugins onTransform={onTransform} selectedPlugin={plugin} />,
       uiType: "grey",
     });
   });
@@ -61,12 +28,7 @@ function Tabs({ onTransform }) {
       key: "plugins",
       title: "Plugins",
       component: (
-        <Plugins
-          onTransform={onTransform}
-          setPinnedPlugins={setPinnedPlugins}
-          pinnedPlugins={pinnedPlugins}
-          handlePinChange={handlePinChange}
-        />
+        <Plugins onTransform={onTransform} pinnedPlugins={pinnedPlugins} />
       ),
       uiType: "primary",
     },

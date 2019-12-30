@@ -39,7 +39,6 @@ const EditorView = () => {
       <PinContextProvider>
         <Tabs onTransform={onTransform} />
       </PinContextProvider>
-      <Tabs onTransform={onTransform} />
       <DetectPaste />
     </Fragment>
   );

@@ -8,10 +8,7 @@ import PinContext from "../Plugins/pinnedContext";
 const Plugins = lazy(() => import("../Plugins"));
 
 function Tabs({ onTransform }) {
-  const s = useContext(PinContext);
-  // debugger;
-  const { pinnedPlugins } = s;
-  // const pinnedPlugins=[]
+  const { pinnedPlugins } = useContext(PinContext);
   const pinnedPluginsForTabs = [];
   pinnedPlugins.forEach(pinnedPlugin => {
     const plugin = pluginsDir.find(plugin => plugin.tagName === pinnedPlugin);

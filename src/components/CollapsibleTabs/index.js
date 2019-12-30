@@ -3,16 +3,13 @@ import PropTypes from "prop-types";
 
 import ErrorBoundary from "../ErrorBoundary";
 import { TabContextProvider } from "./TabContext";
-import { PinContextProvider } from "../Plugins/pinnedContext";
 import CollapsibleTab from "./CollapsibleTab";
 
 const CollapsibleTabs = ({ tabs, children }) => {
   return (
     <ErrorBoundary>
       <TabContextProvider>
-        <PinContextProvider>
-          <CollapsibleTab tabs={tabs}>{children}</CollapsibleTab>
-        </PinContextProvider>
+        <CollapsibleTab tabs={tabs}>{children}</CollapsibleTab>
       </TabContextProvider>
     </ErrorBoundary>
   );

@@ -9,7 +9,6 @@ import PinContext from "../Plugins/pinnedContext";
 
 function Listing({ list, onClick }) {
   const { pinnedPlugins, handlePinChange } = useContext(PinContext);
-
   return (
     <Fragment>
       <Header title="Plugins" />

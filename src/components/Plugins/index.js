@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import PluginContext from "./pluginContext";

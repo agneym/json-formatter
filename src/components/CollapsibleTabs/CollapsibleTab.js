@@ -28,7 +28,7 @@ const CollapsibleTab = ({ tabs, children }) => {
   const { handlePluginTabClick } = useContext(PluginContext);
 
   const handleTabChange = tabConfig => {
-    handlePluginTabClick(tabConfig.key);
+    handlePluginTabClick(tabConfig.key); //for updating active plugin in `Plugin` component
     if (!selected) setSelected(tabConfig);
   };
 

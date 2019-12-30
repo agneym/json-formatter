@@ -22,8 +22,8 @@ function Listing({ list, onClick }) {
             name={pluginItem.name}
             description={pluginItem.description}
             onClick={() => onClick(pluginItem)}
-            onPinClick={pinActionTypes =>
-              handlePinChange(pluginItem, pinActionTypes)
+            onPinClick={pinActionType =>
+              handlePinChange(pluginItem, pinActionType)
             }
             showPin={pinnedPlugins.length < 2 && !isPinned}
             showUnpin={isPinned}

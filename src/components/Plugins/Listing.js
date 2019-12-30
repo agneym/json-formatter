@@ -38,8 +38,6 @@ function Listing({ list, onClick }) {
 Listing.propTypes = {
   list: PropTypes.arrayOf(pluginPropType).isRequired,
   onClick: PropTypes.func.isRequired,
-  handlePinChange: PropTypes.func.isRequired,
-  pinnedPlugins: PropTypes.array.isRequired,
 };
 
 export default Listing;

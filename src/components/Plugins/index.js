@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import PinContext from "./pinnedContext";
 
 import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
@@ -15,29 +16,29 @@ const Content = styled.ul`
 `;
 
 function Plugins(props) {
-  const { onTransform, selectedPlugin } = props;
+  const { onTransform } = props;
 
-  const [plugin, setPlugin] = useState(selectedPlugin);
+  const { selectedPlugin, setSelectedPlugin } = useContext(PinContext);
 
   const loadPlugin = selectedPlugin => {
-    setPlugin(selectedPlugin);
+    setSelectedPlugin(selectedPlugin);
   };
 
   const handleTransform = transformedValue => {
     onTransform(transformedValue);
-    setPlugin(null);
+    setSelectedPlugin(null);
   };
 
   const goBack = () => {
-    setPlugin(null);
+    setSelectedPlugin(null);
   };
 
   return (
     <Fragment>
-      {plugin ? (
+      {selectedPlugin ? (
         <Content as="section">
           <ExternalUI
-            details={plugin}
+            details={selectedPlugin}
             onTransform={handleTransform}
             goBack={goBack}
           />
@@ -53,9 +54,6 @@ function Plugins(props) {
 
 Plugins.propTypes = {
   onTransform: PropTypes.func.isRequired,
-  selectedPlugin: PropTypes.object,
-  handlePinChange: PropTypes.func.isRequired,
-  pinnedPlugins: PropTypes.array.isRequired,
 };
 
 export default Plugins;

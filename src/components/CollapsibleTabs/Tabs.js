@@ -8,14 +8,17 @@ import PinContext from "../Plugins/pinnedContext";
 const Plugins = lazy(() => import("../Plugins"));
 
 function Tabs({ onTransform }) {
+  const pluginComponent = <Plugins onTransform={onTransform} />;
+
   const { pinnedPlugins } = useContext(PinContext);
+
   const pinnedPluginsForTabs = [];
   pinnedPlugins.forEach(pinnedPlugin => {
     const plugin = pluginsDir.find(plugin => plugin.tagName === pinnedPlugin);
     pinnedPluginsForTabs.push({
       key: plugin.tagName,
       title: plugin.name,
-      component: <Plugins onTransform={onTransform} selectedPlugin={plugin} />,
+      component: pluginComponent,
       uiType: "grey",
     });
   });
@@ -24,14 +27,11 @@ function Tabs({ onTransform }) {
     {
       key: "plugins",
       title: "Plugins",
-      component: (
-        <Plugins onTransform={onTransform} pinnedPlugins={pinnedPlugins} />
-      ),
+      component: pluginComponent,
       uiType: "primary",
     },
     ...pinnedPluginsForTabs,
   ];
-  console.log("rerender Tabs", tabs);
 
   return (
     <CollapsibleTabs tabs={tabs}>

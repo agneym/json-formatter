@@ -1,5 +1,6 @@
-import React, { createContext, useState, useMemo, useCallback } from "react";
+import React, { createContext, useState } from "react";
 import PropTypes from "prop-types";
+import pluginsDir from "./pluginDir";
 
 const PinContext = createContext({
   pinnedPlugins: [],
@@ -11,6 +12,7 @@ export const pinActionTypes = {
 };
 
 export const PinContextProvider = ({ children }) => {
+  const [selectedPlugin, setSelectedPlugin] = useState(null);
   const [pinnedPlugins, setPinnedPlugins] = useState(
     JSON.parse(localStorage.getItem("pinnedPlugins") || "[]")
   );
@@ -26,16 +28,10 @@ export const PinContextProvider = ({ children }) => {
     }
     localStorage.setItem("pinnedPlugins", JSON.stringify(newPinnedPlugins));
     setPinnedPlugins(newPinnedPlugins);
-    console.log(
-      "pinnedPlugins",
-      pinnedPlugins,
-      "newPinnedPlugins",
-      newPinnedPlugins,
-      "selectedPlugin",
-      selectedPlugin,
-      "pinActionType",
-      pinActionType
-    );
+  };
+
+  const handlePluginTabClick = tagName => {
+    setSelectedPlugin(pluginsDir.find(item => tagName === item.tagName));
   };
 
   // const value = useMemo(
@@ -53,6 +49,9 @@ export const PinContextProvider = ({ children }) => {
         pinnedPlugins,
         setPinnedPlugins,
         handlePinChange,
+        selectedPlugin,
+        setSelectedPlugin,
+        handlePluginTabClick,
       }}
     >
       {children}

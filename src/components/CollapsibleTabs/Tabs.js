@@ -12,16 +12,17 @@ function Tabs({ onTransform }) {
 
   const { pinnedPlugins } = useContext(PluginContext);
 
-  const pinnedPluginsForTabs = [];
-  pinnedPlugins.forEach(pinnedPlugin => {
-    const plugin = pluginsDir.find(plugin => plugin.tagName === pinnedPlugin);
-    pinnedPluginsForTabs.push({
-      key: plugin.tagName,
-      title: plugin.name,
+  const pinnedPluginsForTabs = pinnedPlugins.reduce((acc, pinnedPlugin) => {
+    const foundPlugin = pluginsDir.find(
+      eachPlugin => eachPlugin.tagName === pinnedPlugin
+    );
+    return acc.concat({
+      key: foundPlugin.tagName,
+      title: foundPlugin.name,
       component: pluginComponent,
       uiType: "grey",
     });
-  });
+  }, []);
 
   const tabs = [
     {

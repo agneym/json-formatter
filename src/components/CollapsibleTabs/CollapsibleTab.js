@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import TabContext from "./TabContext";
-import PinContext from "../Plugins/pinnedContext";
+import PluginContext from "../Plugins/pluginContext";
 import SideBtn from "./SideBtn";
 import SelectedComp from "./SelectedComp";
 
@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 
 const CollapsibleTab = ({ tabs, children }) => {
   const { selected, setSelected } = useContext(TabContext);
-  const { handlePluginTabClick } = useContext(PinContext);
+  const { handlePluginTabClick } = useContext(PluginContext);
 
   const handleTabChange = tabConfig => {
     handlePluginTabClick(tabConfig.key);

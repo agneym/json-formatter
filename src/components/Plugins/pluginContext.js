@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import PropTypes from "prop-types";
 import pluginsDir from "./pluginDir";
 
-const PinContext = createContext({
+const PluginContext = createContext({
   pinnedPlugins: [],
 });
 
@@ -11,7 +11,7 @@ export const pinActionTypes = {
   REMOVE: "REMOVE",
 };
 
-export const PinContextProvider = ({ children }) => {
+export const PluginContextProvider = ({ children }) => {
   const [selectedPlugin, setSelectedPlugin] = useState(null);
   const [pinnedPlugins, setPinnedPlugins] = useState(
     JSON.parse(localStorage.getItem("pinnedPlugins") || "[]")
@@ -44,7 +44,7 @@ export const PinContextProvider = ({ children }) => {
   // );
 
   return (
-    <PinContext.Provider
+    <PluginContext.Provider
       value={{
         pinnedPlugins,
         setPinnedPlugins,
@@ -55,12 +55,12 @@ export const PinContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </PinContext.Provider>
+    </PluginContext.Provider>
   );
 };
 
-PinContextProvider.propTypes = {
+PluginContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default PinContext;
+export default PluginContext;

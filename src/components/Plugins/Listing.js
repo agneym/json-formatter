@@ -5,10 +5,10 @@ import SingleItem from "./SingleItem";
 import pluginPropType from "./pluginType";
 import Header from "./Header";
 import FootNote from "./FootNote";
-import PinContext from "../Plugins/pinnedContext";
+import PluginContext from "../Plugins/pluginContext";
 
 function Listing({ list, onClick }) {
-  const { pinnedPlugins, handlePinChange } = useContext(PinContext);
+  const { pinnedPlugins, handlePinChange } = useContext(PluginContext);
   return (
     <Fragment>
       <Header title="Plugins" />

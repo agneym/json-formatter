@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import PinContext from "./pinnedContext";
+import PluginContext from "./pluginContext";
 
 import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
@@ -18,7 +18,7 @@ const Content = styled.ul`
 function Plugins(props) {
   const { onTransform } = props;
 
-  const { selectedPlugin, setSelectedPlugin } = useContext(PinContext);
+  const { selectedPlugin, setSelectedPlugin } = useContext(PluginContext);
 
   const loadPlugin = selectedPlugin => {
     setSelectedPlugin(selectedPlugin);

@@ -5,7 +5,7 @@ import DetectPaste from "./DetectPaste";
 import Tabs from "../CollapsibleTabs/Tabs";
 import EditorContext from "./EditorContext";
 import DiffEditor from "./DiffEditor";
-import { PinContextProvider } from "../Plugins/pinnedContext";
+import { PluginContextProvider } from "../Plugins/pluginContext";
 
 const EditorView = () => {
   const editorConfig = useContext(EditorContext);
@@ -36,9 +36,9 @@ const EditorView = () => {
       ) : (
         <Editor value={editorVal} editorConfig={editorConfig} />
       )}
-      <PinContextProvider>
+      <PluginContextProvider>
         <Tabs onTransform={onTransform} />
-      </PinContextProvider>
+      </PluginContextProvider>
       <DetectPaste />
     </Fragment>
   );

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import CollapsibleTabs from "../CollapsibleTabs";
 import pluginsDir from "../Plugins/pluginDir";
-import PinContext from "../Plugins/pinnedContext";
+import PluginContext from "../Plugins/pluginContext";
 
 const Plugins = lazy(() => import("../Plugins"));
 
 function Tabs({ onTransform }) {
   const pluginComponent = <Plugins onTransform={onTransform} />;
 
-  const { pinnedPlugins } = useContext(PinContext);
+  const { pinnedPlugins } = useContext(PluginContext);
 
   const pinnedPluginsForTabs = [];
   pinnedPlugins.forEach(pinnedPlugin => {

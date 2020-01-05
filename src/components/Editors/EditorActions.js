@@ -93,6 +93,8 @@ EditorActions.propTypes = {
   editorConfig: PropTypes.shape({
     getValue: PropTypes.func.isRequired,
     setValue: PropTypes.func.isRequired,
+    collapseAll: PropTypes.func.isRequired,
+    expandAll: PropTypes.func.isRequired,
   }),
 };
 

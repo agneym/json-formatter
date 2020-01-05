@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import TabContext from "./TabContext";
+import PluginContext from "../Plugins/pluginContext";
 import SideBtn from "./SideBtn";
 import SelectedComp from "./SelectedComp";
 
@@ -19,19 +20,27 @@ const HeaderContainer = styled.div`
   top: 11rem;
   left: -4rem;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
 `;
 
 const CollapsibleTab = ({ tabs, children }) => {
   const { selected, setSelected } = useContext(TabContext);
+  const { handlePluginTabClick } = useContext(PluginContext);
+
+  const handleTabChange = tabConfig => {
+    handlePluginTabClick(tabConfig.key); //for updating active plugin in `Plugin` component
+    if (!selected) setSelected(tabConfig);
+  };
+
   return (
     <Aside>
       <HeaderContainer>
         {tabs.map(tabConfig => (
           <SideBtn
+            uiType={tabConfig.uiType}
             active={tabConfig.key === selected}
             key={tabConfig.key}
-            onClick={() => setSelected(tabConfig)}
+            onClick={() => handleTabChange(tabConfig)}
           >
             <span>{tabConfig.title}</span>
           </SideBtn>

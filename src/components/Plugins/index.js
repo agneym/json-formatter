@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import PluginContext from "./pluginContext";
 
 import Listing from "./Listing";
 import ExternalUI from "./ExternalUI";
@@ -14,27 +15,30 @@ const Content = styled.ul`
   width: 100%;
 `;
 
-function Plugins({ onTransform }) {
-  const [plugin, setPlugin] = useState(null);
+function Plugins(props) {
+  const { onTransform } = props;
+
+  const { selectedPlugin, setSelectedPlugin } = useContext(PluginContext);
 
   const loadPlugin = selectedPlugin => {
-    setPlugin(selectedPlugin);
+    setSelectedPlugin(selectedPlugin);
   };
 
   const handleTransform = transformedValue => {
     onTransform(transformedValue);
-    setPlugin(null);
+    setSelectedPlugin(null);
   };
 
   const goBack = () => {
-    setPlugin(null);
+    setSelectedPlugin(null);
   };
+
   return (
     <Fragment>
-      {plugin ? (
+      {selectedPlugin ? (
         <Content as="section">
           <ExternalUI
-            details={plugin}
+            details={selectedPlugin}
             onTransform={handleTransform}
             goBack={goBack}
           />

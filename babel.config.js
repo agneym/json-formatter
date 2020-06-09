@@ -21,6 +21,7 @@ const plugins = [
   "babel-plugin-styled-components",
   "@babel/plugin-proposal-nullish-coalescing-operator",
   "@babel/plugin-proposal-optional-chaining",
+  "babel-plugin-lodash",
 ];
 
 module.exports = { presets, plugins };

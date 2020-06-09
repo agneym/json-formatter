@@ -2,11 +2,11 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
-const path = require("path");
 const commonPaths = require("./common-paths");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
 
 module.exports = {
@@ -57,6 +57,7 @@ module.exports = {
       ],
     }),
     new MomentLocalesPlugin(),
-    // new BundleAnalyzerPlugin(),
+    new LodashModuleReplacementPlugin(),
+    ...(process.env.ANALYZE && [new BundleAnalyzerPlugin()]),
   ],
 };

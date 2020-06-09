@@ -10,7 +10,7 @@ import storage from "../../lib/storage";
 import { SCHEMA_URL } from "../../config/api";
 
 const Form = styled.form`
-  height: calc(100vh - ${props => props.theme.layout.navHeight});
+  height: calc(100vh - ${(props) => props.theme.layout.navHeight});
   width: 20%;
   overflow-y: auto;
 `;
@@ -18,7 +18,6 @@ const Form = styled.form`
 const key = "json.config";
 const initialConfig = {
   tabSize: 4,
-  indentSize: 4,
   insertSpaces: false,
   trimAutoWhitespace: true,
   allowComments: true,
@@ -27,7 +26,7 @@ const initialConfig = {
   theme: themes[0],
 };
 
-const createSchema = schemaConfig => {
+const createSchema = (schemaConfig) => {
   const url = schemaConfig.url;
   // Convert to azure proxy for HTTPS
   const urlSegments = url.split("/");
@@ -46,7 +45,7 @@ function Sidebar({ editorConfig }) {
   const [config, setConfig] = useState(initialConfig);
 
   const changeFormat = useCallback(
-    values => {
+    (values) => {
       storage.set(key, values);
       editorConfig.updateFormatOptions(values);
     },
@@ -80,7 +79,7 @@ function Sidebar({ editorConfig }) {
     [editorConfig]
   );
   const changeTheme = useCallback(
-    values => {
+    (values) => {
       const theme = values.theme.value;
       storage.set(key, values);
       editorConfig.changeTheme(theme);
@@ -119,8 +118,8 @@ function Sidebar({ editorConfig }) {
             <JsonOptions
               values={values}
               handleChange={handleChange}
-              handleBlur={changed => changeJsonOptions(values, changed)}
-              changeSchema={newSchema => changeSchema(values, newSchema)}
+              handleBlur={(changed) => changeJsonOptions(values, changed)}
+              changeSchema={(newSchema) => changeSchema(values, newSchema)}
             />
             <EditorOptions
               values={values}

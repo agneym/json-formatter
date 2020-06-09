@@ -5,7 +5,7 @@ import { InputNumber, Label, Toggle } from "buffetjs";
 import FieldSet, { Field, HorizontalField, HorizontalLabel } from "./FieldSet";
 
 function FormattingOptions({ values, handleChange, handleBlur }) {
-  const handleToggleChange = event => {
+  const handleToggleChange = (event) => {
     handleChange(event);
     handleBlur();
   };
@@ -19,17 +19,6 @@ function FormattingOptions({ values, handleChange, handleBlur }) {
           name="tabSize"
           min={1}
           value={values.tabSize}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Field>
-      <Field>
-        <HorizontalLabel htmlFor="indent-size">Indent Size</HorizontalLabel>
-        <InputNumber
-          id="indent-size"
-          name="indentSize"
-          min={1}
-          value={values.indentSize}
           onChange={handleChange}
           onBlur={handleBlur}
         />

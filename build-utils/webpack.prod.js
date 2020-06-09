@@ -1,7 +1,5 @@
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { GenerateSW } = require("workbox-webpack-plugin");
 const path = require("path");
@@ -29,9 +27,6 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})],
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
@@ -43,23 +38,24 @@ module.exports = {
       DEBUG: false,
     }),
     new GenerateSW({
-      globDirectory: commonPaths.outputPath,
-      globPatterns: ["**/*.{html,js,css}"],
-      swDest: path.join(commonPaths.outputPath, "sw.js"),
       clientsClaim: true,
       skipWaiting: true,
     }),
-    new CopyWebpackPlugin([
-      {
-        from: commonPaths.public,
-        to: commonPaths.outputPath,
-        ignore: ["index.html"],
-      },
-      {
-        from: "_redirects",
-        to: commonPaths.outputPath,
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: commonPaths.public,
+          to: commonPaths.outputPath,
+          globOptions: {
+            ignore: ["index.html"],
+          },
+        },
+        {
+          from: "_redirects",
+          to: commonPaths.outputPath,
+        },
+      ],
+    }),
     new MomentLocalesPlugin(),
     // new BundleAnalyzerPlugin(),
   ],

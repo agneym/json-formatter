@@ -58,6 +58,6 @@ module.exports = {
     }),
     new MomentLocalesPlugin(),
     new LodashModuleReplacementPlugin(),
-    ...(process.env.ANALYZE && [new BundleAnalyzerPlugin()]),
+    ...(process.env.ANALYZE ? [new BundleAnalyzerPlugin()] : []),
   ],
 };

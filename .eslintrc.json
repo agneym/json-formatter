@@ -17,6 +17,11 @@
     "plugin:react/recommended",
     "prettier"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
     "no-console": 0,
     "no-unused-vars": 1,

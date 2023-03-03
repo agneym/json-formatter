@@ -90,7 +90,7 @@
     "formik": "^2.1.4",
     "lodash": "^4.17.15",
     "monaco-editor": "^0.20.0",
-    "peerjs": "^1.2.0",
+    "peerjs": "^1.4.7",
     "prop-types": "^15.7.2",
     "random-words": "^1.1.1",
     "react": "^16.13.1",

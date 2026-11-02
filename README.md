@@ -45,8 +45,8 @@ A Starting Template with [Lit Element](https://lit-element.polymer-project.org) 
 ## Contributing
 
 ```
-npm install
-npm start
+bun install
+bun run start
 ```
 
 Development server started at http://localhost:3000.

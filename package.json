@@ -16,6 +16,9 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "trustedDependencies": [
+    "husky"
+  ],
   "author": "Boy With Silver Wings <agney@outlook.in>",
   "license": "MIT",
   "devDependencies": {

@@ -37,8 +37,8 @@ If you have found a new issue, [file the issue](https://github.com/agneym/json-f
 ## Developing
 
 ```
-npm install
-npm start
+bun install
+bun run start
 ```
 
 Development server is started at http://localhost:3000

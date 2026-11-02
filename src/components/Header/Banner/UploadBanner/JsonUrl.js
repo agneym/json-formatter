@@ -6,12 +6,12 @@ import fetchData from "../../../../lib/api/fetchData";
 
 function JsonUrl({ setData }) {
   const [url, setUrl] = useState("");
-  const changeUrl = event => {
+  const changeUrl = (event) => {
     const target = event.target;
     const value = target.value;
     setUrl(value);
     if (target.checkValidity()) {
-      fetchData(value).then(response => setData(response));
+      fetchData(value).then((response) => setData(response));
     }
   };
   return (

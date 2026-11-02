@@ -5,7 +5,7 @@ const Line = styled.hr`
   display: block;
   border: none;
   height: 0.1rem;
-  border-bottom: 0.1rem solid ${props => props.theme.colors.grey};
+  border-bottom: 0.1rem solid ${(props) => props.theme.colors.grey};
 `;
 
 const Text = styled.p`
@@ -16,7 +16,7 @@ const Text = styled.p`
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   padding: 0 0.5rem;
-  color: ${props => props.theme.colors.grey};
+  color: ${(props) => props.theme.colors.grey};
 `;
 
 function Seperator() {

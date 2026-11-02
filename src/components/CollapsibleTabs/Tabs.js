@@ -14,7 +14,7 @@ function Tabs({ onTransform }) {
 
   const pinnedPluginsForTabs = pinnedPlugins.reduce((acc, pinnedPlugin) => {
     const foundPlugin = pluginsDir.find(
-      eachPlugin => eachPlugin.tagName === pinnedPlugin
+      (eachPlugin) => eachPlugin.tagName === pinnedPlugin
     );
     return acc.concat({
       key: foundPlugin.tagName,
@@ -36,7 +36,7 @@ function Tabs({ onTransform }) {
 
   return (
     <CollapsibleTabs tabs={tabs}>
-      {selectedComponent => (
+      {(selectedComponent) => (
         <Suspense fallback={<div>Loading ...</div>}>
           {selectedComponent}
         </Suspense>

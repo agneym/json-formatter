@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Label = styled.label`
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.secondary};
   cursor: pointer;
   padding: 0.5rem 1rem;
   color: #ffffff;
@@ -18,7 +18,7 @@ const OutInput = styled.input`
   z-index: -1;
 
   &:focus + ${Label} {
-    outline: 0.1rem solid ${props => props.theme.colors.primary};
+    outline: 0.1rem solid ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -29,13 +29,13 @@ const ClearButton = styled.button`
   margin-left: 5px;
 
   &:focus {
-    outline: 0.1rem solid ${props => props.theme.colors.primary};
+    outline: 0.1rem solid ${(props) => props.theme.colors.primary};
   }
 `;
 
 const readFile = (file, setData) => {
   const reader = new FileReader();
-  reader.addEventListener("load", event => {
+  reader.addEventListener("load", (event) => {
     const target = event.target;
     const result = target.result;
     setData(result);
@@ -46,7 +46,7 @@ const readFile = (file, setData) => {
 function UploadFile({ setData }) {
   const [hasFile, setHasFile] = useState(false);
 
-  const onChange = event => {
+  const onChange = (event) => {
     const target = event.target;
     const file = target.files[0];
     if (file) {

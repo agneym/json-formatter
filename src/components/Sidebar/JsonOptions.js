@@ -7,7 +7,7 @@ import FieldSet, { HorizontalField, HorizontalLabel } from "./FieldSet";
 import SchemaSelect from "./SchemaSelect";
 
 function JsonOptions({ values, handleChange, handleBlur, changeSchema }) {
-  const handleToggleChange = event => {
+  const handleToggleChange = (event) => {
     handleChange(event);
     const {
       target: { name, value },

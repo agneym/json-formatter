@@ -27,7 +27,7 @@ export const PluginContextProvider = ({ children }) => {
         newPinnedPlugins = [...pinnedPlugins, clickedPlugin.tagName];
       } else if (pinActionType === pinActionTypes.REMOVE) {
         newPinnedPlugins = pinnedPlugins.filter(
-          pinnedPlugin => pinnedPlugin != clickedPlugin.tagName
+          (pinnedPlugin) => pinnedPlugin != clickedPlugin.tagName
         );
       }
       localStorage.setItem("pinnedPlugins", JSON.stringify(newPinnedPlugins));
@@ -37,8 +37,8 @@ export const PluginContextProvider = ({ children }) => {
   );
 
   //for update current active plugin in the `Plugin` component
-  const handlePluginTabClick = useCallback(tagName => {
-    setSelectedPlugin(pluginsDir.find(item => tagName === item.tagName));
+  const handlePluginTabClick = useCallback((tagName) => {
+    setSelectedPlugin(pluginsDir.find((item) => tagName === item.tagName));
   }, []);
 
   const value = useMemo(

@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 
 import api from "../../lib/api";
 
-const getSchemas = inputVal => {
-  return new window.Promise(resolve => {
+const getSchemas = (inputVal) => {
+  return new window.Promise((resolve) => {
     api.catalogue
       .get()
-      .then(res => res.schemas || [])
-      .then(res => {
+      .then((res) => res.schemas || [])
+      .then((res) => {
         if (inputVal) {
           resolve(
-            res.filter(item =>
+            res.filter((item) =>
               item.name.toLowerCase().includes(inputVal.toLowerCase())
             )
           );
@@ -23,7 +23,7 @@ const getSchemas = inputVal => {
   });
 };
 
-const validateUrl = inputVal => {
+const validateUrl = (inputVal) => {
   try {
     new URL(inputVal);
     return true;
@@ -39,7 +39,7 @@ function SchemaSelect({ field, form, schemaOnBlur }) {
       name={field.name}
       id="schema"
       value={field.value}
-      onChange={option => form.setFieldValue(field.name, option)}
+      onChange={(option) => form.setFieldValue(field.name, option)}
       defaultOptions
       isClearable
       allowCreateWhileLoading
@@ -48,11 +48,11 @@ function SchemaSelect({ field, form, schemaOnBlur }) {
         name: optionLabel,
         url: optionLabel,
       })}
-      formatCreateLabel={inputVal => `Validate with ${inputVal}`}
+      formatCreateLabel={(inputVal) => `Validate with ${inputVal}`}
       isValidNewOption={validateUrl}
       loadOptions={getSchemas}
-      getOptionLabel={option => option.name}
-      getOptionValue={option => option.url}
+      getOptionLabel={(option) => option.name}
+      getOptionValue={(option) => option.url}
       onBlur={() => schemaOnBlur(field.value)}
     />
   );

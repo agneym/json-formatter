@@ -15,10 +15,10 @@ const Button = styled.button`
   width: 3.5rem;
   border-radius: 50%;
   cursor: pointer;
-  color: ${props => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.secondary};
 
   &:focus {
-    border: 0.1rem solid ${props => props.theme.colors.primary};
+    border: 0.1rem solid ${(props) => props.theme.colors.primary};
     outline: none;
   }
 

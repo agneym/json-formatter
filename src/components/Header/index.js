@@ -16,8 +16,8 @@ import EditorContext from "../Editors/EditorContext";
 import InfoBanner from "./Banner/InfoBanner";
 
 const Nav = styled.nav`
-  height: ${props => props.theme.layout.navHeight};
-  background-color: ${props => props.theme.colors.primary};
+  height: ${(props) => props.theme.layout.navHeight};
+  background-color: ${(props) => props.theme.colors.primary};
   position: relative;
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ function Header() {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {closeBanner => (
+            {(closeBanner) => (
               <UploadBanner
                 setValue={editorConfig.setValue}
                 close={closeBanner}
@@ -68,7 +68,7 @@ function Header() {
             </HeaderBtn>
           </Popover.Trigger>
           <Popover.DropBanner>
-            {closeBanner => (
+            {(closeBanner) => (
               <ShareBanner editorConfig={editorConfig} close={closeBanner} />
             )}
           </Popover.DropBanner>

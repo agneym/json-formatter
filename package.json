@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --mode=development --env=dev",
     "test": "cross-env NODE_ENV=test jest",
     "analyze-bundle": "cross-env ANALYZE=true npm run build",
-    "format": "prettier --write src/**/*.{js,jsx,css,html,json}",
+    "format": "bun fmt",
     "test:coverage": "jest --coverage"
   },
   "author": "Boy With Silver Wings <agney@outlook.in>",
@@ -57,7 +57,6 @@
     "monaco-editor-webpack-plugin": "^1.9.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.0.5",
     "purify-css": "^1.2.6",
     "purifycss-webpack": "^0.7.0",
     "react-addons-test-utils": "^15.6.2",

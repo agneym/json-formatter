@@ -9,7 +9,7 @@ import SelectedComp from "./SelectedComp";
 
 const Aside = styled.aside`
   position: fixed;
-  top: calc(${props => props.theme.layout.navHeight});
+  top: calc(${(props) => props.theme.layout.navHeight});
   right: 0;
   height: 100%;
   box-shadow: -0.2rem 0 0.6rem -0.5rem #333;
@@ -27,7 +27,7 @@ const CollapsibleTab = ({ tabs, children }) => {
   const { selected, setSelected } = useContext(TabContext);
   const { handlePluginTabClick } = useContext(PluginContext);
 
-  const handleTabChange = tabConfig => {
+  const handleTabChange = (tabConfig) => {
     handlePluginTabClick(tabConfig.key); //for updating active plugin in `Plugin` component
     if (!selected) setSelected(tabConfig);
   };
@@ -35,7 +35,7 @@ const CollapsibleTab = ({ tabs, children }) => {
   return (
     <Aside>
       <HeaderContainer>
-        {tabs.map(tabConfig => (
+        {tabs.map((tabConfig) => (
           <SideBtn
             uiType={tabConfig.uiType}
             active={tabConfig.key === selected}

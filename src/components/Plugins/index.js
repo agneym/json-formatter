@@ -20,11 +20,11 @@ function Plugins(props) {
 
   const { selectedPlugin, setSelectedPlugin } = useContext(PluginContext);
 
-  const loadPlugin = selectedPlugin => {
+  const loadPlugin = (selectedPlugin) => {
     setSelectedPlugin(selectedPlugin);
   };
 
-  const handleTransform = transformedValue => {
+  const handleTransform = (transformedValue) => {
     onTransform(transformedValue);
     setSelectedPlugin(null);
   };

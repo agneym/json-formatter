@@ -10,7 +10,7 @@ const EVENT_TYPE = "json-transform";
 function ExternalUI({ details, goBack, onTransform }) {
   const editorConfig = useContext(EditorContext);
 
-  window.addEventListener("message", event => {
+  window.addEventListener("message", (event) => {
     const eventData = event.data;
     const eventType = eventData.__event;
     if (eventType === EVENT_TYPE) {

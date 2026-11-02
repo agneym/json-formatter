@@ -12,7 +12,7 @@ const Container = styled.div`
   right: 0;
   z-index: 1;
 
-  ${props =>
+  ${(props) =>
     !props.open &&
     `
     display: none;

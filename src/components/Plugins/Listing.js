@@ -12,9 +12,9 @@ function Listing({ list, onClick }) {
   return (
     <Fragment>
       <Header title="Plugins" />
-      {list.map(pluginItem => {
+      {list.map((pluginItem) => {
         const isPinned = !!pinnedPlugins.find(
-          pinnedPlugin => pinnedPlugin === pluginItem.tagName
+          (pinnedPlugin) => pinnedPlugin === pluginItem.tagName
         );
         return (
           <SingleItem
@@ -22,7 +22,7 @@ function Listing({ list, onClick }) {
             name={pluginItem.name}
             description={pluginItem.description}
             onClick={() => onClick(pluginItem)}
-            onPinClick={pinActionType =>
+            onPinClick={(pinActionType) =>
               handlePinChange(pluginItem, pinActionType)
             }
             showPin={pinnedPlugins.length < 2 && !isPinned}

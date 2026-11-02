@@ -9,7 +9,7 @@ import Container from "../BannerContainer";
 
 function UploadBanner({ setValue, close }) {
   const [jsonData, setJsonData] = useState(null);
-  const setEditor = event => {
+  const setEditor = (event) => {
     event.preventDefault();
     if (jsonData) {
       setValue(jsonData);

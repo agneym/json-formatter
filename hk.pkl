@@ -1,9 +1,9 @@
 amends "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Config.pkl"
 
 steps {
-  ["prettier"] = new Step {
+  ["bun-fmt"] = new Step {
     glob = List("**/*.js", "**/*.jsx", "**/*.mjs", "**/*.cjs", "**/*.ts", "**/*.tsx", "**/*.css", "**/*.scss", "**/*.less", "**/*.html", "**/*.json", "**/*.json5", "**/*.jsonc", "**/*.yaml", "**/*.yml", "**/*.md", "**/*.markdown")
-    check = "bunx prettier --check {{files}}"
-    fix = "bunx prettier --write {{files}}"
+    check = "bun fmt --check {{files}}"
+    fix = "bun fmt {{files}}"
   }
 }

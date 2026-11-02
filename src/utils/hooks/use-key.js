@@ -7,7 +7,7 @@ import { useEffect } from "react";
  */
 function useKey(key, handler) {
   useEffect(() => {
-    const keydownHandler = event => {
+    const keydownHandler = (event) => {
       const pressedKey = event.key;
       if (pressedKey === key) {
         handler();

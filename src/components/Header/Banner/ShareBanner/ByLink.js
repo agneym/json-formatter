@@ -21,7 +21,7 @@ const ByLink = ({ value }) => {
   useEffect(() => {
     const id = randomWords({ exactly: 2, join: "-" });
     const peer = new Peer(id);
-    peer.on("connection", conn => {
+    peer.on("connection", (conn) => {
       conn.on("open", () => {
         conn.send(value);
       });

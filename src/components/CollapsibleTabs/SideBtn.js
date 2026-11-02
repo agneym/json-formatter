@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SideBtn = styled.button`
   -webkit-appearance: none;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.uiType ? props.theme.colors[props.uiType] : props.theme.colors.grey};
   color: #ffffff;
   box-shadow: none;

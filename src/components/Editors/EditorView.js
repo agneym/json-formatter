@@ -12,7 +12,7 @@ const EditorView = () => {
   const [transformed, setTransformed] = useState(null);
   const [editorVal, setEditorVal] = useState("");
 
-  const onTransform = transformedValue => {
+  const onTransform = (transformedValue) => {
     try {
       const transformedValueJson = JSON.stringify(transformedValue);
       setTransformed(transformedValueJson);
@@ -20,7 +20,7 @@ const EditorView = () => {
       console.error(err);
     }
   };
-  const loadEditor = value => {
+  const loadEditor = (value) => {
     setTransformed("");
     setEditorVal(value);
     setTimeout(() => editorConfig.format(), 0);

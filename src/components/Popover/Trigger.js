@@ -5,7 +5,7 @@ import { PopoverContext } from "./PopoverContext";
 function Trigger({ className, children }) {
   const { setOpen } = useContext(PopoverContext);
   const toggle = () => {
-    setOpen(open => !open);
+    setOpen((open) => !open);
   };
   return (
     <div

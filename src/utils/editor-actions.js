@@ -25,7 +25,7 @@ function getEditor() {
    * @param {DOMNode} container
    * @returns {Object}
    */
-  const createEditor = container => {
+  const createEditor = (container) => {
     if (!editor) {
       editor = monaco.editor.create(container, {
         formatOnPaste: true,
@@ -40,7 +40,7 @@ function getEditor() {
     return editor;
   };
 
-  const createJsonModel = value => {
+  const createJsonModel = (value) => {
     if (!editor) {
       return;
     }
@@ -51,7 +51,7 @@ function getEditor() {
     return model;
   };
 
-  const createJsModel = value => {
+  const createJsModel = (value) => {
     if (!editor) {
       return;
     }
@@ -62,7 +62,7 @@ function getEditor() {
     return model;
   };
 
-  const setValue = value => {
+  const setValue = (value) => {
     if (!editor) {
       return;
     }
@@ -132,7 +132,7 @@ function getEditor() {
    * Update formatting options for editor
    * @param {Object} options
    */
-  const updateFormatOptions = options => {
+  const updateFormatOptions = (options) => {
     if (!editor) {
       return;
     }
@@ -141,14 +141,14 @@ function getEditor() {
     format();
   };
 
-  const updateJsonOptions = options => {
+  const updateJsonOptions = (options) => {
     if (!editor) {
       return;
     }
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions(options);
   };
 
-  const changeTheme = theme => {
+  const changeTheme = (theme) => {
     if (!editor) {
       return;
     }

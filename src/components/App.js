@@ -18,7 +18,7 @@ import { EditorCtxProvider } from "./Editors/EditorContext";
 const MobileMessage = lazy(() => import("./MobileMessage"));
 
 const Main = styled.main`
-  min-height: calc(100vh - ${props => props.theme.layout.navHeight} - 1rem);
+  min-height: calc(100vh - ${(props) => props.theme.layout.navHeight} - 1rem);
   position: relative;
   flex: 1;
 `;
@@ -33,7 +33,7 @@ function App() {
       const peer = new Peer();
       const connection = peer.connect(userLink);
       connection.on("open", () => {
-        connection.on("data", value => {
+        connection.on("data", (value) => {
           editorConfig.setValue(value);
         });
       });

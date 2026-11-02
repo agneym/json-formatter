@@ -4,7 +4,7 @@ test/fixtures/
 test/output/
 
 build-utils
-webpack.config.js
+rspack.config.js
 postcss.config.js
 babel.config.js
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
+import * as monaco from "monaco-editor/editor/editor.api.js";
 import { Button } from "buffetjs";
 import styled from "styled-components";
 

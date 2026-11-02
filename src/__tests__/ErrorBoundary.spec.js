@@ -1,9 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { vi } from "vitest";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 beforeAll(() => {
-  jest.spyOn(console, "error").mockImplementation(() => {});
+  vi.spyOn(console, "error").mockImplementation(() => {});
 });
 
 afterAll(() => {
@@ -11,7 +12,7 @@ afterAll(() => {
 });
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe("ErrorBoundary component", () => {

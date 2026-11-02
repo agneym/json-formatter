@@ -1,7 +1,5 @@
 const commonPaths = require("./common-paths");
-const webpack = require("webpack");
-const htmlWebpackPlugin = require("html-webpack-plugin");
-const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const { rspack } = require("@rspack/core");
 
 const config = {
   entry: {
@@ -19,33 +17,30 @@ const config = {
     rules: [
       {
         test: /\.(jpe?g|png|gif|eot|ttf|woff|woff2)$/i,
-        use: [
-          // uses file-loader as default fallback.
-          {
-            loader: "url-loader",
-            options: {
-              limit: 1000,
-            },
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1000,
           },
-        ],
+        },
       },
       {
         test: /\.svg$/,
         use: ["@svgr/webpack"],
       },
       {
-        test: /\.html$/,
-        use: ["html-loader"],
+        test: /\.jsx?$/,
+        use: {
+          loader: "babel-loader",
+        },
+        exclude: /(node_modules|dist|build-utils|rspack.config.js)/,
       },
     ],
   },
   plugins: [
-    new webpack.ProgressPlugin(),
-    new htmlWebpackPlugin({
+    new rspack.ProgressPlugin(),
+    new rspack.HtmlRspackPlugin({
       template: "public/index.html",
-    }),
-    new MonacoWebpackPlugin({
-      languages: ["json"],
     }),
   ],
 };

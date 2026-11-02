@@ -1,4 +1,6 @@
-import * as monaco from "monaco-editor/esm/vs/editor/editor.api.js";
+import "./monaco-environment";
+import * as monaco from "monaco-editor/editor/editor.api.js";
+import { jsonDefaults } from "monaco-editor/language/json/monaco.contribution.js";
 
 /**
  * Get create function for the editor.
@@ -145,7 +147,7 @@ function getEditor() {
     if (!editor) {
       return;
     }
-    monaco.languages.json.jsonDefaults.setDiagnosticsOptions(options);
+    jsonDefaults.setDiagnosticsOptions(options);
   };
 
   const changeTheme = (theme) => {

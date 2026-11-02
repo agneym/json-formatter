@@ -18,9 +18,10 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - name: bun install, build, and test
+      - name: bun install, format check, build, and test
         run: |
           bun install --frozen-lockfile
+          bun fmt --check
           bun run build
           bun run test
         env:

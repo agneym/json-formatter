@@ -1,3 +1,4 @@
 [tools]
 node = "26"
 bun = "latest"
+hk = { version = "latest", workflow = "release.yml" }
